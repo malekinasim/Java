@@ -1,3 +1,5 @@
+package singelton;
+
 public class PersonStaticFactoryMethods  extends Person{
     //you need to create all super factory class because subclass can't call
     public PersonStaticFactoryMethods(String name) {
