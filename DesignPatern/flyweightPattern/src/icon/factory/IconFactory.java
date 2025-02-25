@@ -15,18 +15,15 @@ public class IconFactory {
   private static final Map<CustomIconType, Icon> shapeMap=new HashMap<>();
 
   public static Icon getIcon(CustomIconType type){
-      if(!shapeMap.containsKey(type)){
-          switch (type){
-              case FOLDER_ICON:{
-                  shapeMap.put(type,new FolderIcon());
-                  break;
+      return shapeMap.computeIfAbsent(type,key-> {
+                  switch (key) {
+                      case FOLDER_ICON:
+                          return new FolderIcon();
+                      case FILE_ICON:
+                          return new FileIcon();
+                      default: throw new IllegalArgumentException("Unknown icon type");
+                  }
               }
-              case FILE_ICON:{
-                  shapeMap.put(type,new FileIcon());
-                  break;
-              }
-          }
-          }
-      return shapeMap.get(type);
-  }
+      );
+      }
 }
