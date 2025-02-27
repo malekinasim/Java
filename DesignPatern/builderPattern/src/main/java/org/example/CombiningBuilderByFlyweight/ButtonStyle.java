@@ -55,6 +55,7 @@ public class ButtonStyle {
 
     @Override
     public String toString() {
-        return String.join(" : ", textColor, backgroundColor, String.valueOf(borderRadius));
+        return String.format("TextColor: %s, BackgroundColor: %s, BorderRadius: %d", textColor, backgroundColor, borderRadius);
+
     }
 }

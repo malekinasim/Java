@@ -22,9 +22,7 @@ public class Button {
 
     public void render() {
         System.out.println("Rendering Button: [" + text + "] with " +
-                "Background: " + buttonStyle.getBackgroundColor() +
-                ", Text Color: " + buttonStyle.getTextColor() +
-                ", Border Radius: " + buttonStyle.getTextColor());
+                buttonStyle.toString());
     }
 
     public static class ButtonBuilder {
@@ -34,6 +32,10 @@ public class Button {
         private ButtonStyle buttonStyle;
 
         public ButtonBuilder(String text, ButtonType type) {
+            if (text == null || type == null) {
+                throw new IllegalArgumentException("Text and type must not be null.");
+            }
+
             this.text = text;
             this.type = type;
         }
