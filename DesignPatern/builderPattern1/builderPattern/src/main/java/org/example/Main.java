@@ -1,6 +1,9 @@
 package org.example;
 
 import org.example.pizza.Pizza;
+import org.example.shapes.Point;
+import org.example.shapes.Rectangle;
+import org.example.shapes.Square;
 import org.example.vehicle.firstSolution.Car;
 import org.example.vehicle.secondSolution.Car1;
 import org.example.vehicle.secondSolution.ElectricalCar;
@@ -56,8 +59,20 @@ public class Main {
                 .model("F")
                 .build();
 
+        Rectangle rectangle=Rectangle.getBuilder().setLength(10)
+                .setWidth(20)
+                .setColor("red")
+                .setMiddlePoint(new Point(5,5))
+                .build();
+        rectangle.draw();
 
 
+        Square square =Square.getBuilder()
+                .setWidth(10)
+                .setColor("red")
+                .setMiddlePoint(new Point(2,2))
+                .build();
+        square.draw();
 
     }
 }

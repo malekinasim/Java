@@ -43,4 +43,12 @@ public class Vehicle3 {
             return new Vehicle3(this);
         }
     }
+
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
 }

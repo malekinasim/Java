@@ -34,5 +34,9 @@ public class Car3 extends Vehicle3 {
             return new Car3(this);
         }
     }
+
+    public int getSeatingCapacity() {
+        return seatingCapacity;
+    }
 }
 
