@@ -11,7 +11,7 @@ public class Pizza {
     public enum Main {CHEESE, DOUGH, OIL,SALT,THYME}
     private EnumSet<Main> main=EnumSet.allOf(Main.class);
     private EnumSet<Topping> toppings=EnumSet.noneOf(Topping.class);
-    public Pizza(PizzaBuilder builder) {
+    private Pizza(PizzaBuilder builder) {
         this.toppings=builder.toppings;
         this.main=builder.main;
     }
