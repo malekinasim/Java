@@ -9,7 +9,6 @@ import org.example.pizza.Pizza;
 import org.example.shapes.Point;
 import org.example.shapes.Rectangle;
 import org.example.shapes.Square;
-import org.example.vehicle.firstSolution.Car;
 import org.example.vehicle.secondSolution.Car1;
 import org.example.vehicle.secondSolution.ElectricalCar;
 import org.example.vehicle.thirdsolution.Car3;
