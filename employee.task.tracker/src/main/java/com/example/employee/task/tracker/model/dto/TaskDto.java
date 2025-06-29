@@ -4,6 +4,7 @@
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 public class TaskDto {
+    private String taskNumber;
     @NotBlank(message = "task.name.required")
     private String name;
     private String description;
@@ -12,6 +13,7 @@ public class TaskDto {
     private LocalDate endDate;
     private String status;
     private Long responsible_id;
+    private EmployeeDto employeeDto;
 
     public String getName() {
         return name;
@@ -59,5 +61,21 @@ public class TaskDto {
 
     public void setResponsible_id(Long responsible_id) {
         this.responsible_id = responsible_id;
+    }
+
+    public String getTaskNumber() {
+        return taskNumber;
+    }
+
+    public void setTaskNumber(String taskNumber) {
+        this.taskNumber = taskNumber;
+    }
+
+    public EmployeeDto getEmployeeDto() {
+        return employeeDto;
+    }
+
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
     }
 }

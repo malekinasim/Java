@@ -3,6 +3,8 @@ package com.example.employee.task.tracker.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Formula;
+
+import java.time.LocalDate;
 import java.util.List;
 @Entity
 @Table(name = "employees")
@@ -25,6 +27,11 @@ public class Employee extends BaseEntity {
 
     @Formula("name || ' ' || family")
     private String fullName;
+
+    @Column(name = "start_date", nullable = false)
+    private LocalDate StartDate;
+    @Column(name = "end_date")
+    private LocalDate EndDate;
 
     // One employee can be responsible for many tasks
     @OneToMany(mappedBy = "responsible", fetch = FetchType.LAZY)
@@ -50,4 +57,20 @@ public class Employee extends BaseEntity {
 
     public List<Task> getTasks() { return tasks; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
+
+    public LocalDate getStartDate() {
+        return StartDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        StartDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return EndDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        EndDate = endDate;
+    }
 }

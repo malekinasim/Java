@@ -7,7 +7,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "tasks")
 public class Task extends BaseEntity {
-
+  @Column(name = "name", nullable = false, unique = true)
+  private String taskNumber;
   @Column(name = "name", nullable = false, unique = true)
   private String name;
 
@@ -47,6 +48,14 @@ public class Task extends BaseEntity {
 
   public Employee getResponsible() { return responsible; }
   public void setResponsible(Employee responsible) { this.responsible = responsible; }
+
+  public String getTaskNumber() {
+    return taskNumber;
+  }
+
+  public void setTaskNumber(String taskNumber) {
+    this.taskNumber = taskNumber;
+  }
 
   public enum StatusType {
     TO_DO, DOING, TEST, DONE
