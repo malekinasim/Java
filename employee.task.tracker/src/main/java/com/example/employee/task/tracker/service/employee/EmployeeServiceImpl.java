@@ -2,9 +2,7 @@
 
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.Employee;
-import com.example.employee.task.tracker.model.Task;
 import com.example.employee.task.tracker.model.dto.EmployeeDto;
-import com.example.employee.task.tracker.model.dto.TaskDto;
 import com.example.employee.task.tracker.repoeitory.BaseRepository;
 import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;
 import com.example.employee.task.tracker.service.task.TaskService;
@@ -12,7 +10,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @Service
