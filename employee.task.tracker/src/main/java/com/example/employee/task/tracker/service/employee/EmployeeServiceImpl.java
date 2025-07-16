@@ -1,30 +1,29 @@
-﻿package com.example.employee.task.tracker.service.employee;
+package com.example.employee.task.tracker.service.employee;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.Employee;
 import com.example.employee.task.tracker.model.dto.EmployeeDto;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
 import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;
-import com.example.employee.task.tracker.service.task.TaskService;
-import org.springframework.context.annotation.Lazy;
+import com.example.employee.task.tracker.service.department.DepartmentService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
+
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
-    @Lazy
-    private final TaskService taskService;
+    private final DepartmentService departmentService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, TaskService taskService) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository,DepartmentService departmentService) {
         this.employeeRepository = employeeRepository;
-        this.taskService = taskService;
+        this.departmentService = departmentService;
     }
 
     @Override
-    public BaseRepository<Employee, Long> getRepository() {
+    public EmployeeRepository getRepository() {
         return employeeRepository;
     }
 
@@ -43,7 +42,6 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Employee> findAll() {
         return getRepository().findAll();
     }
-
     @Override
     public Employee save(Employee employee) {
         if(employee.getStartDate()==null)
@@ -72,10 +70,13 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeDto.setEmployeeNumber(employee.getEmployeeNumber());
         employeeDto.setAddress(employee.getAddress());
         employeeDto.setFullName(employee.getFullName());
-        if(!CollectionUtils.isEmpty(employee.getTasks()))
-           employeeDto.setTasks(employee.getTasks().stream().map(taskService::mapToDto).toList());
         employeeDto.setStartDate(employee.getStartDate());
         employeeDto.setEndDate(employee.getEndDate());
+
+        Optional<Department> department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());
+        if (department.isPresent())
+            employeeDto.setCurrentDepartment(departmentService.mapToDto(department.get()));
+
         return employeeDto;
     }
 
@@ -88,10 +89,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setEndDate(employeeDto.getEndDate());
         employee.setAddress(employeeDto.getAddress());
         employee.setPhoneNumber(employeeDto.getPhoneNumber());
-
-        if(!CollectionUtils.isEmpty(employeeDto.getTasks()))
-          employee.setTasks(employeeDto.getTasks().stream().map(taskService::mapToEntity).toList());
-
         return employee;
     }
 }

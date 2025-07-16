@@ -1,14 +1,9 @@
-﻿package com.example.employee.task.tracker.model.dto;
+package com.example.employee.task.tracker.model.dto;
 
-import com.example.employee.task.tracker.model.Task;
-import jakarta.annotation.Nullable;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.annotations.Formula;
 
 import java.time.LocalDate;
 import java.util.List;
-
 public class EmployeeDto {
 
     @NotBlank(message = "employee.name.required")
@@ -32,6 +27,8 @@ public class EmployeeDto {
     private LocalDate EndDate;
 
     private List<TaskDto> tasks;
+
+    private DepartmentDto currentDepartment;
 
     public @NotBlank(message = "employee.name.required") String getName() {
         return name;
@@ -103,5 +100,13 @@ public class EmployeeDto {
 
     public void setTasks(List<TaskDto> tasks) {
         this.tasks = tasks;
+    }
+
+    public DepartmentDto getCurrentDepartment() {
+        return currentDepartment;
+    }
+
+    public void setCurrentDepartment(DepartmentDto currentDepartment) {
+        this.currentDepartment = currentDepartment;
     }
 }

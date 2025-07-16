@@ -1,7 +1,8 @@
-﻿package com.example.employee.task.tracker.model.dto;
+package com.example.employee.task.tracker.model.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 public class TaskDto {
     private String taskNumber;
@@ -38,11 +39,9 @@ public class TaskDto {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
     public LocalDate getEndDate() {
         return endDate;
     }
-
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }

@@ -1,14 +1,23 @@
-# Use OpenJDK base image
-FROM openjdk:24-jdk-slim
+# ---------- Build stage ----------
+FROM maven:3.9.10-eclipse-temurin-24-alpine AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file into the container
-COPY target/myapp.jar app.jar
+COPY pom.xml .
 
-# Expose port (optional, for documentation)
+RUN mvn dependency:go-offline
+
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+# ---------- Runtime stage ----------
+FROM openjdk:24-jdk-slim
+
+WORKDIR /app
+
+COPY --from=builder /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]

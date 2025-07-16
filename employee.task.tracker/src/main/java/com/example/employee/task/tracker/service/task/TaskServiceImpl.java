@@ -1,28 +1,34 @@
 package com.example.employee.task.tracker.service.task;
 
+import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.Employee;
 import com.example.employee.task.tracker.model.Task;
+import com.example.employee.task.tracker.model.TaskHistory;
+import com.example.employee.task.tracker.model.dto.TaskDto;
 import com.example.employee.task.tracker.repoeitory.task.TaskRepository;
 import com.example.employee.task.tracker.service.employee.EmployeeService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import com.example.employee.task.tracker.model.dto.TaskDto;
+import org.springframework.util.CollectionUtils;
 import java.time.LocalDate;
 import java.util.List;
-
-import com.example.employee.task.tracker.config.exception.CustomException;
+import java.util.Set;
 
 @Service
-public class TaskServiceImpl implements TaskService {
+public class TaskServiceImpl implements com.example.employee.task.tracker.service.task.TaskService {
     private final TaskRepository taskRepository;
+    @Lazy
     private final EmployeeService employeeService;
+    private final TaskHistoryService taskHistoryService;
 
-    public TaskServiceImpl(TaskRepository taskRepository, EmployeeService employeeService) {
+    public TaskServiceImpl(TaskRepository taskRepository, EmployeeService employeeService, TaskHistoryService taskHistoryService) {
         this.taskRepository = taskRepository;
         this.employeeService = employeeService;
+        this.taskHistoryService = taskHistoryService;
     }
 
     @Override
-    public TaskRepository<Task, Long> getRepository() {
+    public TaskRepository getRepository() {
         return taskRepository;
     }
 
@@ -50,7 +56,13 @@ public class TaskServiceImpl implements TaskService {
         taskDto.setDescription(task.getDescription());
         taskDto.setStartDate(task.getStartDate());
         taskDto.setEndDate(task.getEndDate());
-        taskDto.setStatus(task.getStatus().name());
+        try {
+
+            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());
+            taskDto.setStatus(taskHistory.getState().name());
+        } catch (CustomException e) {
+            e.printStackTrace();
+        }
         taskDto.setTaskNumber(task.getTaskNumber());
         if(task.getResponsible()!=null)
           taskDto.setEmployeeDto(employeeService.mapToDto(task.getResponsible()));
@@ -63,18 +75,31 @@ public class TaskServiceImpl implements TaskService {
         task.setDescription(taskDto.getDescription());
         task.setStartDate(taskDto.getStartDate());
         task.setEndDate(taskDto.getEndDate());
+
+
+        try {
+
+            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());
+            taskDto.setStatus(taskHistory.getState().name());
+        } catch (CustomException e) {
+            e.printStackTrace();
+        }
+        TaskHistory taskHistory = new TaskHistory();
         if (taskDto.getStatus() != null) {
-            task.setStatus(Task.StatusType.valueOf(taskDto.getStatus()));
+            taskHistory.setState(TaskHistory.StateType.valueOf(taskDto.getStatus()));
+
         } else {
             if (task.getStartDate().isAfter(LocalDate.now()))
-                task.setStatus(Task.StatusType.TO_DO);
+                taskHistory.setState(TaskHistory.StateType.TO_DO);
             else if (task.getStartDate().isBefore(LocalDate.now())) {
                 if (task.getEndDate() == null || task.getEndDate().isAfter(LocalDate.now()))
-                    task.setStatus(Task.StatusType.DOING);
+                    taskHistory.setState(TaskHistory.StateType.DOING);
                 else
-                    task.setStatus(Task.StatusType.DONE);
+                    taskHistory.setState(TaskHistory.StateType.DONE);
             }
         }
+
+        task.setTaskHistorySet(Set.of(taskHistory));
         if (taskDto.getResponsible_id() != null) {
             Employee employee = employeeService.findById(taskDto.getResponsible_id());
             task.setResponsible(employee);
@@ -82,13 +107,17 @@ public class TaskServiceImpl implements TaskService {
         task.setTaskNumber(taskDto.getTaskNumber());
         return task;
     }
-
     @Override
     public Task save(Task task) {
         if (task.getStartDate() == null)
             task.setStartDate(LocalDate.now());
-        if (task.getStatus() == null)
-            task.setStatus(Task.StatusType.TO_DO);
+        if (CollectionUtils.isEmpty(task.getTaskHistorySet())) {
+            TaskHistory taskHistory = new TaskHistory();
+            taskHistory.setFromDate(LocalDate.now());
+            taskHistory.setState(TaskHistory.StateType.TO_DO);
+            taskHistory.setTask(task);
+            task.setTaskHistorySet(Set.of(taskHistory));
+        }
         return getRepository().save(task);
     }
 

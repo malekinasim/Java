@@ -1,10 +1,7 @@
 package com.example.employee.task.tracker.config.exception;
-
 import com.example.employee.task.tracker.config.resourcebundle.MessageUtil;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,9 +10,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 
 @RestControllerAdvice
@@ -33,7 +31,6 @@ class GlobalExceptionHandler  {
         String message = messageUtil.get(ex.getMessageKey(), ex.getArgs());
         return buildResponse(ex.getStatus(), message+"\n"+LocalDateTime.now());
     }
-
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<ErrorResponse> handleLocalized(CustomException ex) {
         String message = messageUtil.get(ex.getMessageKey(), ex.getArgs());
@@ -44,6 +41,7 @@ class GlobalExceptionHandler  {
     public ResponseEntity<ErrorResponse> handleConstraint(DataIntegrityViolationException ex) {
         return buildResponse(HttpStatus.CONFLICT,
                 "Database constraint violation: " + ex.getRootCause().getMessage());
+
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
