@@ -1,4 +1,4 @@
-package com.example.employee.Department.tracker.controller;
+package com.example.employee.task.tracker.controller;
 
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.dto.DepartmentDto;
