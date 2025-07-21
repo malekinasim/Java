@@ -7,4 +7,7 @@ import com.example.employee.task.tracker.service.BaseService;
 public interface EmployeeService extends BaseService<Employee, Long, EmployeeRepository> {
     EmployeeDto mapToDto(Employee employee);
     Employee mapToEntity(EmployeeDto employeeDto);
+
+    Employee findByEmployeeNumber(String employeeNumber);
 }
+

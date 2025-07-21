@@ -12,6 +12,12 @@ import java.util.Set;
 @Entity
 @Table(name = "employees")
 public class Employee extends BaseEntity<Long> {
+
+    @Column(name = "password", nullable = false)
+    private String password;
+    @Enumerated
+    @Column(name = "Role",nullable = true )
+    private Role role;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "family", nullable = false)
@@ -123,6 +129,17 @@ public class Employee extends BaseEntity<Long> {
         this.email = email;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public Set<DepartmentEmployeesHistory> getDepartmentEmployeesHistories() {
         return departmentEmployeesHistories;
@@ -159,4 +176,8 @@ public class Employee extends BaseEntity<Long> {
                 ", name='" + name + '\'' +
                 '}';
     }
+    public enum Role{
+        ADMIN,EMPLOYEE
+    }
+
 }

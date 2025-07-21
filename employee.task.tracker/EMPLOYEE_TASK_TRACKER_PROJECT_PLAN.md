@@ -105,5 +105,14 @@ Each feature below is broken down into actionable tasks and sub-tasks to follow 
 4. Each checkmark becomes your next coding task.
 
 ---
+| اولویت | Feature                               | چرا؟                                       |
+| ------ | ------------------------------------- | ------------------------------------------ |
+| 🥇 1   | 🔐 **JWT Authentication & Roles**     | بدون امنیت و نقش‌بندی، هیچ کاری ممکن نیست  |
+| 🥈 2   | 🏢 **Multi-Tenancy با Department**    | پایه‌ی ساختار tenantها و تاریخچه دپارتمان  |
+| 🥉 3   | 🧱 **CRUD برای Employee, Task, Dept** | نیازمند زیرساخت‌های بالا، هسته‌ی کاربردی   |
+| 4      | 📣 **Kafka & RabbitMQ Messaging**     | پیشرفته، برای event-driven شدن             |
+| 5      | 🧾 **MongoDB Audit Logging**          | برای لاگ و پیاده‌سازی polyglot persistence |
+| 6      | 🌐 **Swagger / OpenAPI**              | برای مستندسازی و تست بهتر APIها            |
+| 7      | 🐳 **Docker & Compose for all**       | نهایی‌سازی اجراپذیری MVP در محیط واقعی     |
 
 Happy coding! 🚀

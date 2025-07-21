@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -73,10 +72,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDto.setStartDate(employee.getStartDate());
         employeeDto.setEndDate(employee.getEndDate());
 
-        Optional<Department> department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());
-        if (department.isPresent())
-            employeeDto.setCurrentDepartment(departmentService.mapToDto(department.get()));
-
+        Department department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());
+        employeeDto.setCurrentDepartment(departmentService.mapToDto(department));
+        if(employee.getRole()!=null)
+            employeeDto.setRole(employee.getRole().name());
         return employeeDto;
     }
 
@@ -90,5 +89,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setAddress(employeeDto.getAddress());
         employee.setPhoneNumber(employeeDto.getPhoneNumber());
         return employee;
+    }
+
+    @Override
+    public Employee findByEmployeeNumber(String employeeNumber) {
+        return  this.getRepository().findByEmployeeNumber(employeeNumber)
+                .orElseThrow(()->new CustomException("employee.not_found"));
+
     }
 }

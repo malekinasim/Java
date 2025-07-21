@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -62,8 +61,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Optional<Department> getEmployeeCurrentDepartment(String employeeNumber) {
-        return getRepository().getEmployeeCurrentDepartment(employeeNumber);
+    public Department getEmployeeCurrentDepartment(String employeeNumber) {
+        return getRepository().getEmployeeCurrentDepartment(employeeNumber).orElseThrow(()->
+                new CustomException("employee.current.department.not_found"));
     }
 
     @Override

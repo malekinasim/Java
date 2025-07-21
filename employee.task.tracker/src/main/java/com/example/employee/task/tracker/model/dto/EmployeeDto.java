@@ -16,6 +16,9 @@ public class EmployeeDto {
     private String phoneNumber;
 
 
+    private String role;
+
+
     private String address;
 
     private String employeeNumber;
@@ -108,5 +111,13 @@ public class EmployeeDto {
 
     public void setCurrentDepartment(DepartmentDto currentDepartment) {
         this.currentDepartment = currentDepartment;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
