@@ -1,4 +1,4 @@
-package com.example.employee.task.tracker.security;
+package com.example.employee.task.tracker.config.security;
 
 
 import io.jsonwebtoken.Claims;
@@ -26,10 +26,10 @@ public class JwtTokenProvider {
     private final String CUR_DEPARTMENT_CLAIM = "departmentCode";
 
 
-    public String createToken(String username, String role, Long departmentId) {
+    public String createToken(String username, String role, String departmentCode) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("role", role);
-        claims.put(CUR_DEPARTMENT_CLAIM, departmentId);
+        claims.put(CUR_DEPARTMENT_CLAIM, departmentCode);
         Date now = new Date();
         Date exp = new Date(now.getTime() + expiration);
         return Jwts.builder()

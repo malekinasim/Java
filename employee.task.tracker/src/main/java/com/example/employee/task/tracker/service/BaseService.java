@@ -1,11 +1,8 @@
 package com.example.employee.task.tracker.service;
 
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
-
 import java.util.List;
 
-public interface BaseService<T,ID,R extends BaseRepository<T,ID>>{
-    R getRepository();
+public interface BaseService<T,ID>{
     T findById(ID id);
     void deleteById(ID id);
     List<T> findAll();

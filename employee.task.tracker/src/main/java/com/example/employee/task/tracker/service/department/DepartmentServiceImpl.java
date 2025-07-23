@@ -18,30 +18,26 @@ public class DepartmentServiceImpl implements DepartmentService {
         this.departmentRepository = departmentRepository;
     }
 
-    @Override
-    public DepartmentRepository getRepository() {
-        return departmentRepository;
-    }
-
+ 
     @Override
     public Department findById(Long id) {
-        return getRepository().findById(id).orElseThrow(
+        return departmentRepository.findById(id).orElseThrow(
                 () -> new CustomException("department.not_found"));
     }
 
     @Override
     public void deleteById(Long id) {
-        this.getRepository().deleteById(id);
+        this.departmentRepository.deleteById(id);
     }
 
     @Override
     public List<Department> findAll() {
-        return getRepository().findAll();
+        return departmentRepository.findAll();
     }
 
     @Override
     public Department save(Department department) {
-        return getRepository().save(department);
+        return departmentRepository.save(department);
     }
 
     @Override
@@ -57,12 +53,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         if (!CollectionUtils.isEmpty(department.getSubDepartment()))
             find.setSubDepartment(department.getSubDepartment());
-        return getRepository().save(find);
+        return departmentRepository.save(find);
     }
 
     @Override
     public Department getEmployeeCurrentDepartment(String employeeNumber) {
-        return getRepository().getEmployeeCurrentDepartment(employeeNumber).orElseThrow(()->
+        return departmentRepository.getEmployeeCurrentDepartment(employeeNumber).orElseThrow(()->
                 new CustomException("employee.current.department.not_found"));
     }
 

@@ -21,31 +21,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.departmentService = departmentService;
     }
 
-    @Override
-    public EmployeeRepository getRepository() {
-        return employeeRepository;
-    }
+ 
 
     @Override
     public Employee findById(Long id) {
-        return getRepository().findById(id).orElseThrow(
+        return employeeRepository.findById(id).orElseThrow(
                 ()->new  CustomException("employee.not_found") );
     }
 
     @Override
     public void deleteById(Long id) {
-         this.getRepository().deleteById(id);
+         this.employeeRepository.deleteById(id);
     }
 
     @Override
     public List<Employee> findAll() {
-        return getRepository().findAll();
+        return employeeRepository.findAll();
     }
     @Override
     public Employee save(Employee employee) {
         if(employee.getStartDate()==null)
             employee.setStartDate(LocalDate.now());
-        return getRepository().save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
@@ -58,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         find.setAddress(employee.getAddress());
         find.setPhoneNumber(employee.getPhoneNumber());
         find.setTasks(employee.getTasks());
-        return getRepository().save(find);
+        return employeeRepository.save(find);
     }
 
     @Override
@@ -93,7 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findByEmployeeNumber(String employeeNumber) {
-        return  this.getRepository().findByEmployeeNumber(employeeNumber)
+        return  this.employeeRepository.findByEmployeeNumber(employeeNumber)
                 .orElseThrow(()->new CustomException("employee.not_found"));
 
     }

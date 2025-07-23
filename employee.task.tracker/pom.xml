@@ -74,14 +74,9 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.15.0</version> <!-- safe version -->
+			<version>3.14.0</version> <!-- safe version -->
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>

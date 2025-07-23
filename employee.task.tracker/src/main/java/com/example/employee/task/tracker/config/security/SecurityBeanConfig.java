@@ -1,8 +1,10 @@
-package com.example.employee.task.tracker.security;
+package com.example.employee.task.tracker.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,7 +21,7 @@ import java.util.Objects;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityBeansConfig {
+public class SecurityBeanConfig {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final CustomUserDetailsService customUserDetailsService;
@@ -33,9 +35,9 @@ public class SecurityBeansConfig {
             "/api/v1/public/**",
             "/api/v1/auth/**",
     };
-    public SecurityBeansConfig(JwtTokenProvider jwtTokenProvider,
-                               CustomUserDetailsService customUserDetailsService,
-                               Environment environment) {
+    public SecurityBeanConfig(JwtTokenProvider jwtTokenProvider,
+                              CustomUserDetailsService customUserDetailsService,
+                              Environment environment) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.customUserDetailsService = customUserDetailsService;
         this.environment = environment;
@@ -89,5 +91,9 @@ public class SecurityBeansConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
+    }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }

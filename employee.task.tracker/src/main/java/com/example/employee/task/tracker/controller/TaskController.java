@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("/api/v1")
 public class TaskController {
 
     private final TaskService taskService;

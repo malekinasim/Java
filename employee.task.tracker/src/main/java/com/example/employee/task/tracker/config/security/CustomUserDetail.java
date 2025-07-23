@@ -1,5 +1,6 @@
-package com.example.employee.task.tracker.security;
+package com.example.employee.task.tracker.config.security;
 
+import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.Employee;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -13,23 +14,28 @@ import java.util.*;
 public class CustomUserDetail  implements UserDetails{
 
     @Hidden
+    private Account account;
 
+    @Hidden
     private Employee employee;
+
     @Hidden
     private Department CurrentUserDepartment = null;
+
     @Hidden
     private Map<String, Object> attributes;
 
     public CustomUserDetail() {
     }
 
-    public CustomUserDetail(Employee employee, Department currentUserDepartment) {
-        this(employee,currentUserDepartment,null);
+    public CustomUserDetail(Account account, Department currentUserDepartment) {
+        this(account,currentUserDepartment,null);
     }
 
 
-    public CustomUserDetail(Employee employee, Department currentUserDepartment, HashMap<String, Object> attributes) {
-        this.employee = employee;
+    public CustomUserDetail(Account account, Department currentUserDepartment, HashMap<String, Object> attributes) {
+        this.account = account;
+        this.employee =account.getEmployee();
         CurrentUserDepartment = currentUserDepartment;
         this.attributes = attributes;
     }
@@ -38,7 +44,8 @@ public class CustomUserDetail  implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         //we just add organ based and app based role authority and organ authority and resource authority based on organ and app role
-        if (employee != null) {
+        if (account != null && employee!=null) {
+
             if (employee.getRole() != null) {
                     GrantedAuthority roleGrantedAuthority = new SimpleGrantedAuthority(employee.getRole().name());
                     grantedAuthorities.add(roleGrantedAuthority);

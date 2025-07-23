@@ -1,4 +1,4 @@
-package com.example.employee.task.tracker.security;
+package com.example.employee.task.tracker.config.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

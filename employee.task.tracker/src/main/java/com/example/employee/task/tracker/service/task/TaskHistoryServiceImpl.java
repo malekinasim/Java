@@ -15,11 +15,7 @@ public class TaskHistoryServiceImpl implements TaskHistoryService {
         this.taskHistoryRepository = taskHistoryRepository;
     }
 
-    @Override
-    public TaskHistoryRepository getRepository() {
-        return this.taskHistoryRepository;
-    }
-
+   
     @Override
     public TaskHistory findById(Long aLong) {
         return null;
@@ -47,7 +43,7 @@ public class TaskHistoryServiceImpl implements TaskHistoryService {
 
     @Override
     public TaskHistory getLastTaskStatus(Long taskId) {
-        return this.getRepository().getLastTaskStatus(taskId).orElseThrow(
+        return taskHistoryRepository.getLastTaskStatus(taskId).orElseThrow(
                 () -> new CustomException("taskHistory.notFound")
         );
     }

@@ -52,6 +52,9 @@ public class Employee extends BaseEntity<Long> {
     @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployeesHistory.class)
     Set<DepartmentEmployeesHistory> departmentEmployeesHistories;
 
+    @OneToMany(mappedBy = "id",targetEntity = Account.class)
+    Set<Account> accounts;
+
     // --- Getters & Setters ---
     public String getName() {
         return name;
@@ -147,6 +150,14 @@ public class Employee extends BaseEntity<Long> {
 
     public void setDepartmentEmployeesHistories(Set<DepartmentEmployeesHistory> departmentEmployeesHistories) {
         this.departmentEmployeesHistories = departmentEmployeesHistories;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override

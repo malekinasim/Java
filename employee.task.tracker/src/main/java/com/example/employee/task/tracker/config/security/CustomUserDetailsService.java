@@ -1,9 +1,10 @@
-package com.example.employee.task.tracker.security;
+package com.example.employee.task.tracker.config.security;
 
+import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.Department;
-import com.example.employee.task.tracker.model.Employee;
+import com.example.employee.task.tracker.service.account.AccountService;
 import com.example.employee.task.tracker.service.department.DepartmentService;
-import com.example.employee.task.tracker.service.employee.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,12 +16,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     private final JwtTokenProvider jwtTokenProvider;
-    private final EmployeeService employeeService;
+    private final AccountService accountService;
     private final DepartmentService departmentService;
 
-    public CustomUserDetailsService(JwtTokenProvider jwtTokenProvider, EmployeeService employeeService, DepartmentService departmentService) {
+    public CustomUserDetailsService(JwtTokenProvider jwtTokenProvider, AccountService accountService, DepartmentService departmentService) {
         this.jwtTokenProvider = jwtTokenProvider;
-        this.employeeService = employeeService;
+        this.accountService = accountService;
         this.departmentService = departmentService;
     }
 
@@ -39,10 +40,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     private UserDetails loadUserByUsername(String username, String departmentCode) throws UsernameNotFoundException {
-            Employee employee = employeeService.findByEmployeeNumber(username);
-            Department department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());
-            if (department.getDepartmentCode().equals(departmentCode))
-                return new CustomUserDetail(employee, department);
+        Account account =null;
+        try {
+             account = accountService.findByUserName(username);
+        }catch (CustomException e){
+            e.printStackTrace();
+        }
+            if(account!=null) {
+                Department department = departmentService.getEmployeeCurrentDepartment(account.getUsername());
+                if (department.getDepartmentCode().equals(departmentCode))
+                    return new CustomUserDetail(account, department);
+            }
             return null;
 
     }
