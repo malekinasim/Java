@@ -15,11 +15,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JWTTokenProvider jwtTokenProvider;
     private final AccountService accountService;
     private final DepartmentService departmentService;
 
-    public CustomUserDetailsService(JwtTokenProvider jwtTokenProvider, AccountService accountService, DepartmentService departmentService) {
+    public CustomUserDetailsService(JWTTokenProvider jwtTokenProvider, AccountService accountService, DepartmentService departmentService) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.accountService = accountService;
         this.departmentService = departmentService;

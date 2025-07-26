@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -22,8 +23,8 @@ import java.util.Objects;
 @Configuration
 @EnableWebSecurity
 public class SecurityBeanConfig {
-
-    private final JwtTokenProvider jwtTokenProvider;
+    private final AuthenticationSuccessHandler customOAuth2SuccessHandler;
+    private final JWTTokenProvider jwtTokenProvider;
     private final CustomUserDetailsService customUserDetailsService;
     private final Environment environment;
 
@@ -35,9 +36,10 @@ public class SecurityBeanConfig {
             "/api/v1/public/**",
             "/api/v1/auth/**",
     };
-    public SecurityBeanConfig(JwtTokenProvider jwtTokenProvider,
+    public SecurityBeanConfig(AuthenticationSuccessHandler customOAuth2SuccessHandler, JWTTokenProvider jwtTokenProvider,
                               CustomUserDetailsService customUserDetailsService,
                               Environment environment) {
+        this.customOAuth2SuccessHandler = customOAuth2SuccessHandler;
         this.jwtTokenProvider = jwtTokenProvider;
         this.customUserDetailsService = customUserDetailsService;
         this.environment = environment;
@@ -50,6 +52,7 @@ public class SecurityBeanConfig {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
+
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -58,8 +61,12 @@ public class SecurityBeanConfig {
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(http -> http.disable())
-                .formLogin(form -> form.disable())
+              //  .httpBasic(http -> http.disable())
+               // .formLogin(form -> form.disable())
+                .oauth2Login(oauth2 -> oauth2
+
+                        .successHandler(customOAuth2SuccessHandler)
+                )
                 .logout(logout -> logout
                         .logoutUrl("/user/logout")
                         .permitAll()

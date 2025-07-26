@@ -13,7 +13,7 @@ public class Account extends BaseEntity<Long> {
     @Column(unique = true, nullable = false)
     private String username; // can be personnelNumber or Google email
 
-    private String password; // null if Google
+    private String password; // null if oauth provider is used for example ggogle
 
     @ManyToOne(targetEntity = AuthProvider.class)
     @JoinColumn(name = "employee_id", nullable = false)

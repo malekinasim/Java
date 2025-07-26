@@ -1,6 +1,7 @@
 package com.example.employee.task.tracker.config.security;
 
 
+import com.example.employee.task.tracker.model.AuthProvider;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -15,7 +16,7 @@ import org.springframework.util.StringUtils;
 import java.util.Date;
 
 @Component
-public class JwtTokenProvider {
+public class JWTTokenProvider {
 
     @Value("${jwt.secret}")
     private String secret;
@@ -40,8 +41,23 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    public String createToken(String username, String role, AuthProvider authProvider) {
+        Claims claims = Jwts.claims().setSubject(username);
+        claims.put("role", role);
+        String PROVIDER_CLAIM = "provider";
+        claims.put(PROVIDER_CLAIM, authProvider.getName());
+        Date now = new Date();
+        Date exp = new Date(now.getTime() + expiration);
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(exp)
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
+    }
+
     public UsernamePasswordAuthenticationToken getAuthentication(String token,UserDetails userDetails) {
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetails, token, userDetails.getAuthorities());
     }
 
     public String resolveToken(HttpServletRequest request) {

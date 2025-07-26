@@ -1,7 +1,7 @@
 package com.example.employee.task.tracker.controller;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
-import com.example.employee.task.tracker.config.security.JwtTokenProvider;
+import com.example.employee.task.tracker.config.security.JWTTokenProvider;
 import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.dto.LoginRQ;
@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
     private final AccountService accountService;
     private final AuthenticationManager authenticationManager;
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JWTTokenProvider jwtTokenProvider;
     private final DepartmentService departmentService;
 
-    public AccountController(AccountService accountService, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, DepartmentService departmentService) {
+    public AccountController(AccountService accountService, AuthenticationManager authenticationManager, JWTTokenProvider jwtTokenProvider, DepartmentService departmentService) {
         this.accountService = accountService;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
@@ -36,7 +36,7 @@ public class AccountController {
 
     @PostMapping("/Auth/signup")
     public ResponseEntity<?> SignUp(@RequestBody SignupRQ signupRQ) {
-        accountService.createAccount(signupRQ);
+        accountService.createActiveAccount(signupRQ);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
