@@ -8,31 +8,44 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JWTTokenProvider {
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${jwt.expiration}")
-    private long expiration;
+    @Value("${jwt.access-token-expiration}")
+    private String accessTokenExpiration;
+
+    @Value("${jwt.refresh-token-expiration}")
+    private String refreshTokenExpiration;
 
     private final String CUR_DEPARTMENT_CLAIM = "departmentCode";
 
+    public JWTTokenProvider(RedisTemplate<String, String> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
-    public String createToken(String username, String role, String departmentCode) {
+
+    public String createAccessToken(String username, String role, String departmentCode) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("role", role);
         claims.put(CUR_DEPARTMENT_CLAIM, departmentCode);
         Date now = new Date();
-        Date exp = new Date(now.getTime() + expiration);
+        Date exp = new Date(now.getTime() + Long.parseLong(accessTokenExpiration));
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
@@ -41,26 +54,63 @@ public class JWTTokenProvider {
                 .compact();
     }
 
-    public String createToken(String username, String role, AuthProvider authProvider) {
+    public String createAccessToken(String username, String role, AuthProvider authProvider) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("role", role);
         String PROVIDER_CLAIM = "provider";
-        claims.put(PROVIDER_CLAIM, authProvider.getName());
+        claims.put(PROVIDER_CLAIM, authProvider.getRegistrationId());
         Date now = new Date();
-        Date exp = new Date(now.getTime() + expiration);
+        Date exp = new Date(now.getTime() +Long.parseLong( accessTokenExpiration));
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(exp)
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
+    }
+    public String createRefreshToken(String username) {
+        Claims claims = Jwts.claims().setSubject(username);
+        claims.put("type", "refresh");
+        Date now = new Date();
+        Date exp = new Date(now.getTime() + Long.parseLong(refreshTokenExpiration));
+        String refreshToken= Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(exp)
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
+
+        String key = "jwt_refresh_token:" + username;
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("refresh_token", refreshToken);
+        tokenMap.put("expires_at", String.valueOf(exp.getTime()));
+        redisTemplate.opsForHash().putAll(key, tokenMap);
+        Duration ttl = Duration.between(Instant.now(), exp.toInstant());
+        redisTemplate.expire(key, ttl);
+        return refreshToken;
+    }
+    public String getRefreshToken(String username) {
+        String key="jwt_refresh_token:" + username;
+        if(!Boolean.TRUE.equals(redisTemplate.hasKey(key)))
+            return null;
+        Map<Object, Object> tokenData = redisTemplate.opsForHash().entries(key);
+        String refreshToken = (String) tokenData.get("refresh_token");
+        String expiresAtStr = (String) tokenData.get("expires_at");
+        Instant expiresAt = Instant.parse(expiresAtStr);
+        if(expiresAt.isAfter(Instant.now()))
+            return null;
+        return refreshToken;
+    }
+    public boolean isRefreshToken(String token) {
+        Claims claims = getClaims(token);
+        return "refresh".equals(claims.get("type"));
     }
 
     public UsernamePasswordAuthenticationToken getAuthentication(String token,UserDetails userDetails) {
         return new UsernamePasswordAuthenticationToken(userDetails, token, userDetails.getAuthorities());
     }
 
-    public String resolveToken(HttpServletRequest request) {
+    public String resolveAccessToken(HttpServletRequest request) {
         String bearer = request.getHeader("Authorization");
         return bearer != null && bearer.startsWith("Bearer ") ? bearer.substring(7) : null;
     }
@@ -79,7 +129,7 @@ public class JWTTokenProvider {
     }
 
     public String getCurrentDepartment(HttpServletRequest request) {
-        String token = this.resolveToken(request);
+        String token = this.resolveAccessToken(request);
         if (token != null) {
             Claims claims = this.getClaims(token);
             if (claims.get(CUR_DEPARTMENT_CLAIM) != null && StringUtils.hasText(claims.get(CUR_DEPARTMENT_CLAIM).toString())) {

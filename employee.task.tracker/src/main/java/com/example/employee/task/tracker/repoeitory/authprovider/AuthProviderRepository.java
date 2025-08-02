@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface AuthProviderRepository extends BaseRepository<AuthProvider, Long> {
-    Optional<AuthProvider> findByName(String name);
+    Optional<AuthProvider> findByRegistrationId(String name);
+
 }

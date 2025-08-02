@@ -32,9 +32,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        tokenProvider.resolveToken(request);
+        tokenProvider.resolveAccessToken(request);
         try {
-            String jwtToken = tokenProvider.resolveToken(request);
+            String jwtToken = tokenProvider.resolveAccessToken(request);
             if (StringUtils.hasText(jwtToken)
                     && tokenProvider.validateToken(jwtToken)) {
                 Claims claims = tokenProvider.getClaims(jwtToken);

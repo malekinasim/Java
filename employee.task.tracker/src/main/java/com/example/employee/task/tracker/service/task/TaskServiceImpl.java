@@ -28,25 +28,20 @@ public class TaskServiceImpl implements com.example.employee.task.tracker.servic
     }
 
     @Override
-    public TaskRepository getRepository() {
-        return taskRepository;
-    }
-
-    @Override
     public Task findById(Long id) {
-        return getRepository().findById(id).orElseThrow(() ->
+        return taskRepository.findById(id).orElseThrow(() ->
                 new CustomException("task.not_found", id));
     }
 
     @Override
     public void deleteById(Long id) {
         this.findById(id);
-        getRepository().deleteById(id);
+        taskRepository.deleteById(id);
     }
 
     @Override
     public List<Task> findAll() {
-        return getRepository().findAll();
+        return taskRepository.findAll();
     }
 
     @Override
@@ -118,7 +113,7 @@ public class TaskServiceImpl implements com.example.employee.task.tracker.servic
             taskHistory.setTask(task);
             task.setTaskHistorySet(Set.of(taskHistory));
         }
-        return getRepository().save(task);
+        return taskRepository.save(task);
     }
 
     @Override
@@ -131,6 +126,6 @@ public class TaskServiceImpl implements com.example.employee.task.tracker.servic
         find.setResponsible(task.getResponsible());
         find.setTaskNumber(task.getTaskNumber());
         find.setResponsible(task.getResponsible());
-        return getRepository().save(find);
+        return taskRepository.save(find);
     }
 }

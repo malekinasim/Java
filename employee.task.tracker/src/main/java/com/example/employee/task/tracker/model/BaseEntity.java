@@ -11,9 +11,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 @MappedSuperclass
-@FilterDef(name = FilterConstants.STATUS_FILTER, parameters = @ParamDef(name = "status", type = String.class), autoEnabled = true,
-        applyToLoadByKey = true)
-@Filter(name = FilterConstants.STATUS_FILTER, condition = "status = :status")
+@FilterDef(name = FilterConstants.STATUS_FILTER, parameters = @ParamDef(name = FilterConstants.STATUS_FILTER_PARAM, type = String.class))
+@Filter(name = FilterConstants.STATUS_FILTER, condition = "status = :status_prm")
 public class BaseEntity <ID>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

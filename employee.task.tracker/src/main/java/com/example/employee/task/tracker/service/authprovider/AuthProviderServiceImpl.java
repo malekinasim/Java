@@ -1,17 +1,26 @@
 package com.example.employee.task.tracker.service.authprovider;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.AuthProvider;
+import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.repoeitory.authprovider.AuthProviderRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class AuthProviderServiceImpl implements AuthProviderService {
+    @PersistenceContext
+    private final  EntityManager entityManager;
     private final AuthProviderRepository authProviderRepository;
 
-    public AuthProviderServiceImpl(AuthProviderRepository authProviderRepository) {
+    public AuthProviderServiceImpl(EntityManager entityManager, AuthProviderRepository authProviderRepository) {
+        this.entityManager = entityManager;
+
         this.authProviderRepository = authProviderRepository;
     }
 
@@ -27,12 +36,13 @@ public class AuthProviderServiceImpl implements AuthProviderService {
 
     @Override
     public List<AuthProvider> findAll() {
-        return List.of();
+        return authProviderRepository.findAll();
     }
 
     @Override
     public AuthProvider save(AuthProvider authProvider) {
-        return null;
+        authProvider.setStatus(BaseEntity.Status.ACTIVE);
+        return authProviderRepository.save(authProvider);
     }
 
     @Override
@@ -42,7 +52,22 @@ public class AuthProviderServiceImpl implements AuthProviderService {
 
     @Override
     public AuthProvider findByName(String name) {
-        return authProviderRepository.findByName(name).orElseThrow(()->
+        return authProviderRepository.findByRegistrationId(name).orElseThrow(()->
                 new CustomException("authProvider.not_found.error"));
+    }
+
+    @Override
+    @StatusFilter(status = BaseEntity.Status.ACTIVE)
+    @Transactional
+    public long countActive() {
+
+
+        return authProviderRepository.count(); // Filter will apply
+    }
+
+    @Override
+    public void saveAll(List<AuthProvider> authProviders) {
+        authProviders.forEach(authProvider->authProvider.setStatus(BaseEntity.Status.ACTIVE));
+        this.authProviderRepository.saveAll(authProviders);
     }
 }

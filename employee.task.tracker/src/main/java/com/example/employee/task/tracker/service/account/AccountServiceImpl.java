@@ -9,6 +9,7 @@ import com.example.employee.task.tracker.model.dto.SignupRQ;
 import com.example.employee.task.tracker.repoeitory.account.AccountRepository;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
 import com.example.employee.task.tracker.service.employee.EmployeeService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
     private final EmployeeService employeeService;
     private final AuthProviderService authProviderService;
 
-    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService) {
+    public AccountServiceImpl(AccountRepository accountRepository, @Lazy PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
         this.employeeService = employeeService;
