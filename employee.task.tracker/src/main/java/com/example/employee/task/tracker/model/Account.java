@@ -10,14 +10,17 @@ public class Account extends BaseEntity<Long> {
     @JoinColumn(name = "provider_id", nullable = false)
     private AuthProvider provider; // LOCAL or GOOGLE
 
+
     @Column(unique = true, nullable = false)
     private String username; // can be personnelNumber or Google email
 
     private String password; // null if oauth provider is used for example ggogle
 
-    @ManyToOne(targetEntity = AuthProvider.class)
+    @ManyToOne(targetEntity = Employee.class)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+
+
 
     public AuthProvider getProvider() {
         return provider;

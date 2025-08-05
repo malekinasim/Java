@@ -1,8 +1,9 @@
 package com.example.employee.task.tracker.model;
 
-import jakarta.persistence.*;
-
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "auth_providers")
@@ -20,8 +21,6 @@ public class AuthProvider extends BaseEntity<Long>{
     @Column(name = "enabled")
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "id")
-    List<Account> accountList;
     @Column(name = "client_id")
     private  String clientId;
 
@@ -44,6 +43,7 @@ public class AuthProvider extends BaseEntity<Long>{
 
     @Column(name = "authorization_uri")
     private String authorizationUri;
+
     @Column(name = "usernam_attr")
     private String userNameAttribute;
     @Enumerated
@@ -76,18 +76,6 @@ public class AuthProvider extends BaseEntity<Long>{
 
     public boolean isEnabled() {
         return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<Account> getAccountList() {
-        return accountList;
-    }
-
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
     }
 
     public String getClientId() {

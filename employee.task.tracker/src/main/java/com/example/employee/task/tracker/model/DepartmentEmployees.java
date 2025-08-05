@@ -1,18 +1,18 @@
 package com.example.employee.task.tracker.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 @Entity
 @Table(name = "department_employees_history")
-public class DepartmentEmployeesHistory extends BaseEntity<Long> {
+public class DepartmentEmployees extends BaseEntity<Long> {
 
     @ManyToOne(targetEntity = Employee.class)
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
     @ManyToOne(targetEntity = Department.class)
+    @JoinColumn(name = "department_id")
     private Department department;
 
     @Column(name = "from_date", nullable = false)

@@ -14,4 +14,7 @@ public interface DepartmentRepository extends BaseRepository<Department, Long> {
             "inner join dh.employee e " +
             "where e.employeeNumber=:employeeNumber ")
     Optional<Department> getEmployeeCurrentDepartment(String employeeNumber);
+
+
+    Optional<Department> findDepartmentByDepartmentCode(String employeeNumber);
 }

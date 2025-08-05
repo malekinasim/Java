@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/v1/task")
 public class TaskController {
 
     private final TaskService taskService;
@@ -17,31 +18,31 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/task/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<?> one(@PathVariable Long id) {
         Task task = taskService.findById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
-    @DeleteMapping("/task/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Long id) {
         taskService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PostMapping("/task")
+    @PostMapping("/add")
     ResponseEntity<?> addOne(@RequestBody @Validated TaskDto taskDto) {
         Task t = taskService.mapToEntity(taskDto);
         Task task = taskService.save(t);
         return new ResponseEntity<>(taskService.mapToDto(task), HttpStatus.OK);
     }
 
-    @PutMapping("/task")
+    @PutMapping("/update")
     ResponseEntity<?> updateOne(@RequestBody @Validated TaskDto taskDto) {
         Task task = taskService.update(taskService.mapToEntity(taskDto));
         return new ResponseEntity<>(taskService.mapToDto(task), HttpStatus.OK);
     }
 
-    @PostMapping("/task/search")
+    @PostMapping("/search")
     ResponseEntity<?> Search(@RequestBody TaskDto taskDto) {
         Task task = taskService.save(taskService.mapToEntity(taskDto));
         return new ResponseEntity<>(taskService.mapToDto(task), HttpStatus.OK);

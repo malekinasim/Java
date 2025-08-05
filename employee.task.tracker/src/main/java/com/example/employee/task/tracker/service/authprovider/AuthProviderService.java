@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface AuthProviderService extends BaseService<AuthProvider,Long> {
-    AuthProvider findByName(String authProvider);
+    AuthProvider findByRegisterationId(String authProvider);
 
     long countActive();
 

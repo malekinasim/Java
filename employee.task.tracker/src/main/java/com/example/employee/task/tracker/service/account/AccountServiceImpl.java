@@ -1,6 +1,7 @@
 package com.example.employee.task.tracker.service.account;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.model.BaseEntity;
@@ -8,12 +9,13 @@ import com.example.employee.task.tracker.model.Employee;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
 import com.example.employee.task.tracker.repoeitory.account.AccountRepository;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
+import com.example.employee.task.tracker.service.department.DepartmentService;
 import com.example.employee.task.tracker.service.employee.EmployeeService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,12 +25,14 @@ public class AccountServiceImpl implements AccountService {
     private final PasswordEncoder passwordEncoder;
     private final EmployeeService employeeService;
     private final AuthProviderService authProviderService;
+    private final DepartmentService departmentService;
 
-    public AccountServiceImpl(AccountRepository accountRepository, @Lazy PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService) {
+    public AccountServiceImpl(AccountRepository accountRepository, @Lazy PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService, DepartmentService departmentService) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
         this.employeeService = employeeService;
         this.authProviderService = authProviderService;
+        this.departmentService = departmentService;
     }
 
 
@@ -58,6 +62,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Account findByUserName(String userName) {
         return accountRepository.findByUsername(userName).orElseThrow(
                 () -> new CustomException("account.not_find.error")
@@ -65,33 +70,21 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void createActiveAccount(SignupRQ signupRQ) {
         Account account = accountRepository.findByUsername(signupRQ.getUserName())
-                .orElseGet(() -> {
-                            Account account1 = new Account();
-                            account1.setUsername(signupRQ.getUserName());
-                            account1.setPassword(passwordEncoder.encode(signupRQ.getPassword()));
-                            account1.setStatus(BaseEntity.Status.ACTIVE);
-                            return account1;
-                        });
-
-
-        Employee employee = null;
-        try {
-            employee = employeeService.findByEmployeeNumber(signupRQ.getEmployeeNumber());
-        } catch (CustomException e) {
-            employee = new Employee();
-            employee.setName(signupRQ.getName());
-            employee.setFamily(signupRQ.getFamily());
-            employee.setAddress(signupRQ.getAddress());
-            employee.setEmail(signupRQ.getEmail());
-            employee.setRole(Employee.Role.EMPLOYEE);
-            employee.setStartDate(LocalDate.now());
-            employee.setStatus(BaseEntity.Status.ACTIVE);
-            employee.setPhoneNumber(signupRQ.getPhone_number());
-        }
-        account.setEmployee(employee);
-        AuthProvider authProvider = authProviderService.findByName(signupRQ.getAuthProvider());
+                .orElseGet(() -> mapToEntity(signupRQ));
+        Employee newEmployee = employeeService.findByEmployeeNumber(signupRQ.getEmployeeNumber())
+                .orElseGet(()->
+                        {
+                            Employee employee=employeeService.mapToDto(signupRQ);
+                            employee.setAccounts(List.of(account));
+                            employeeService.save(employee);
+                            return employee;
+                        }
+                );
+        account.setEmployee(newEmployee);
+        AuthProvider authProvider = authProviderService.findByRegisterationId(signupRQ.getAuthProvider());
         account.setProvider(authProvider);
         account.setStatus(BaseEntity.Status.ACTIVE);
         this.save(account);
@@ -109,5 +102,14 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Optional<Account> findByUserNameAndProvider(String userName, String providerName) {
         return accountRepository.findByUsernameAndProvider_Name(userName, providerName);
+    }
+
+    @Override
+    public Account mapToEntity(SignupRQ signupRQ) {
+        Account account = new Account();
+        account.setUsername(signupRQ.getUserName());
+        account.setPassword(passwordEncoder.encode(signupRQ.getPassword()));
+        account.setStatus(BaseEntity.Status.ACTIVE);
+        return account;
     }
 }

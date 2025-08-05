@@ -30,6 +30,8 @@ public class SignupRQ {
     private String authProvider;
 
     private String address;
+     @NotBlank(message = "signup.departmentCode.required")
+    private String DepartmentCode;
 
     public String getUserName() {
         return userName;
@@ -101,5 +103,13 @@ public class SignupRQ {
 
     public void setAuthProvider(@NotBlank(message = "signup.authProvider.required") String authProvider) {
         this.authProvider = authProvider;
+    }
+
+    public String getDepartmentCode() {
+        return DepartmentCode;
+    }
+
+    public void setDepartmentCode(String departmentCode) {
+        DepartmentCode = departmentCode;
     }
 }

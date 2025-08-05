@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -16,31 +17,31 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<?> one(@PathVariable Long id) {
         Employee employee = employeeService.findById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Long id) {
         employeeService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/employee")
+    @PostMapping("/add")
     ResponseEntity<?> addOne(@RequestBody @Validated EmployeeDto employeeDto) {
         Employee employee = employeeService.save(employeeService.mapToEntity(employeeDto));
         return new ResponseEntity<>(employeeService.mapToDto(employee), HttpStatus.OK);
     }
 
-    @PutMapping("/employee")
+    @PutMapping("/update")
     ResponseEntity<?> updateOne(@RequestBody @Validated EmployeeDto employeeDto) {
         Employee employee = employeeService.update(employeeService.mapToEntity(employeeDto));
         return new ResponseEntity<>(employeeService.mapToDto(employee), HttpStatus.OK);
     }
 
-    @PostMapping("/employee/search")
+    @PostMapping("/search")
     ResponseEntity<?> Search(@RequestBody EmployeeDto employeeDto) {
         Employee employee = employeeService.save(employeeService.mapToEntity(employeeDto));
         return new ResponseEntity<>(employeeService.mapToDto(employee), HttpStatus.OK);

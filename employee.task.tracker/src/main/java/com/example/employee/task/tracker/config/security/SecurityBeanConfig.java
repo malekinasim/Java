@@ -45,7 +45,7 @@ public class SecurityBeanConfig {
             "/swagger-ui/**",
             "/swagger-ui.html",
             "/api/v1/public/**",
-            "/api/v1/auth/**",
+            "/api/v1/auth/**"
     };
 
     public SecurityBeanConfig(@Lazy CustomOAuth2SuccessHandler customOAuth2SuccessHandler,
@@ -89,7 +89,7 @@ public class SecurityBeanConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
-       ClientRegistrationRepository repo=this.clientRegistrationRepository();
+        ClientRegistrationRepository repo = this.clientRegistrationRepository();
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -104,7 +104,7 @@ public class SecurityBeanConfig {
                         .successHandler(customOAuth2SuccessHandler)
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/user/logout")
+                        .logoutUrl("/api/v1/auth/logout")
                         .permitAll()
                 )
                 .addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

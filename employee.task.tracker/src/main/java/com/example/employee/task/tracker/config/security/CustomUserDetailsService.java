@@ -27,31 +27,30 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         HttpServletRequest request =
                 ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
                         .getRequest();
         String departmentCode = jwtTokenProvider.getCurrentDepartment(request);
-        if (departmentCode != null) {
-            return loadUserByUsername(username, departmentCode);
-        }
-        return null;
+
+        return loadUserByUsername(username, departmentCode);
+
+
     }
 
 
     private UserDetails loadUserByUsername(String username, String departmentCode) throws UsernameNotFoundException {
-        Account account =null;
+        Account account = null;
         try {
-             account = accountService.findByUserName(username);
-        }catch (CustomException e){
+            account = accountService.findByUserName(username);
+        } catch (CustomException e) {
             e.printStackTrace();
         }
-            if(account!=null) {
-                Department department = departmentService.getEmployeeCurrentDepartment(account.getUsername());
-                if (department.getDepartmentCode().equals(departmentCode))
-                    return new CustomUserDetail(account, department);
-            }
-            return null;
+        if (account != null) {
+            Department department = departmentService.getEmployeeCurrentDepartment(account.getEmployee().getEmployeeNumber());
+            if (departmentCode==null || department.getDepartmentCode().equals(departmentCode))
+                return new CustomUserDetail(account, department);
+        }
+        return null;
 
     }
 

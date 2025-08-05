@@ -18,15 +18,17 @@ public class Department extends BaseEntity<Long> {
     private Employee manager;
 
     // A department can have a higher (parent) department
-    @ManyToOne(targetEntity = Department.class)
+    @ManyToOne
     @JoinColumn(name = "parent_dep_id")
     private Department higherDepartment;
 
-    @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployeesHistory.class)
-    Set<DepartmentEmployeesHistory>    departmentEmployeesHistories;
+    @OneToMany(mappedBy = "department",targetEntity = DepartmentEmployees.class)
+    Set<DepartmentEmployees>    departmentEmployeesHistories;
 
-    @OneToMany(mappedBy = "id", targetEntity = Department.class)
+    @OneToMany(mappedBy = "higherDepartment", targetEntity = Department.class)
     private Set<Department> subDepartment;
+
+
 
     public String getDepartmentCode() {
         return departmentCode;
@@ -68,11 +70,11 @@ public class Department extends BaseEntity<Long> {
         this.subDepartment = subDepartment;
     }
 
-    public Set<DepartmentEmployeesHistory> getDepartmentEmployeesHistories() {
+    public Set<DepartmentEmployees> getDepartmentEmployeesHistories() {
         return departmentEmployeesHistories;
     }
 
-    public void setDepartmentEmployeesHistories(Set<DepartmentEmployeesHistory> departmentEmployeesHistories) {
+    public void setDepartmentEmployeesHistories(Set<DepartmentEmployees> departmentEmployeesHistories) {
         this.departmentEmployeesHistories = departmentEmployeesHistories;
     }
 

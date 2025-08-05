@@ -10,4 +10,6 @@ public interface DepartmentService extends BaseService<Department, Long> {
     DepartmentDto mapToDto(Department department);
 
     Department mapToEntity(DepartmentDto departmentDto);
+
+    Department findByDepartmentCode(String code);
 }

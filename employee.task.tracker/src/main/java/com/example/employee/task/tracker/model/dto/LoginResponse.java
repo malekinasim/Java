@@ -5,7 +5,7 @@ public class LoginResponse {
     private String refreshToken;
     private String DepartmentCode;
 
-    public LoginResponse(String accessToken, String refreshToken, String departmentCode) {
+    public LoginResponse( String departmentCode, String refreshToken,String accessToken ) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
         DepartmentCode = departmentCode;

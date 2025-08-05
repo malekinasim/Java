@@ -7,14 +7,11 @@ import org.hibernate.annotations.Formula;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "employees")
 public class Employee extends BaseEntity<Long> {
 
-    @Column(name = "password", nullable = false)
-    private String password;
     @Enumerated
     @Column(name = "Role",nullable = true )
     private Role role;
@@ -49,11 +46,11 @@ public class Employee extends BaseEntity<Long> {
     private List<Task> tasks;
 
 
-    @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployeesHistory.class)
-    Set<DepartmentEmployeesHistory> departmentEmployeesHistories;
+    @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployees.class,cascade = CascadeType.PERSIST)
+    List<DepartmentEmployees> departmentEmployees;
 
     @OneToMany(mappedBy = "id",targetEntity = Account.class)
-    Set<Account> accounts;
+    List<Account> accounts;
 
     // --- Getters & Setters ---
     public String getName() {
@@ -140,23 +137,20 @@ public class Employee extends BaseEntity<Long> {
         this.role = role;
     }
 
-    public String getPassword() {
-        return password;
+
+    public List<DepartmentEmployees> getDepartmentEmployees() {
+        return departmentEmployees;
     }
 
-    public Set<DepartmentEmployeesHistory> getDepartmentEmployeesHistories() {
-        return departmentEmployeesHistories;
+    public void setDepartmentEmployees(List<DepartmentEmployees> departmentEmployeesHistories) {
+        this.departmentEmployees = departmentEmployeesHistories;
     }
 
-    public void setDepartmentEmployeesHistories(Set<DepartmentEmployeesHistory> departmentEmployeesHistories) {
-        this.departmentEmployeesHistories = departmentEmployeesHistories;
-    }
-
-    public Set<Account> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Set<Account> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 

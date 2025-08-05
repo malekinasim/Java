@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/v1/department")
 public class DepartmentController {
     private final DepartmentService departmentService;
 
@@ -17,31 +18,31 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/department/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<?> one(@PathVariable Long id) {
         Department department = departmentService.findById(id);
         return new ResponseEntity<>(department, HttpStatus.OK);
     }
 
-    @DeleteMapping("/department/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Long id) {
         departmentService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PostMapping("/department")
+    @PostMapping("/add")
     ResponseEntity<?> addOne(@RequestBody @Validated DepartmentDto departmentDto) {
         Department t = departmentService.mapToEntity(departmentDto);
         Department Department = departmentService.save(t);
         return new ResponseEntity<>(departmentService.mapToDto(Department), HttpStatus.OK);
     }
 
-    @PutMapping("/department")
+    @PostMapping("/update")
     ResponseEntity<?> updateOne(@RequestBody @Validated DepartmentDto departmentDto) {
         Department Department = departmentService.update(departmentService.mapToEntity(departmentDto));
         return new ResponseEntity<>(departmentService.mapToDto(Department), HttpStatus.OK);
     }
 
-    @PostMapping("/department/search")
+    @PostMapping("/search")
     ResponseEntity<?> Search(@RequestBody DepartmentDto departmentDto) {
         Department Department = departmentService.save(departmentService.mapToEntity(departmentDto));
         return new ResponseEntity<>(departmentService.mapToDto(Department), HttpStatus.OK);

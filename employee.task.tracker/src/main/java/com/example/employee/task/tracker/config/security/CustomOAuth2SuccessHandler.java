@@ -62,7 +62,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 
         AuthProvider authProvider;
         try {
-            authProvider = authProviderService.findByName(registrationId);
+            authProvider = authProviderService.findByRegisterationId(registrationId);
         } catch (CustomException e) {
             response.sendRedirect("/login?error=unknown_provider");
             return;

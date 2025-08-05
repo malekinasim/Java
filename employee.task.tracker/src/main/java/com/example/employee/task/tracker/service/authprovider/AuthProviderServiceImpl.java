@@ -51,7 +51,8 @@ public class AuthProviderServiceImpl implements AuthProviderService {
     }
 
     @Override
-    public AuthProvider findByName(String name) {
+    @StatusFilter(status = BaseEntity.Status.ACTIVE)
+    public AuthProvider findByRegisterationId(String name) {
         return authProviderRepository.findByRegistrationId(name).orElseThrow(()->
                 new CustomException("authProvider.not_found.error"));
     }

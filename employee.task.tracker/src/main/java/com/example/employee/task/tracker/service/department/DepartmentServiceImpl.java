@@ -1,6 +1,8 @@
 package com.example.employee.task.tracker.service.department;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.config.hibernate.StatusFilter;
+import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.dto.DepartmentDto;
 import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;
@@ -57,6 +59,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Department getEmployeeCurrentDepartment(String employeeNumber) {
         return departmentRepository.getEmployeeCurrentDepartment(employeeNumber).orElseThrow(()->
                 new CustomException("employee.current.department.not_found"));
@@ -75,5 +78,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department mapToEntity(DepartmentDto departmentDto) {
         return null;
+    }
+
+    @Override
+    public Department findByDepartmentCode(String code) {
+        return departmentRepository.findDepartmentByDepartmentCode(code).orElseThrow(
+                ()->new  CustomException("error.department.not_found")
+        );
     }
 }

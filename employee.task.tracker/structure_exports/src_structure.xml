@@ -1,0 +1,2721 @@
+<XmlStructure>
+  <XmlProjectInfo>
+    <name>src</name>
+    <path>D:\writting and reading\learning\java\employee.task.tracker\src</path>
+    <generated_at>2025-07-17T13:33:27.4763534</generated_at>
+    <total_files>42</total_files>
+    <total_size>55288</total_size>
+  </XmlProjectInfo>
+  <XmlNode>
+    <XmlDirectory>
+      <name>main</name>
+      <XmlNode>
+        <XmlDirectory>
+          <name>java</name>
+          <XmlNode>
+            <XmlDirectory>
+              <name>com</name>
+              <XmlNode>
+                <XmlDirectory>
+                  <name>example</name>
+                  <XmlNode>
+                    <XmlDirectory>
+                      <name>employee</name>
+                      <XmlNode>
+                        <XmlDirectory>
+                          <name>task</name>
+                          <XmlNode>
+                            <XmlDirectory>
+                              <name>tracker</name>
+                              <XmlNode>
+                                <XmlDirectory>
+                                  <name>config</name>
+                                  <XmlNode>
+                                    <XmlDirectory>
+                                      <name>aop</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>EnableStatusFilterAspect.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>881</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>exception</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>CustomException.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>497</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>ErrorResponse.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>922</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>GlobalExceptionHandler.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>3203</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>StatusCustomException.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>429</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>resourcebundle</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>MessageUtil.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>585</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>ResourceBundle.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>695</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlFileEntry>
+                                      <name>FilterConstants.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>151</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>HibernateConfig.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>447</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                  </XmlNode>
+                                </XmlDirectory>
+                                <XmlDirectory>
+                                  <name>controller</name>
+                                  <XmlNode>
+                                    <XmlFileEntry>
+                                      <name>DepartmentController.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>2143</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>EmployeeController.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>2003</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>TaskController.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>1843</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                  </XmlNode>
+                                </XmlDirectory>
+                                <XmlDirectory>
+                                  <name>model</name>
+                                  <XmlNode>
+                                    <XmlDirectory>
+                                      <name>dto</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>DepartmentDto.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>1322</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>EmployeeDto.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>2695</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>TaskDto.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>1879</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlFileEntry>
+                                      <name>BaseEntity.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>2266</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>Department.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>3220</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>DepartmentEmployeesHistory.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>1372</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>Employee.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>4164</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>Task.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>3018</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                    <XmlFileEntry>
+                                      <name>TaskHistory.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>1282</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                  </XmlNode>
+                                </XmlDirectory>
+                                <XmlDirectory>
+                                  <name>repoeitory</name>
+                                  <XmlNode>
+                                    <XmlDirectory>
+                                      <name>department</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>DepartmentRepository.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>727</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>employee</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>EmployeeRepository.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>336</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>task</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>TaskHistoryRepository.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>652</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>TaskRepository.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>320</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlFileEntry>
+                                      <name>BaseRepository.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>277</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                  </XmlNode>
+                                </XmlDirectory>
+                                <XmlDirectory>
+                                  <name>service</name>
+                                  <XmlNode>
+                                    <XmlDirectory>
+                                      <name>department</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>DepartmentService.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>665</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>DepartmentServiceImpl.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>2980</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>employee</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>EmployeeService.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>524</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>EmployeeServiceImpl.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>3590</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlDirectory>
+                                      <name>task</name>
+                                      <XmlNode>
+                                        <XmlFileEntry>
+                                          <name>TaskHistoryService.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>419</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>TaskHistoryServiceImpl.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>1467</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>TaskService.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>482</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                        <XmlFileEntry>
+                                          <name>TaskServiceImpl.java</name>
+                                          <type>file</type>
+                                          <XmlFileInfo>
+                                            <size>5233</size>
+                                            <modified></modified>
+                                            <mime_type>text/x-java-source</mime_type>
+                                            <extension>.java</extension>
+                                          </XmlFileInfo>
+                                        </XmlFileEntry>
+                                      </XmlNode>
+                                    </XmlDirectory>
+                                    <XmlFileEntry>
+                                      <name>BaseService.java</name>
+                                      <type>file</type>
+                                      <XmlFileInfo>
+                                        <size>363</size>
+                                        <modified></modified>
+                                        <mime_type>text/x-java-source</mime_type>
+                                        <extension>.java</extension>
+                                      </XmlFileInfo>
+                                    </XmlFileEntry>
+                                  </XmlNode>
+                                </XmlDirectory>
+                                <XmlFileEntry>
+                                  <name>employeeTaskTracker.java</name>
+                                  <type>file</type>
+                                  <XmlFileInfo>
+                                    <size>435</size>
+                                    <modified></modified>
+                                    <mime_type>text/x-java-source</mime_type>
+                                    <extension>.java</extension>
+                                  </XmlFileInfo>
+                                </XmlFileEntry>
+                              </XmlNode>
+                            </XmlDirectory>
+                          </XmlNode>
+                        </XmlDirectory>
+                      </XmlNode>
+                    </XmlDirectory>
+                  </XmlNode>
+                </XmlDirectory>
+              </XmlNode>
+            </XmlDirectory>
+          </XmlNode>
+        </XmlDirectory>
+        <XmlDirectory>
+          <name>resources</name>
+          <XmlNode>
+            <XmlFileEntry>
+              <name>application-dev.properties</name>
+              <type>file</type>
+              <XmlFileInfo>
+                <size>210</size>
+                <modified></modified>
+                <mime_type>text/x-java-properties</mime_type>
+                <extension>.properties</extension>
+              </XmlFileInfo>
+            </XmlFileEntry>
+            <XmlFileEntry>
+              <name>application-prod.properties</name>
+              <type>file</type>
+              <XmlFileInfo>
+                <size>186</size>
+                <modified></modified>
+                <mime_type>text/x-java-properties</mime_type>
+                <extension>.properties</extension>
+              </XmlFileInfo>
+            </XmlFileEntry>
+            <XmlFileEntry>
+              <name>application.properties</name>
+              <type>file</type>
+              <XmlFileInfo>
+                <size>218</size>
+                <modified></modified>
+                <mime_type>text/x-java-properties</mime_type>
+                <extension>.properties</extension>
+              </XmlFileInfo>
+            </XmlFileEntry>
+            <XmlFileEntry>
+              <name>messages-fa.properties</name>
+              <type>file</type>
+              <XmlFileInfo>
+                <size>702</size>
+                <modified></modified>
+                <mime_type>text/x-java-properties</mime_type>
+                <extension>.properties</extension>
+              </XmlFileInfo>
+            </XmlFileEntry>
+            <XmlFileEntry>
+              <name>messages.properties</name>
+              <type>file</type>
+              <XmlFileInfo>
+                <size>257</size>
+                <modified></modified>
+                <mime_type>text/x-java-properties</mime_type>
+                <extension>.properties</extension>
+              </XmlFileInfo>
+            </XmlFileEntry>
+          </XmlNode>
+        </XmlDirectory>
+      </XmlNode>
+    </XmlDirectory>
+    <XmlDirectory>
+      <name>test</name>
+      <XmlNode>
+        <XmlDirectory>
+          <name>java</name>
+          <XmlNode>
+            <XmlDirectory>
+              <name>com</name>
+              <XmlNode>
+                <XmlDirectory>
+                  <name>example</name>
+                  <XmlNode>
+                    <XmlDirectory>
+                      <name>employee</name>
+                      <XmlNode>
+                        <XmlDirectory>
+                          <name>task</name>
+                          <XmlNode>
+                            <XmlDirectory>
+                              <name>tracker</name>
+                              <XmlNode>
+                                <XmlFileEntry>
+                                  <name>employeeTaskTrackerTests.java</name>
+                                  <type>file</type>
+                                  <XmlFileInfo>
+                                    <size>228</size>
+                                    <modified></modified>
+                                    <mime_type>text/x-java-source</mime_type>
+                                    <extension>.java</extension>
+                                  </XmlFileInfo>
+                                </XmlFileEntry>
+                              </XmlNode>
+                            </XmlDirectory>
+                          </XmlNode>
+                        </XmlDirectory>
+                      </XmlNode>
+                    </XmlDirectory>
+                  </XmlNode>
+                </XmlDirectory>
+              </XmlNode>
+            </XmlDirectory>
+          </XmlNode>
+        </XmlDirectory>
+      </XmlNode>
+    </XmlDirectory>
+  </XmlNode>
+  <XmlFiles>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\aop\EnableStatusFilterAspect.java</path>
+      <content>package com.example.employee.task.tracker.config.aop;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.FilterConstants;&#xd;
+import com.example.employee.task.tracker.model.BaseEntity;&#xd;
+import jakarta.persistence.EntityManager;&#xd;
+import jakarta.persistence.PersistenceContext;&#xd;
+import org.aspectj.lang.annotation.Aspect;&#xd;
+import org.aspectj.lang.annotation.Before;&#xd;
+import org.hibernate.Session;&#xd;
+import org.springframework.stereotype.Component;&#xd;
+&#xd;
+@Aspect&#xd;
+@Component&#xd;
+public class EnableStatusFilterAspect {&#xd;
+&#xd;
+    @PersistenceContext&#xd;
+    private EntityManager entityManager;&#xd;
+&#xd;
+    @Before("execution(* com.example.employee.task.tracker.service..*(..))")&#xd;
+    public void enableStatusFilter() {&#xd;
+        Session session = entityManager.unwrap(Session.class);&#xd;
+        session.enableFilter(FilterConstants.STATUS_FILTER).setParameter("status", BaseEntity.Status.ACTIVE);&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>881</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\exception\CustomException.java</path>
+      <content>package com.example.employee.task.tracker.config.exception;&#xd;
+public class CustomException extends RuntimeException {&#xd;
+    private final Object[] args;&#xd;
+    private final String messageKey;&#xd;
+&#xd;
+    public CustomException(String messageKey, Object... args) {&#xd;
+        super(messageKey);&#xd;
+        this.messageKey = messageKey;&#xd;
+        this.args = args;&#xd;
+    }&#xd;
+    public Object[] getArgs() {&#xd;
+        return args;&#xd;
+    }&#xd;
+&#xd;
+    public String getMessageKey() {&#xd;
+        return messageKey;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>497</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\exception\ErrorResponse.java</path>
+      <content>package com.example.employee.task.tracker.config.exception;&#xd;
+import java.time.LocalDateTime;&#xd;
+&#xd;
+public class ErrorResponse {&#xd;
+    int status;&#xd;
+    private String message;&#xd;
+    private LocalDateTime localDateTime;&#xd;
+    public ErrorResponse(int status, String message, LocalDateTime localDateTime) {&#xd;
+        this.status = status;&#xd;
+        this.message = message;&#xd;
+        this.localDateTime = localDateTime;&#xd;
+    }&#xd;
+    public int getStatus() {&#xd;
+        return status;&#xd;
+    }&#xd;
+&#xd;
+    public void setStatus(int status) {&#xd;
+        this.status = status;&#xd;
+    }&#xd;
+&#xd;
+    public String getMessage() {&#xd;
+        return message;&#xd;
+    }&#xd;
+&#xd;
+    public void setMessage(String message) {&#xd;
+        this.message = message;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDateTime getLocalDateTime() {&#xd;
+        return localDateTime;&#xd;
+    }&#xd;
+&#xd;
+    public void setLocalDateTime(LocalDateTime localDateTime) {&#xd;
+        this.localDateTime = localDateTime;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>922</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\exception\GlobalExceptionHandler.java</path>
+      <content>package com.example.employee.task.tracker.config.exception;&#xd;
+import com.example.employee.task.tracker.config.resourcebundle.MessageUtil;&#xd;
+import jakarta.persistence.EntityNotFoundException;&#xd;
+import org.springframework.beans.factory.annotation.Autowired;&#xd;
+import org.springframework.dao.DataIntegrityViolationException;&#xd;
+import org.springframework.http.HttpHeaders;&#xd;
+import org.springframework.http.HttpStatus;&#xd;
+import org.springframework.http.ResponseEntity;&#xd;
+import org.springframework.validation.FieldError;&#xd;
+import org.springframework.web.bind.MethodArgumentNotValidException;&#xd;
+import org.springframework.web.bind.annotation.ExceptionHandler;&#xd;
+import org.springframework.web.bind.annotation.RestControllerAdvice;&#xd;
+&#xd;
+import java.time.LocalDateTime;&#xd;
+import java.util.HashMap;&#xd;
+import java.util.Map;&#xd;
+&#xd;
+&#xd;
+@RestControllerAdvice&#xd;
+class GlobalExceptionHandler  {&#xd;
+    @Autowired&#xd;
+    private MessageUtil messageUtil;&#xd;
+    @ExceptionHandler(EntityNotFoundException.class)&#xd;
+    public ResponseEntity&lt;ErrorResponse> handleNotFound(EntityNotFoundException ex) {&#xd;
+        return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+    @ExceptionHandler(StatusCustomException.class)&#xd;
+    public ResponseEntity&lt;ErrorResponse> handleNotFound(StatusCustomException ex) {&#xd;
+        String message = messageUtil.get(ex.getMessageKey(), ex.getArgs());&#xd;
+        return buildResponse(ex.getStatus(), message+"\n"+LocalDateTime.now());&#xd;
+    }&#xd;
+    @ExceptionHandler(CustomException.class)&#xd;
+    public ResponseEntity&lt;ErrorResponse> handleLocalized(CustomException ex) {&#xd;
+        String message = messageUtil.get(ex.getMessageKey(), ex.getArgs());&#xd;
+        return buildResponse(HttpStatus.BAD_REQUEST, message+"\n"+LocalDateTime.now());&#xd;
+    }&#xd;
+&#xd;
+    @ExceptionHandler(DataIntegrityViolationException.class)&#xd;
+    public ResponseEntity&lt;ErrorResponse> handleConstraint(DataIntegrityViolationException ex) {&#xd;
+        return buildResponse(HttpStatus.CONFLICT,&#xd;
+                "Database constraint violation: " + ex.getRootCause().getMessage());&#xd;
+&#xd;
+    }&#xd;
+&#xd;
+    @ExceptionHandler(MethodArgumentNotValidException.class)&#xd;
+    public ResponseEntity&lt;Map&lt;String, Object>> handleValidation(MethodArgumentNotValidException ex) {&#xd;
+        Map&lt;String, Object> body = new HashMap&lt;>();&#xd;
+        Map&lt;String, String> errors = new HashMap&lt;>();&#xd;
+&#xd;
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {&#xd;
+            errors.put(error.getField(), error.getDefaultMessage());&#xd;
+        }&#xd;
+&#xd;
+        body.put("timestamp", LocalDateTime.now());&#xd;
+        body.put("status", HttpStatus.BAD_REQUEST.value());&#xd;
+        body.put("errors", errors);&#xd;
+&#xd;
+        return new ResponseEntity&lt;>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);&#xd;
+    }&#xd;
+&#xd;
+    @ExceptionHandler(Exception.class)&#xd;
+    public ResponseEntity&lt;ErrorResponse> handleOther(Exception ex) {&#xd;
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error: " + ex.getMessage());&#xd;
+    }&#xd;
+&#xd;
+    private ResponseEntity&lt;ErrorResponse> buildResponse(HttpStatus status, String message) {&#xd;
+        ErrorResponse err = new ErrorResponse(status.value(), message, LocalDateTime.now());&#xd;
+        return new ResponseEntity&lt;>(err, status);&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>3203</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\exception\StatusCustomException.java</path>
+      <content>package com.example.employee.task.tracker.config.exception;&#xd;
+import org.springframework.http.HttpStatus;&#xd;
+public class StatusCustomException extends CustomException{&#xd;
+    private final HttpStatus status;&#xd;
+    public StatusCustomException(HttpStatus status,String message, Object... args) {&#xd;
+        super(message, args);&#xd;
+        this.status=status;&#xd;
+    }&#xd;
+    public HttpStatus getStatus() {&#xd;
+        return status;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>429</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\FilterConstants.java</path>
+      <content>package com.example.employee.task.tracker.config;&#xd;
+public class FilterConstants {&#xd;
+    public static final String STATUS_FILTER = "status_filter";&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>151</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\HibernateConfig.java</path>
+      <content>package com.example.employee.task.tracker.config;&#xd;
+&#xd;
+&#xd;
+&#xd;
+import org.springframework.context.annotation.Configuration;&#xd;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;&#xd;
+import org.springframework.transaction.annotation.EnableTransactionManagement;&#xd;
+&#xd;
+@Configuration&#xd;
+@EnableTransactionManagement&#xd;
+@EnableJpaRepositories(basePackages = "com.example.employee.task.tracker.repoeitory")&#xd;
+public class HibernateConfig {&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>447</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\resourcebundle\MessageUtil.java</path>
+      <content>package com.example.employee.task.tracker.config.resourcebundle;&#xd;
+&#xd;
+&#xd;
+import org.springframework.context.MessageSource;&#xd;
+import org.springframework.context.i18n.LocaleContextHolder;&#xd;
+import org.springframework.stereotype.Component;&#xd;
+&#xd;
+@Component&#xd;
+public class MessageUtil {&#xd;
+&#xd;
+    private final MessageSource messageSource;&#xd;
+&#xd;
+    public MessageUtil(MessageSource messageSource) {&#xd;
+        this.messageSource = messageSource;&#xd;
+    }&#xd;
+&#xd;
+    public String get(String key, Object... args) {&#xd;
+        return messageSource.getMessage(key, args, LocaleContextHolder.getLocale());&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>585</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\config\resourcebundle\ResourceBundle.java</path>
+      <content>package com.example.employee.task.tracker.config.resourcebundle;&#xd;
+import org.springframework.context.MessageSource;&#xd;
+import org.springframework.context.annotation.Bean;&#xd;
+import org.springframework.context.annotation.Configuration;&#xd;
+import org.springframework.context.support.ResourceBundleMessageSource;&#xd;
+@Configuration&#xd;
+public class ResourceBundle {&#xd;
+&#xd;
+    @Bean&#xd;
+    public MessageSource messageSource() {&#xd;
+        ResourceBundleMessageSource source = new ResourceBundleMessageSource();&#xd;
+        source.setBasename("messages"); // refers to messages.properties&#xd;
+        source.setDefaultEncoding("UTF-8");&#xd;
+        source.setUseCodeAsDefaultMessage(true);&#xd;
+        return source;&#xd;
+    }&#xd;
+&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>695</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\controller\DepartmentController.java</path>
+      <content>package com.example.employee.task.tracker.controller;&#xd;
+&#xd;
+import com.example.employee.task.tracker.model.Department;&#xd;
+import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
+import com.example.employee.task.tracker.service.department.DepartmentService;&#xd;
+import org.springframework.http.HttpStatus;&#xd;
+import org.springframework.http.ResponseEntity;&#xd;
+import org.springframework.validation.annotation.Validated;&#xd;
+import org.springframework.web.bind.annotation.*;&#xd;
+&#xd;
+@RestController&#xd;
+public class DepartmentController {&#xd;
+    private final DepartmentService departmentService;&#xd;
+&#xd;
+    public DepartmentController(DepartmentService departmentService) {&#xd;
+        this.departmentService = departmentService;&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+    @GetMapping("/Department/{id}")&#xd;
+    ResponseEntity&lt;?> one(@PathVariable Long id) {&#xd;
+        Department department = departmentService.findById(id);&#xd;
+        return new ResponseEntity&lt;>(department, HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @DeleteMapping("/Department/{id}")&#xd;
+    ResponseEntity&lt;?> delete(@PathVariable Long id) {&#xd;
+        departmentService.deleteById(id);&#xd;
+        return new ResponseEntity&lt;>(HttpStatus.OK);&#xd;
+    }&#xd;
+    @PostMapping("/Department")&#xd;
+    ResponseEntity&lt;?> addOne(@RequestBody @Validated DepartmentDto departmentDto) {&#xd;
+        Department t = departmentService.mapToEntity(departmentDto);&#xd;
+        Department Department = departmentService.save(t);&#xd;
+        return new ResponseEntity&lt;>(departmentService.mapToDto(Department), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PutMapping("/Department")&#xd;
+    ResponseEntity&lt;?> updateOne(@RequestBody @Validated DepartmentDto departmentDto) {&#xd;
+        Department Department = departmentService.update(departmentService.mapToEntity(departmentDto));&#xd;
+        return new ResponseEntity&lt;>(departmentService.mapToDto(Department), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PostMapping("/Department/search")&#xd;
+    ResponseEntity&lt;?> Search(@RequestBody DepartmentDto departmentDto) {&#xd;
+        Department Department = departmentService.save(departmentService.mapToEntity(departmentDto));&#xd;
+        return new ResponseEntity&lt;>(departmentService.mapToDto(Department), HttpStatus.OK);&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>2143</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\controller\EmployeeController.java</path>
+      <content>package com.example.employee.task.tracker.controller;&#xd;
+import com.example.employee.task.tracker.model.Employee;&#xd;
+import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
+import com.example.employee.task.tracker.service.employee.EmployeeService;&#xd;
+import org.springframework.http.HttpStatus;&#xd;
+import org.springframework.http.ResponseEntity;&#xd;
+import org.springframework.validation.annotation.Validated;&#xd;
+import org.springframework.web.bind.annotation.*;&#xd;
+&#xd;
+public class EmployeeController {&#xd;
+&#xd;
+    private final EmployeeService employeeService;&#xd;
+&#xd;
+    public EmployeeController(EmployeeService employeeService) {&#xd;
+        this.employeeService = employeeService;&#xd;
+    }&#xd;
+&#xd;
+    @GetMapping("/employee/{id}")&#xd;
+    ResponseEntity&lt;?> one(@PathVariable Long id) {&#xd;
+        Employee employee = employeeService.findById(id);&#xd;
+        return new ResponseEntity&lt;>(employee, HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @DeleteMapping("/employee/{id}")&#xd;
+    ResponseEntity&lt;?> delete(@PathVariable Long id) {&#xd;
+        employeeService.deleteById(id);&#xd;
+        return new ResponseEntity&lt;>(HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PostMapping("/employee")&#xd;
+    ResponseEntity&lt;?> addOne(@RequestBody @Validated EmployeeDto employeeDto) {&#xd;
+        Employee employee = employeeService.save(employeeService.mapToEntity(employeeDto));&#xd;
+        return new ResponseEntity&lt;>(employeeService.mapToDto(employee), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PutMapping("/employee")&#xd;
+    ResponseEntity&lt;?> updateOne(@RequestBody @Validated EmployeeDto employeeDto) {&#xd;
+        Employee employee = employeeService.update(employeeService.mapToEntity(employeeDto));&#xd;
+        return new ResponseEntity&lt;>(employeeService.mapToDto(employee), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PostMapping("/employee/search")&#xd;
+    ResponseEntity&lt;?> Search(@RequestBody EmployeeDto employeeDto) {&#xd;
+        Employee employee = employeeService.save(employeeService.mapToEntity(employeeDto));&#xd;
+        return new ResponseEntity&lt;>(employeeService.mapToDto(employee), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>2003</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\controller\TaskController.java</path>
+      <content>package com.example.employee.task.tracker.controller;&#xd;
+&#xd;
+import com.example.employee.task.tracker.model.Task;&#xd;
+import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
+import com.example.employee.task.tracker.service.task.TaskService;&#xd;
+import org.springframework.http.HttpStatus;&#xd;
+import org.springframework.http.ResponseEntity;&#xd;
+import org.springframework.validation.annotation.Validated;&#xd;
+import org.springframework.web.bind.annotation.*;&#xd;
+&#xd;
+@RestController&#xd;
+public class TaskController {&#xd;
+&#xd;
+    private final TaskService taskService;&#xd;
+&#xd;
+    public TaskController(TaskService taskService) {&#xd;
+        this.taskService = taskService;&#xd;
+    }&#xd;
+&#xd;
+    @GetMapping("/task/{id}")&#xd;
+    ResponseEntity&lt;?> one(@PathVariable Long id) {&#xd;
+        Task task = taskService.findById(id);&#xd;
+        return new ResponseEntity&lt;>(task, HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @DeleteMapping("/task/{id}")&#xd;
+    ResponseEntity&lt;?> delete(@PathVariable Long id) {&#xd;
+        taskService.deleteById(id);&#xd;
+        return new ResponseEntity&lt;>(HttpStatus.OK);&#xd;
+    }&#xd;
+    @PostMapping("/task")&#xd;
+    ResponseEntity&lt;?> addOne(@RequestBody @Validated TaskDto taskDto) {&#xd;
+        Task t = taskService.mapToEntity(taskDto);&#xd;
+        Task task = taskService.save(t);&#xd;
+        return new ResponseEntity&lt;>(taskService.mapToDto(task), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PutMapping("/task")&#xd;
+    ResponseEntity&lt;?> updateOne(@RequestBody @Validated TaskDto taskDto) {&#xd;
+        Task task = taskService.update(taskService.mapToEntity(taskDto));&#xd;
+        return new ResponseEntity&lt;>(taskService.mapToDto(task), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+    @PostMapping("/task/search")&#xd;
+    ResponseEntity&lt;?> Search(@RequestBody TaskDto taskDto) {&#xd;
+        Task task = taskService.save(taskService.mapToEntity(taskDto));&#xd;
+        return new ResponseEntity&lt;>(taskService.mapToDto(task), HttpStatus.OK);&#xd;
+    }&#xd;
+&#xd;
+}</content>
+      <XmlFileInfo>
+        <size>1843</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\employeeTaskTracker.java</path>
+      <content>package com.example.employee.task.tracker;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+@SpringBootApplication
+@EnableAspectJAutoProxy
+public class employeeTaskTracker {
+    public static void main(String[] args) {
+        SpringApplication.run(employeeTaskTracker.class, args);
+    }
+
+}
+</content>
+      <XmlFileInfo>
+        <size>435</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\BaseEntity.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.FilterConstants;&#xd;
+import jakarta.persistence.*;&#xd;
+import org.hibernate.annotations.Filter;&#xd;
+import org.hibernate.annotations.FilterDef;&#xd;
+import org.hibernate.annotations.ParamDef;&#xd;
+import org.springframework.data.annotation.CreatedDate;&#xd;
+import org.springframework.data.annotation.LastModifiedBy;&#xd;
+import org.springframework.data.annotation.LastModifiedDate;&#xd;
+&#xd;
+import java.time.LocalDateTime;&#xd;
+@MappedSuperclass&#xd;
+@FilterDef(name = FilterConstants.STATUS_FILTER, parameters = @ParamDef(name = "status", type = String.class), autoEnabled = true,&#xd;
+        applyToLoadByKey = true)&#xd;
+@Filter(name = FilterConstants.STATUS_FILTER, condition = "status = :status")&#xd;
+public class BaseEntity &lt;ID>{&#xd;
+    @Id&#xd;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)&#xd;
+    private ID id;&#xd;
+&#xd;
+    @CreatedDate&#xd;
+    private LocalDateTime CreateDate;&#xd;
+&#xd;
+    @LastModifiedDate&#xd;
+    private LocalDateTime updateDate;&#xd;
+&#xd;
+    @CreatedDate&#xd;
+    private String createInfo;&#xd;
+&#xd;
+    @LastModifiedBy&#xd;
+    private String updateInfo;&#xd;
+&#xd;
+    @Enumerated(EnumType.STRING)&#xd;
+    @Column(nullable = false)&#xd;
+    private Status status = Status.ACTIVE;&#xd;
+&#xd;
+    public void setId(ID id) {&#xd;
+        this.id = id;&#xd;
+    }&#xd;
+&#xd;
+    public ID getId() {&#xd;
+        return id;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDateTime getCreateDate() {&#xd;
+        return CreateDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setCreateDate(LocalDateTime createDate) {&#xd;
+        CreateDate = createDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDateTime getUpdateDate() {&#xd;
+        return updateDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setUpdateDate(LocalDateTime updateDate) {&#xd;
+        this.updateDate = updateDate;&#xd;
+    }&#xd;
+&#xd;
+    public String getCreateInfo() {&#xd;
+        return createInfo;&#xd;
+    }&#xd;
+&#xd;
+    public void setCreateInfo(String createInfo) {&#xd;
+        this.createInfo = createInfo;&#xd;
+    }&#xd;
+&#xd;
+    public String getUpdateInfo() {&#xd;
+        return updateInfo;&#xd;
+    }&#xd;
+&#xd;
+    public void setUpdateInfo(String updateInfo) {&#xd;
+        this.updateInfo = updateInfo;&#xd;
+    }&#xd;
+&#xd;
+    public Status getStatus() {&#xd;
+        return status;&#xd;
+    }&#xd;
+&#xd;
+    public void setStatus(Status status) {&#xd;
+        this.status = status;&#xd;
+    }&#xd;
+&#xd;
+    public enum Status {&#xd;
+        ACTIVE, PASSIVE&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>2266</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\Department.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+import jakarta.persistence.*;&#xd;
+&#xd;
+import java.util.Objects;&#xd;
+import java.util.Set;&#xd;
+@Entity&#xd;
+@Table(name = "department")&#xd;
+public class Department extends BaseEntity&lt;Long> {&#xd;
+    @Column(name = "code", unique = true, nullable = false)&#xd;
+    private String departmentCode;&#xd;
+&#xd;
+    @Column(name = "name", unique = true, nullable = false)&#xd;
+    private String name;&#xd;
+&#xd;
+    @ManyToOne(targetEntity = Employee.class)&#xd;
+    @JoinColumn(name = "manager_id")&#xd;
+    private Employee manager;&#xd;
+&#xd;
+    // A department can have a higher (parent) department&#xd;
+    @ManyToOne(targetEntity = Department.class)&#xd;
+    @JoinColumn(name = "parent_dep_id")&#xd;
+    private Department higherDepartment;&#xd;
+&#xd;
+    @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployeesHistory.class)&#xd;
+    Set&lt;DepartmentEmployeesHistory>    departmentEmployeesHistories;&#xd;
+&#xd;
+    @OneToMany(mappedBy = "id", targetEntity = Department.class)&#xd;
+    private Set&lt;Department> subDepartment;&#xd;
+&#xd;
+    public String getDepartmentCode() {&#xd;
+        return departmentCode;&#xd;
+    }&#xd;
+&#xd;
+    public void setDepartmentCode(String departmentCode) {&#xd;
+        this.departmentCode = departmentCode;&#xd;
+    }&#xd;
+&#xd;
+    public String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+&#xd;
+    public void setName(String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public Employee getManager() {&#xd;
+        return manager;&#xd;
+    }&#xd;
+&#xd;
+    public void setManager(Employee manager) {&#xd;
+        this.manager = manager;&#xd;
+    }&#xd;
+&#xd;
+    public Department getHigherDepartment() {&#xd;
+        return higherDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public void setHigherDepartment(Department higherDepartment) {&#xd;
+        this.higherDepartment = higherDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public Set&lt;Department> getSubDepartment() {&#xd;
+        return subDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public void setSubDepartment(Set&lt;Department> subDepartment) {&#xd;
+        this.subDepartment = subDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public Set&lt;DepartmentEmployeesHistory> getDepartmentEmployeesHistories() {&#xd;
+        return departmentEmployeesHistories;&#xd;
+    }&#xd;
+&#xd;
+    public void setDepartmentEmployeesHistories(Set&lt;DepartmentEmployeesHistory> departmentEmployeesHistories) {&#xd;
+        this.departmentEmployeesHistories = departmentEmployeesHistories;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public boolean equals(Object o) {&#xd;
+        if (this == o) return true;&#xd;
+        if (o == null || getClass() != o.getClass()) return false;&#xd;
+        Department that = (Department) o;&#xd;
+        return Objects.equals(departmentCode, that.departmentCode);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public int hashCode() {&#xd;
+        return Objects.hashCode(departmentCode);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public String toString() {&#xd;
+        return higherDepartment != null ? "Department{" +&#xd;
+                "departmentCode='" + departmentCode + '\'' +&#xd;
+                ", name='" + name + '\'' +&#xd;
+                ", manager=" + manager +&#xd;
+                ", higherDepartment=" + higherDepartment.getName() +&#xd;
+                '}' :&#xd;
+                "Department{" +&#xd;
+                        "departmentCode='" + departmentCode + '\'' +&#xd;
+                        ", name='" + name + '\'' +&#xd;
+                        ", manager=" + manager +&#xd;
+                        '}';&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>3220</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\DepartmentEmployeesHistory.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+import jakarta.persistence.Column;&#xd;
+import jakarta.persistence.Entity;&#xd;
+import jakarta.persistence.ManyToOne;&#xd;
+import jakarta.persistence.Table;&#xd;
+&#xd;
+import java.time.LocalDateTime;&#xd;
+@Entity&#xd;
+@Table(name = "department_employees_history")&#xd;
+public class DepartmentEmployeesHistory extends BaseEntity&lt;Long> {&#xd;
+&#xd;
+    @ManyToOne(targetEntity = Employee.class)&#xd;
+    private Employee employee;&#xd;
+    @ManyToOne(targetEntity = Department.class)&#xd;
+    private Department department;&#xd;
+&#xd;
+    @Column(name = "from_date", nullable = false)&#xd;
+    private LocalDateTime fromDate;&#xd;
+&#xd;
+    @Column(name = "to_date")&#xd;
+    private LocalDateTime toDate;&#xd;
+&#xd;
+    public Employee getEmployee() {&#xd;
+        return employee;&#xd;
+    }&#xd;
+&#xd;
+    public void setEmployee(Employee employee) {&#xd;
+        this.employee = employee;&#xd;
+    }&#xd;
+&#xd;
+    public Department getDepartment() {&#xd;
+        return department;&#xd;
+    }&#xd;
+&#xd;
+    public void setDepartment(Department department) {&#xd;
+        this.department = department;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDateTime getFromDate() {&#xd;
+        return fromDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setFromDate(LocalDateTime fromDate) {&#xd;
+        this.fromDate = fromDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDateTime getToDate() {&#xd;
+        return toDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setToDate(LocalDateTime toDate) {&#xd;
+        this.toDate = toDate;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>1372</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\dto\DepartmentDto.java</path>
+      <content>package com.example.employee.task.tracker.model.dto;&#xd;
+&#xd;
+import jakarta.validation.constraints.NotBlank;&#xd;
+&#xd;
+import java.util.Set;&#xd;
+&#xd;
+public class DepartmentDto {&#xd;
+    @NotBlank(message = "department.code.required")&#xd;
+    private String departmentCode;&#xd;
+    @NotBlank(message = "department.name.required")&#xd;
+    private String name;&#xd;
+    private EmployeeDto manager;&#xd;
+    private Set&lt;DepartmentDto> subDepartment;&#xd;
+&#xd;
+    public @NotBlank(message = "department.code.required") String getDepartmentCode() {&#xd;
+        return departmentCode;&#xd;
+    }&#xd;
+&#xd;
+    public void setDepartmentCode(@NotBlank(message = "department.code.required") String departmentCode) {&#xd;
+        this.departmentCode = departmentCode;&#xd;
+    }&#xd;
+&#xd;
+    public @NotBlank(message = "department.name.required") String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+    public void setName(@NotBlank(message = "department.name.required") String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public EmployeeDto getManager() {&#xd;
+        return manager;&#xd;
+    }&#xd;
+&#xd;
+    public void setManager(EmployeeDto manager) {&#xd;
+        this.manager = manager;&#xd;
+    }&#xd;
+&#xd;
+    public Set&lt;DepartmentDto> getSubDepartment() {&#xd;
+        return subDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public void setSubDepartment(Set&lt;DepartmentDto> subDepartment) {&#xd;
+        this.subDepartment = subDepartment;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>1322</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\dto\EmployeeDto.java</path>
+      <content>package com.example.employee.task.tracker.model.dto;&#xd;
+&#xd;
+import jakarta.validation.constraints.NotBlank;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+import java.util.List;&#xd;
+public class EmployeeDto {&#xd;
+&#xd;
+    @NotBlank(message = "employee.name.required")&#xd;
+    private String name;&#xd;
+&#xd;
+    @NotBlank(message = "employee.family.required")&#xd;
+    private String family;&#xd;
+&#xd;
+    @NotBlank(message = "employee.phoneNumber.required")&#xd;
+    private String phoneNumber;&#xd;
+&#xd;
+&#xd;
+    private String address;&#xd;
+&#xd;
+    private String employeeNumber;&#xd;
+&#xd;
+    private String fullName;&#xd;
+&#xd;
+    private LocalDate StartDate;&#xd;
+&#xd;
+    private LocalDate EndDate;&#xd;
+&#xd;
+    private List&lt;TaskDto> tasks;&#xd;
+&#xd;
+    private DepartmentDto currentDepartment;&#xd;
+&#xd;
+    public @NotBlank(message = "employee.name.required") String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+&#xd;
+    public void setName(@NotBlank(message = "employee.name.required") String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public @NotBlank(message = "employee.family.required") String getFamily() {&#xd;
+        return family;&#xd;
+    }&#xd;
+&#xd;
+    public void setFamily(@NotBlank(message = "employee.family.required") String family) {&#xd;
+        this.family = family;&#xd;
+    }&#xd;
+&#xd;
+    public @NotBlank(message = "employee.phoneNumber.required") String getPhoneNumber() {&#xd;
+        return phoneNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setPhoneNumber(@NotBlank(message = "employee.phoneNumber.required") String phoneNumber) {&#xd;
+        this.phoneNumber = phoneNumber;&#xd;
+    }&#xd;
+&#xd;
+    public String getAddress() {&#xd;
+        return address;&#xd;
+    }&#xd;
+&#xd;
+    public void setAddress(String address) {&#xd;
+        this.address = address;&#xd;
+    }&#xd;
+&#xd;
+    public String getEmployeeNumber() {&#xd;
+        return employeeNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setEmployeeNumber(String employeeNumber) {&#xd;
+        this.employeeNumber = employeeNumber;&#xd;
+    }&#xd;
+&#xd;
+    public String getFullName() {&#xd;
+        return fullName;&#xd;
+    }&#xd;
+&#xd;
+    public void setFullName(String fullName) {&#xd;
+        this.fullName = fullName;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getStartDate() {&#xd;
+        return StartDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setStartDate(LocalDate startDate) {&#xd;
+        StartDate = startDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getEndDate() {&#xd;
+        return EndDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setEndDate(LocalDate endDate) {&#xd;
+        EndDate = endDate;&#xd;
+    }&#xd;
+&#xd;
+    public List&lt;TaskDto> getTasks() {&#xd;
+        return tasks;&#xd;
+    }&#xd;
+&#xd;
+    public void setTasks(List&lt;TaskDto> tasks) {&#xd;
+        this.tasks = tasks;&#xd;
+    }&#xd;
+&#xd;
+    public DepartmentDto getCurrentDepartment() {&#xd;
+        return currentDepartment;&#xd;
+    }&#xd;
+&#xd;
+    public void setCurrentDepartment(DepartmentDto currentDepartment) {&#xd;
+        this.currentDepartment = currentDepartment;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>2695</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\dto\TaskDto.java</path>
+      <content>package com.example.employee.task.tracker.model.dto;&#xd;
+&#xd;
+&#xd;
+import jakarta.validation.constraints.NotBlank;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+public class TaskDto {&#xd;
+    private String taskNumber;&#xd;
+    @NotBlank(message = "task.name.required")&#xd;
+    private String name;&#xd;
+    private String description;&#xd;
+    @NotBlank(message = "task.startDate.required")&#xd;
+    private LocalDate startDate;&#xd;
+    private LocalDate endDate;&#xd;
+    private String status;&#xd;
+    private Long responsible_id;&#xd;
+    private EmployeeDto employeeDto;&#xd;
+&#xd;
+    public String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+&#xd;
+    public void setName(String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public String getDescription() {&#xd;
+        return description;&#xd;
+    }&#xd;
+&#xd;
+    public void setDescription(String description) {&#xd;
+        this.description = description;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getStartDate() {&#xd;
+        return startDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setStartDate(LocalDate startDate) {&#xd;
+        this.startDate = startDate;&#xd;
+    }&#xd;
+    public LocalDate getEndDate() {&#xd;
+        return endDate;&#xd;
+    }&#xd;
+    public void setEndDate(LocalDate endDate) {&#xd;
+        this.endDate = endDate;&#xd;
+    }&#xd;
+&#xd;
+    public String getStatus() {&#xd;
+        return status;&#xd;
+    }&#xd;
+&#xd;
+    public void setStatus(String status) {&#xd;
+        this.status = status;&#xd;
+    }&#xd;
+&#xd;
+    public Long getResponsible_id() {&#xd;
+        return responsible_id;&#xd;
+    }&#xd;
+&#xd;
+    public void setResponsible_id(Long responsible_id) {&#xd;
+        this.responsible_id = responsible_id;&#xd;
+    }&#xd;
+&#xd;
+    public String getTaskNumber() {&#xd;
+        return taskNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setTaskNumber(String taskNumber) {&#xd;
+        this.taskNumber = taskNumber;&#xd;
+    }&#xd;
+&#xd;
+    public EmployeeDto getEmployeeDto() {&#xd;
+        return employeeDto;&#xd;
+    }&#xd;
+&#xd;
+    public void setEmployeeDto(EmployeeDto employeeDto) {&#xd;
+        this.employeeDto = employeeDto;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>1879</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\Employee.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+&#xd;
+import jakarta.persistence.*;&#xd;
+import org.hibernate.annotations.Formula;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+import java.util.List;&#xd;
+import java.util.Objects;&#xd;
+import java.util.Set;&#xd;
+&#xd;
+@Entity&#xd;
+@Table(name = "employees")&#xd;
+public class Employee extends BaseEntity&lt;Long> {&#xd;
+    @Column(name = "name", nullable = false)&#xd;
+    private String name;&#xd;
+    @Column(name = "family", nullable = false)&#xd;
+    private String family;&#xd;
+&#xd;
+    @Column(name = "phone_number", nullable = false)&#xd;
+    private String phoneNumber;&#xd;
+&#xd;
+    @Column(name = "email", nullable = false)&#xd;
+    private String email;&#xd;
+&#xd;
+    @Column(name = "address")&#xd;
+    private String address;&#xd;
+&#xd;
+    @Column(name = "employee_number", nullable = false, unique = true)&#xd;
+    private String employeeNumber;&#xd;
+&#xd;
+    @Formula("name || ' ' || family")&#xd;
+    private String fullName;&#xd;
+&#xd;
+    @Column(name = "start_date", nullable = false)&#xd;
+    private LocalDate StartDate;&#xd;
+&#xd;
+    @Column(name = "end_date")&#xd;
+    private LocalDate EndDate;&#xd;
+&#xd;
+    // One employee can be responsible for many tasks&#xd;
+    @OneToMany(mappedBy = "responsible", fetch = FetchType.LAZY)&#xd;
+    private List&lt;Task> tasks;&#xd;
+&#xd;
+&#xd;
+    @OneToMany(mappedBy = "id",targetEntity = DepartmentEmployeesHistory.class)&#xd;
+    Set&lt;DepartmentEmployeesHistory> departmentEmployeesHistories;&#xd;
+&#xd;
+    // --- Getters &amp; Setters ---&#xd;
+    public String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+&#xd;
+    public void setName(String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public String getFamily() {&#xd;
+        return family;&#xd;
+    }&#xd;
+&#xd;
+    public void setFamily(String family) {&#xd;
+        this.family = family;&#xd;
+    }&#xd;
+&#xd;
+    public String getPhoneNumber() {&#xd;
+        return phoneNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setPhoneNumber(String phoneNumber) {&#xd;
+        this.phoneNumber = phoneNumber;&#xd;
+    }&#xd;
+&#xd;
+    public String getAddress() {&#xd;
+        return address;&#xd;
+    }&#xd;
+&#xd;
+    public void setAddress(String address) {&#xd;
+        this.address = address;&#xd;
+    }&#xd;
+&#xd;
+    public String getEmployeeNumber() {&#xd;
+        return employeeNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setEmployeeNumber(String employeeNumber) {&#xd;
+        this.employeeNumber = employeeNumber;&#xd;
+    }&#xd;
+&#xd;
+    public String getFullName() {&#xd;
+        return fullName;&#xd;
+    }&#xd;
+&#xd;
+    public List&lt;Task> getTasks() {&#xd;
+        return tasks;&#xd;
+    }&#xd;
+&#xd;
+    public void setTasks(List&lt;Task> tasks) {&#xd;
+        this.tasks = tasks;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getStartDate() {&#xd;
+        return StartDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setStartDate(LocalDate startDate) {&#xd;
+        StartDate = startDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getEndDate() {&#xd;
+        return EndDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setEndDate(LocalDate endDate) {&#xd;
+        EndDate = endDate;&#xd;
+    }&#xd;
+&#xd;
+    public String getEmail() {&#xd;
+        return email;&#xd;
+    }&#xd;
+&#xd;
+    public void setEmail(String email) {&#xd;
+        this.email = email;&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+    public Set&lt;DepartmentEmployeesHistory> getDepartmentEmployeesHistories() {&#xd;
+        return departmentEmployeesHistories;&#xd;
+    }&#xd;
+&#xd;
+    public void setDepartmentEmployeesHistories(Set&lt;DepartmentEmployeesHistory> departmentEmployeesHistories) {&#xd;
+        this.departmentEmployeesHistories = departmentEmployeesHistories;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public boolean equals(Object o) {&#xd;
+        if (this == o) return true;&#xd;
+        if (o == null || getClass() != o.getClass()) return false;&#xd;
+        Employee employee = (Employee) o;&#xd;
+        return Objects.equals(employeeNumber, employee.employeeNumber);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public int hashCode() {&#xd;
+        return Objects.hash(employeeNumber);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public String toString() {&#xd;
+        return "Employee{" +&#xd;
+                ", EndDate=" + EndDate +&#xd;
+                ", StartDate=" + StartDate +&#xd;
+                ", fullName='" + fullName + '\'' +&#xd;
+                ", employeeNumber='" + employeeNumber + '\'' +&#xd;
+                ", address='" + address + '\'' +&#xd;
+                ", email='" + email + '\'' +&#xd;
+                ", phoneNumber='" + phoneNumber + '\'' +&#xd;
+                ", family='" + family + '\'' +&#xd;
+                ", name='" + name + '\'' +&#xd;
+                '}';&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>4164</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\Task.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+import jakarta.persistence.*;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+import java.util.Objects;&#xd;
+import java.util.Set;&#xd;
+@Entity&#xd;
+@Table(name = "tasks")&#xd;
+public class Task extends BaseEntity&lt;Long> {&#xd;
+&#xd;
+    @Column(name = "task_number", nullable = false, unique = true)&#xd;
+    private String taskNumber;&#xd;
+&#xd;
+    @Column(name = "name", nullable = false)&#xd;
+    private String name;&#xd;
+&#xd;
+    @Column(name = "description")&#xd;
+    private String description;&#xd;
+&#xd;
+    @Column(name = "start_date")&#xd;
+    private LocalDate startDate;&#xd;
+&#xd;
+    @Column(name = "end_date")&#xd;
+    private LocalDate endDate;&#xd;
+&#xd;
+    @OneToMany(mappedBy = "id",targetEntity = TaskHistory.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})&#xd;
+    private Set&lt;TaskHistory> taskHistorySet;&#xd;
+&#xd;
+    // Many tasks can belong to one employee&#xd;
+    @ManyToOne(fetch = FetchType.LAZY)&#xd;
+    @JoinColumn(name = "employee_id", nullable = false)  // FK in tasks table&#xd;
+    private Employee responsible;&#xd;
+&#xd;
+    // --- Getters &amp; Setters ---&#xd;
+    public String getName() {&#xd;
+        return name;&#xd;
+    }&#xd;
+&#xd;
+    public void setName(String name) {&#xd;
+        this.name = name;&#xd;
+    }&#xd;
+&#xd;
+    public String getDescription() {&#xd;
+        return description;&#xd;
+    }&#xd;
+&#xd;
+    public void setDescription(String description) {&#xd;
+        this.description = description;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getStartDate() {&#xd;
+        return startDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setStartDate(LocalDate startDate) {&#xd;
+        this.startDate = startDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getEndDate() {&#xd;
+        return endDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setEndDate(LocalDate endDate) {&#xd;
+        this.endDate = endDate;&#xd;
+    }&#xd;
+&#xd;
+    public Employee getResponsible() {&#xd;
+        return responsible;&#xd;
+    }&#xd;
+&#xd;
+    public void setResponsible(Employee responsible) {&#xd;
+        this.responsible = responsible;&#xd;
+    }&#xd;
+&#xd;
+    public String getTaskNumber() {&#xd;
+        return taskNumber;&#xd;
+    }&#xd;
+&#xd;
+    public void setTaskNumber(String taskNumber) {&#xd;
+        this.taskNumber = taskNumber;&#xd;
+    }&#xd;
+&#xd;
+    public Set&lt;TaskHistory> getTaskHistorySet() {&#xd;
+        return taskHistorySet;&#xd;
+    }&#xd;
+&#xd;
+    public void setTaskHistorySet(Set&lt;TaskHistory> taskHistorySet) {&#xd;
+        this.taskHistorySet = taskHistorySet;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public boolean equals(Object o) {&#xd;
+        if (this == o) return true;&#xd;
+        if (o == null || getClass() != o.getClass()) return false;&#xd;
+        Task task = (Task) o;&#xd;
+        return Objects.equals(taskNumber, task.taskNumber);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public int hashCode() {&#xd;
+        return Objects.hash(taskNumber);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public String toString() {&#xd;
+        return "Task{" +&#xd;
+                "taskNumber='" + taskNumber + '\'' +&#xd;
+                ", name='" + name + '\'' +&#xd;
+                ", description='" + description + '\'' +&#xd;
+                ", startDate=" + startDate +&#xd;
+                ", endDate=" + endDate +&#xd;
+                ", responsible=" + responsible +&#xd;
+                '}';&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>3018</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\model\TaskHistory.java</path>
+      <content>package com.example.employee.task.tracker.model;&#xd;
+&#xd;
+import jakarta.persistence.*;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+@Entity&#xd;
+@Table(name = "task_historty")&#xd;
+public class TaskHistory extends BaseEntity&lt;Long> {&#xd;
+    @Column(name = "from_date", nullable = false)&#xd;
+    private LocalDate fromDate;&#xd;
+&#xd;
+    @Column(name = "to_date")&#xd;
+    private LocalDate toDate;&#xd;
+&#xd;
+    @Enumerated(EnumType.STRING)&#xd;
+    @Column(name = "state", nullable = false)&#xd;
+    private StateType state;&#xd;
+&#xd;
+    @ManyToOne(targetEntity = Task.class)&#xd;
+    @JoinColumn(name = "task_id", nullable = false)&#xd;
+    private Task task;&#xd;
+&#xd;
+    public LocalDate getFromDate() {&#xd;
+        return fromDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setFromDate(LocalDate fromDate) {&#xd;
+        this.fromDate = fromDate;&#xd;
+    }&#xd;
+&#xd;
+    public LocalDate getToDate() {&#xd;
+        return toDate;&#xd;
+    }&#xd;
+&#xd;
+    public void setToDate(LocalDate toDate) {&#xd;
+        this.toDate = toDate;&#xd;
+    }&#xd;
+&#xd;
+    public StateType getState() {&#xd;
+        return state;&#xd;
+    }&#xd;
+&#xd;
+    public void setState(StateType stateType) {&#xd;
+        this.state = stateType;&#xd;
+    }&#xd;
+&#xd;
+    public Task getTask() {&#xd;
+        return task;&#xd;
+    }&#xd;
+&#xd;
+    public void setTask(Task task) {&#xd;
+        this.task = task;&#xd;
+    }&#xd;
+&#xd;
+    public enum StateType {&#xd;
+        TO_DO, DOING, TEST, DONE&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>1282</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\repoeitory\BaseRepository.java</path>
+      <content>package com.example.employee.task.tracker.repoeitory;&#xd;
+&#xd;
+import org.springframework.data.jpa.repository.JpaRepository;&#xd;
+import org.springframework.data.repository.NoRepositoryBean;&#xd;
+&#xd;
+@NoRepositoryBean&#xd;
+public interface BaseRepository&lt;T, ID> extends JpaRepository&lt;T, ID> {&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>277</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\repoeitory\department\DepartmentRepository.java</path>
+      <content>package com.example.employee.task.tracker.repoeitory.department;&#xd;
+&#xd;
+import com.example.employee.task.tracker.model.Department;&#xd;
+import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
+import org.springframework.data.jpa.repository.Query;&#xd;
+import org.springframework.stereotype.Repository;&#xd;
+&#xd;
+import java.util.Optional;&#xd;
+@Repository&#xd;
+public interface DepartmentRepository extends BaseRepository&lt;Department, Long> {&#xd;
+&#xd;
+    @Query(value = "select d from Department d " +&#xd;
+            "inner join  d.departmentEmployeesHistories dh " +&#xd;
+            "inner join dh.employee e " +&#xd;
+            "where e.employeeNumber=:employeeNumber ")&#xd;
+    Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>727</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\repoeitory\employee\EmployeeRepository.java</path>
+      <content>package com.example.employee.task.tracker.repoeitory.employee;&#xd;
+import com.example.employee.task.tracker.model.Employee;&#xd;
+import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
+import org.springframework.stereotype.Repository;&#xd;
+@Repository&#xd;
+public interface EmployeeRepository extends BaseRepository&lt;Employee, Long> {&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>336</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\repoeitory\task\TaskHistoryRepository.java</path>
+      <content>package com.example.employee.task.tracker.repoeitory.task;&#xd;
+&#xd;
+import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
+import org.springframework.data.jpa.repository.Query;&#xd;
+import org.springframework.stereotype.Repository;&#xd;
+&#xd;
+import java.util.Optional;&#xd;
+@Repository&#xd;
+public interface TaskHistoryRepository extends BaseRepository&lt;TaskHistory, Long> {&#xd;
+    @Query(value = "select  th from TaskHistory th " +&#xd;
+            " inner join th.task t where t.id=:taskId  " +&#xd;
+            "order by th.fromDate asc limit 1")&#xd;
+    Optional&lt;TaskHistory> getLastTaskStatus(Long taskId);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>652</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\repoeitory\task\TaskRepository.java</path>
+      <content>package com.example.employee.task.tracker.repoeitory.task;&#xd;
+import com.example.employee.task.tracker.model.Task;&#xd;
+import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
+import org.springframework.stereotype.Repository;&#xd;
+@Repository&#xd;
+public interface TaskRepository extends BaseRepository&lt;Task, Long> {&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>320</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\BaseService.java</path>
+      <content>package com.example.employee.task.tracker.service;&#xd;
+&#xd;
+import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
+&#xd;
+import java.util.List;&#xd;
+&#xd;
+public interface BaseService&lt;T,ID,R extends BaseRepository&lt;T,ID>>{&#xd;
+    R getRepository();&#xd;
+    T findById(ID id);&#xd;
+    void deleteById(ID id);&#xd;
+    List&lt;T> findAll();&#xd;
+    T save(T t);&#xd;
+    T update(T t);&#xd;
+&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>363</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\department\DepartmentService.java</path>
+      <content>package com.example.employee.task.tracker.service.department;&#xd;
+import com.example.employee.task.tracker.model.Department;&#xd;
+import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;&#xd;
+import com.example.employee.task.tracker.service.BaseService;&#xd;
+&#xd;
+import java.util.Optional;&#xd;
+&#xd;
+public interface DepartmentService extends BaseService&lt;Department, Long, DepartmentRepository> {&#xd;
+    Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
+&#xd;
+    DepartmentDto mapToDto(Department department);&#xd;
+&#xd;
+    Department mapToEntity(DepartmentDto departmentDto);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>665</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\department\DepartmentServiceImpl.java</path>
+      <content>package com.example.employee.task.tracker.service.department;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+import com.example.employee.task.tracker.model.Department;&#xd;
+import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;&#xd;
+import org.springframework.stereotype.Service;&#xd;
+import org.springframework.util.CollectionUtils;&#xd;
+&#xd;
+import java.util.List;&#xd;
+import java.util.Optional;&#xd;
+import java.util.stream.Collectors;&#xd;
+@Service&#xd;
+public class DepartmentServiceImpl implements DepartmentService {&#xd;
+    private final DepartmentRepository departmentRepository;&#xd;
+&#xd;
+&#xd;
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {&#xd;
+        this.departmentRepository = departmentRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public DepartmentRepository getRepository() {&#xd;
+        return departmentRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Department findById(Long id) {&#xd;
+        return getRepository().findById(id).orElseThrow(&#xd;
+                () -> new CustomException("department.not_found"));&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public void deleteById(Long id) {&#xd;
+        this.getRepository().deleteById(id);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public List&lt;Department> findAll() {&#xd;
+        return getRepository().findAll();&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Department save(Department department) {&#xd;
+        return getRepository().save(department);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Department update(Department department) {&#xd;
+        Department find = this.findById(department.getId());&#xd;
+        find.setName(department.getName());&#xd;
+        if (find.getManager() != null) {&#xd;
+            if (department.getManager() != null)&#xd;
+                if (!find.getManager().getId().equals(department.getManager().getId()))&#xd;
+                    find.setManager(department.getManager());&#xd;
+                else&#xd;
+                    find.setManager(null);&#xd;
+        }&#xd;
+        if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
+            find.setSubDepartment(department.getSubDepartment());&#xd;
+        return getRepository().save(find);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber) {&#xd;
+        return getRepository().getEmployeeCurrentDepartment(employeeNumber);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public DepartmentDto mapToDto(Department department) {&#xd;
+        DepartmentDto departmentDto = new DepartmentDto();&#xd;
+        departmentDto.setName(department.getName());&#xd;
+        departmentDto.setDepartmentCode(department.getDepartmentCode());&#xd;
+        if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
+            departmentDto.setSubDepartment(department.getSubDepartment().stream().map(this::mapToDto).collect(Collectors.toSet()));&#xd;
+        return departmentDto;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Department mapToEntity(DepartmentDto departmentDto) {&#xd;
+        return null;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>2980</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\employee\EmployeeService.java</path>
+      <content>package com.example.employee.task.tracker.service.employee;&#xd;
+import com.example.employee.task.tracker.model.Employee;&#xd;
+import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;&#xd;
+import com.example.employee.task.tracker.service.BaseService;&#xd;
+&#xd;
+public interface EmployeeService extends BaseService&lt;Employee, Long, EmployeeRepository> {&#xd;
+    EmployeeDto mapToDto(Employee employee);&#xd;
+    Employee mapToEntity(EmployeeDto employeeDto);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>524</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\employee\EmployeeServiceImpl.java</path>
+      <content>package com.example.employee.task.tracker.service.employee;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+import com.example.employee.task.tracker.model.Department;&#xd;
+import com.example.employee.task.tracker.model.Employee;&#xd;
+import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;&#xd;
+import com.example.employee.task.tracker.service.department.DepartmentService;&#xd;
+import org.springframework.stereotype.Service;&#xd;
+&#xd;
+import java.time.LocalDate;&#xd;
+import java.util.List;&#xd;
+import java.util.Optional;&#xd;
+&#xd;
+@Service&#xd;
+public class EmployeeServiceImpl implements EmployeeService {&#xd;
+    private final EmployeeRepository employeeRepository;&#xd;
+    private final DepartmentService departmentService;&#xd;
+&#xd;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository,DepartmentService departmentService) {&#xd;
+        this.employeeRepository = employeeRepository;&#xd;
+        this.departmentService = departmentService;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public EmployeeRepository getRepository() {&#xd;
+        return employeeRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Employee findById(Long id) {&#xd;
+        return getRepository().findById(id).orElseThrow(&#xd;
+                ()->new  CustomException("employee.not_found") );&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public void deleteById(Long id) {&#xd;
+         this.getRepository().deleteById(id);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public List&lt;Employee> findAll() {&#xd;
+        return getRepository().findAll();&#xd;
+    }&#xd;
+    @Override&#xd;
+    public Employee save(Employee employee) {&#xd;
+        if(employee.getStartDate()==null)&#xd;
+            employee.setStartDate(LocalDate.now());&#xd;
+        return getRepository().save(employee);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Employee update(Employee employee) {&#xd;
+        Employee find=this.findById(employee.getId());&#xd;
+        find.setName(employee.getName());&#xd;
+        find.setFamily(employee.getFamily());&#xd;
+        find.setStartDate(employee.getStartDate());&#xd;
+        find.setEndDate(employee.getEndDate());&#xd;
+        find.setAddress(employee.getAddress());&#xd;
+        find.setPhoneNumber(employee.getPhoneNumber());&#xd;
+        find.setTasks(employee.getTasks());&#xd;
+        return getRepository().save(find);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public EmployeeDto mapToDto(Employee employee) {&#xd;
+        EmployeeDto employeeDto=new EmployeeDto();&#xd;
+        employeeDto.setName(employee.getName());&#xd;
+        employeeDto.setFamily(employee.getFamily());&#xd;
+        employeeDto.setEmployeeNumber(employee.getEmployeeNumber());&#xd;
+        employeeDto.setAddress(employee.getAddress());&#xd;
+        employeeDto.setFullName(employee.getFullName());&#xd;
+        employeeDto.setStartDate(employee.getStartDate());&#xd;
+        employeeDto.setEndDate(employee.getEndDate());&#xd;
+&#xd;
+        Optional&lt;Department> department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());&#xd;
+        if (department.isPresent())&#xd;
+            employeeDto.setCurrentDepartment(departmentService.mapToDto(department.get()));&#xd;
+&#xd;
+        return employeeDto;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Employee mapToEntity(EmployeeDto employeeDto) {&#xd;
+        Employee employee = new Employee();&#xd;
+        employee.setName(employeeDto.getName());&#xd;
+        employee.setFamily(employeeDto.getFamily());&#xd;
+        employee.setStartDate(employeeDto.getStartDate());&#xd;
+        employee.setEndDate(employeeDto.getEndDate());&#xd;
+        employee.setAddress(employeeDto.getAddress());&#xd;
+        employee.setPhoneNumber(employeeDto.getPhoneNumber());&#xd;
+        return employee;&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>3590</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\task\TaskHistoryService.java</path>
+      <content>package com.example.employee.task.tracker.service.task;&#xd;
+&#xd;
+import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+import com.example.employee.task.tracker.repoeitory.task.TaskHistoryRepository;&#xd;
+import com.example.employee.task.tracker.service.BaseService;&#xd;
+public interface TaskHistoryService extends BaseService&lt;TaskHistory, Long, TaskHistoryRepository> {&#xd;
+&#xd;
+    TaskHistory getLastTaskStatus(Long taskId);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>419</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\task\TaskHistoryServiceImpl.java</path>
+      <content>package com.example.employee.task.tracker.service.task;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+import com.example.employee.task.tracker.repoeitory.task.TaskHistoryRepository;&#xd;
+import org.springframework.stereotype.Service;&#xd;
+&#xd;
+import java.util.List;&#xd;
+&#xd;
+@Service&#xd;
+public class TaskHistoryServiceImpl implements TaskHistoryService {&#xd;
+    private final TaskHistoryRepository taskHistoryRepository;&#xd;
+&#xd;
+    public TaskHistoryServiceImpl(TaskHistoryRepository taskHistoryRepository) {&#xd;
+        this.taskHistoryRepository = taskHistoryRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskHistoryRepository getRepository() {&#xd;
+        return this.taskHistoryRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskHistory findById(Long aLong) {&#xd;
+        return null;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public void deleteById(Long aLong) {&#xd;
+&#xd;
+    }&#xd;
+    @Override&#xd;
+    public List&lt;TaskHistory> findAll() {&#xd;
+        return List.of();&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskHistory save(TaskHistory taskHistory) {&#xd;
+        return null;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskHistory update(TaskHistory taskHistory) {&#xd;
+        return null;&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskHistory getLastTaskStatus(Long taskId) {&#xd;
+        return this.getRepository().getLastTaskStatus(taskId).orElseThrow(&#xd;
+                () -> new CustomException("taskHistory.notFound")&#xd;
+        );&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>1467</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\task\TaskService.java</path>
+      <content>package com.example.employee.task.tracker.service.task;&#xd;
+import com.example.employee.task.tracker.model.Task;&#xd;
+import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.task.TaskRepository;&#xd;
+import com.example.employee.task.tracker.service.BaseService;&#xd;
+&#xd;
+public interface TaskService extends BaseService&lt;Task, Long, TaskRepository> {&#xd;
+    public Task mapToEntity(TaskDto taskDto);&#xd;
+    public TaskDto mapToDto(Task task);&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>482</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\java\com\example\employee\task\tracker\service\task\TaskServiceImpl.java</path>
+      <content>package com.example.employee.task.tracker.service.task;&#xd;
+&#xd;
+import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+import com.example.employee.task.tracker.model.Employee;&#xd;
+import com.example.employee.task.tracker.model.Task;&#xd;
+import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
+import com.example.employee.task.tracker.repoeitory.task.TaskRepository;&#xd;
+import com.example.employee.task.tracker.service.employee.EmployeeService;&#xd;
+import org.springframework.context.annotation.Lazy;&#xd;
+import org.springframework.stereotype.Service;&#xd;
+import org.springframework.util.CollectionUtils;&#xd;
+import java.time.LocalDate;&#xd;
+import java.util.List;&#xd;
+import java.util.Set;&#xd;
+&#xd;
+@Service&#xd;
+public class TaskServiceImpl implements com.example.employee.task.tracker.service.task.TaskService {&#xd;
+    private final TaskRepository taskRepository;&#xd;
+    @Lazy&#xd;
+    private final EmployeeService employeeService;&#xd;
+    private final TaskHistoryService taskHistoryService;&#xd;
+&#xd;
+    public TaskServiceImpl(TaskRepository taskRepository, EmployeeService employeeService, TaskHistoryService taskHistoryService) {&#xd;
+        this.taskRepository = taskRepository;&#xd;
+        this.employeeService = employeeService;&#xd;
+        this.taskHistoryService = taskHistoryService;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskRepository getRepository() {&#xd;
+        return taskRepository;&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Task findById(Long id) {&#xd;
+        return getRepository().findById(id).orElseThrow(() ->&#xd;
+                new CustomException("task.not_found", id));&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public void deleteById(Long id) {&#xd;
+        this.findById(id);&#xd;
+        getRepository().deleteById(id);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public List&lt;Task> findAll() {&#xd;
+        return getRepository().findAll();&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public TaskDto mapToDto(Task task) {&#xd;
+        TaskDto taskDto = new TaskDto();&#xd;
+        taskDto.setName(task.getName());&#xd;
+        taskDto.setDescription(task.getDescription());&#xd;
+        taskDto.setStartDate(task.getStartDate());&#xd;
+        taskDto.setEndDate(task.getEndDate());&#xd;
+        try {&#xd;
+&#xd;
+            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
+            taskDto.setStatus(taskHistory.getState().name());&#xd;
+        } catch (CustomException e) {&#xd;
+            e.printStackTrace();&#xd;
+        }&#xd;
+        taskDto.setTaskNumber(task.getTaskNumber());&#xd;
+        if(task.getResponsible()!=null)&#xd;
+          taskDto.setEmployeeDto(employeeService.mapToDto(task.getResponsible()));&#xd;
+        return taskDto;&#xd;
+    }&#xd;
+    @Override&#xd;
+    public Task mapToEntity(TaskDto taskDto) {&#xd;
+        Task task = new Task();&#xd;
+        task.setName(taskDto.getName());&#xd;
+        task.setDescription(taskDto.getDescription());&#xd;
+        task.setStartDate(taskDto.getStartDate());&#xd;
+        task.setEndDate(taskDto.getEndDate());&#xd;
+&#xd;
+&#xd;
+        try {&#xd;
+&#xd;
+            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
+            taskDto.setStatus(taskHistory.getState().name());&#xd;
+        } catch (CustomException e) {&#xd;
+            e.printStackTrace();&#xd;
+        }&#xd;
+        TaskHistory taskHistory = new TaskHistory();&#xd;
+        if (taskDto.getStatus() != null) {&#xd;
+            taskHistory.setState(TaskHistory.StateType.valueOf(taskDto.getStatus()));&#xd;
+&#xd;
+        } else {&#xd;
+            if (task.getStartDate().isAfter(LocalDate.now()))&#xd;
+                taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
+            else if (task.getStartDate().isBefore(LocalDate.now())) {&#xd;
+                if (task.getEndDate() == null || task.getEndDate().isAfter(LocalDate.now()))&#xd;
+                    taskHistory.setState(TaskHistory.StateType.DOING);&#xd;
+                else&#xd;
+                    taskHistory.setState(TaskHistory.StateType.DONE);&#xd;
+            }&#xd;
+        }&#xd;
+&#xd;
+        task.setTaskHistorySet(Set.of(taskHistory));&#xd;
+        if (taskDto.getResponsible_id() != null) {&#xd;
+            Employee employee = employeeService.findById(taskDto.getResponsible_id());&#xd;
+            task.setResponsible(employee);&#xd;
+        }&#xd;
+        task.setTaskNumber(taskDto.getTaskNumber());&#xd;
+        return task;&#xd;
+    }&#xd;
+    @Override&#xd;
+    public Task save(Task task) {&#xd;
+        if (task.getStartDate() == null)&#xd;
+            task.setStartDate(LocalDate.now());&#xd;
+        if (CollectionUtils.isEmpty(task.getTaskHistorySet())) {&#xd;
+            TaskHistory taskHistory = new TaskHistory();&#xd;
+            taskHistory.setFromDate(LocalDate.now());&#xd;
+            taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
+            taskHistory.setTask(task);&#xd;
+            task.setTaskHistorySet(Set.of(taskHistory));&#xd;
+        }&#xd;
+        return getRepository().save(task);&#xd;
+    }&#xd;
+&#xd;
+    @Override&#xd;
+    public Task update(Task task) {&#xd;
+        Task find = this.findById(task.getId());&#xd;
+        find.setName(task.getName());&#xd;
+        find.setDescription(task.getDescription());&#xd;
+        find.setStartDate(task.getStartDate());&#xd;
+        find.setEndDate(task.getEndDate());&#xd;
+        find.setResponsible(task.getResponsible());&#xd;
+        find.setTaskNumber(task.getTaskNumber());&#xd;
+        find.setResponsible(task.getResponsible());&#xd;
+        return getRepository().save(find);&#xd;
+    }&#xd;
+}&#xd;
+</content>
+      <XmlFileInfo>
+        <size>5233</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\resources\application-dev.properties</path>
+      <content>spring.application.name=employee.task.tracker
+spring.datasource.url=jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME}
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}
+</content>
+      <XmlFileInfo>
+        <size>210</size>
+        <modified></modified>
+        <mime_type>text/x-java-properties</mime_type>
+        <extension>.properties</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\resources\application-prod.properties</path>
+      <content>spring.application.name=employee.task.tracker
+spring.datasource.url=jdbc:postgresql://postgres:5432/${DB_NAME}
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}</content>
+      <XmlFileInfo>
+        <size>186</size>
+        <modified></modified>
+        <mime_type>text/x-java-properties</mime_type>
+        <extension>.properties</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\resources\application.properties</path>
+      <content>spring.profiles.active=${SPRING_PROFILES_ACTIVE:dev}
+spring.application.name=employee.task.tracker
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true</content>
+      <XmlFileInfo>
+        <size>218</size>
+        <modified></modified>
+        <mime_type>text/x-java-properties</mime_type>
+        <extension>.properties</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\resources\messages-fa.properties</path>
+      <content>task.not_found=\u0648\u0638\u06CC\u0641\u0647 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 {0} \u06CC\u0627\u0641\u062A \u0646\u0634\u062F&#xd;
+employee.not_found=\u06A9\u0627\u0631\u0645\u0646\u062F \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 {0} \u06CC\u0627\u0641\u062A \u0646\u0634\u062F&#xd;
+error.unexpected=\u062E\u0637\u0627\u06CC \u063A\u06CC\u0631\u0645\u0646\u062A\u0638\u0631\u0647 \u0631\u062E \u062F\u0627\u062F&#xd;
+validation.failed=\u0627\u0639\u062A\u0628\u0627\u0631\u0633\u0646\u062C\u06CC \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062F&#xd;
+default.success=\u0639\u0645\u0644\u06CC\u0627\u062A \u0628\u0627 \u0645\u0648\u0641\u0642\u06CC\u062A \u0627\u0646\u062C\u0627\u0645 \u0634\u062F&#xd;
+</content>
+      <XmlFileInfo>
+        <size>702</size>
+        <modified></modified>
+        <mime_type>text/x-java-properties</mime_type>
+        <extension>.properties</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>main\resources\messages.properties</path>
+      <content>task.not_found=Task not found with ID: {0}&#xd;
+task.name.required=Task name is required&#xd;
+employee.not_found=Employee not found with ID: {0}&#xd;
+error.unexpected=Unexpected error occurred&#xd;
+validation.failed=Validation failed&#xd;
+default.success=Operation successful&#xd;
+</content>
+      <XmlFileInfo>
+        <size>257</size>
+        <modified></modified>
+        <mime_type>text/x-java-properties</mime_type>
+        <extension>.properties</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+    <XmlFileContent>
+      <path>test\java\com\example\employee\task\tracker\employeeTaskTrackerTests.java</path>
+      <content>package com.example.employee.task.tracker;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+@SpringBootTest
+class employeeTaskTrackerTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+</content>
+      <XmlFileInfo>
+        <size>228</size>
+        <modified></modified>
+        <mime_type>text/x-java-source</mime_type>
+        <extension>.java</extension>
+      </XmlFileInfo>
+    </XmlFileContent>
+  </XmlFiles>
+</XmlStructure>

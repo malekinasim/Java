@@ -48,12 +48,20 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                     }
                 }
             } else {
-                SecurityContextHolder.clearContext();
+
+
+                if (!request.getRequestURI().endsWith("/refresh-token")
+                        && !request.getRequestURI().endsWith("/logoff")) {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "UNAUTHORIZED");
+                    SecurityContextHolder.clearContext();
+                }
+
             }
             filterChain.doFilter(request, response);
         } catch (ExpiredJwtException ex) {
-            if (!request.getRequestURI().equals("/auth/refresh-token")
-                    && !request.getRequestURI().equals("/auth/logoff")) {
+            if (!request.getRequestURI().endsWith("/refresh-token")
+                    && !request.getRequestURI().endsWith("/logoff")) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
             } else {

@@ -12,6 +12,6 @@ public interface AccountService extends BaseService<Account, Long> {
     void createActiveAccount(SignupRQ signupRQ);
 
      Optional<Account> findByUserNameAndProvider(String userName, String providerName);
-
+     Account mapToEntity(SignupRQ signupRQ);
     Account createOauthProviderAccount(String userName, AuthProvider authProvider);
 }
