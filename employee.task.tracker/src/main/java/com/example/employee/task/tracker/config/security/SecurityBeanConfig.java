@@ -113,7 +113,7 @@ public class SecurityBeanConfig {
 
     @Bean
     public JWTAuthenticationFilter tokenAuthenticationFilter() {
-        return new JWTAuthenticationFilter(jwtTokenProvider, customUserDetailsService);
+        return new JWTAuthenticationFilter(jwtTokenProvider, customUserDetailsService, List.of(AUTH_WHITELIST));
     }
 
     @Bean

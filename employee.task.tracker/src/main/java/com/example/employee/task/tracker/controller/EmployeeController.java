@@ -20,7 +20,7 @@ public class EmployeeController {
     @GetMapping("/{id}")
     ResponseEntity<?> one(@PathVariable Long id) {
         Employee employee = employeeService.findById(id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        return new ResponseEntity<>(employeeService.mapToDto(employee), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

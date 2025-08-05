@@ -99,8 +99,8 @@ public class JWTTokenProvider {
         Map<Object, Object> tokenData = redisTemplate.opsForHash().entries(key);
         String refreshToken = (String) tokenData.get("refresh_token");
         String expiresAtStr = (String) tokenData.get("expires_at");
-        Instant expiresAt = Instant.parse(expiresAtStr);
-        if(expiresAt.isAfter(Instant.now()))
+        Instant expiresAt = Instant.ofEpochMilli(Long.parseLong(expiresAtStr));
+        if(!expiresAt.isAfter(Instant.now()))
             return null;
         return refreshToken;
     }
