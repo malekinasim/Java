@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "account")
-public class Account extends BaseEntity<Long> {
+public class Account extends TenantBaseEntity<Long> {
     @ManyToOne(targetEntity = AuthProvider.class)
     @JoinColumn(name = "provider_id", nullable = false)
     private AuthProvider provider; // LOCAL or GOOGLE

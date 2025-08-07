@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "employees")
-public class Employee extends BaseEntity<Long> {
+public class Employee extends TenantBaseEntity<Long> {
 
     @Enumerated
     @Column(name = "Role",nullable = true )

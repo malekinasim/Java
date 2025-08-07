@@ -4,10 +4,10 @@ import com.example.employee.task.tracker.config.RestUtil;
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.AuthProvider;
-import com.example.employee.task.tracker.model.Department;
+import com.example.employee.task.tracker.model.Organ;
 import com.example.employee.task.tracker.service.account.AccountService;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
-import com.example.employee.task.tracker.service.department.DepartmentService;
+import com.example.employee.task.tracker.service.organ.OrganService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +40,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
     private final AuthProviderService authProviderService;
     private final AccountService accountService;
     private final OidcTokenRedisService oidcTokenRedisService;
-    private final DepartmentService departmentService;
+    private final OrganService organService;
     private final OAuth2AuthorizedClientService authorizedClientService;
     private final Environment env;
     public CustomOAuth2SuccessHandler(
@@ -48,13 +48,13 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             AuthProviderService authProviderService,
             AccountService accountService,
             OidcTokenRedisService oidcTokenRedisService,
-            DepartmentService departmentService,
+            OrganService organService,
             OAuth2AuthorizedClientService authorizedClientService, Environment env) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.authProviderService = authProviderService;
         this.accountService = accountService;
         this.oidcTokenRedisService = oidcTokenRedisService;
-        this.departmentService = departmentService;
+        this.organService = organService;
         this.authorizedClientService = authorizedClientService;
         this.env = env;
     }
@@ -144,8 +144,8 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             }
         }
          else {
-            Department departmentCode = departmentService.getEmployeeCurrentDepartment(account.getEmployee().getEmployeeNumber());
-            jwtTokenProvider.sendTokens(response, departmentCode.getDepartmentCode(),!RestUtil.isMobileClient(request),account.getUsername(),account.getEmployee().getEmployeeNumber());
+            Organ organ = organService.getEmployeeOrgan(account.getEmployee().getEmployeeNumber());
+            jwtTokenProvider.sendTokens(response, organ.getCode(),!RestUtil.isMobileClient(request),account.getUsername(),account.getEmployee().getEmployeeNumber());
             if (!RestUtil.isApiClient(request)) {
                 response.sendRedirect(frontUrl + "/home");
             } else {

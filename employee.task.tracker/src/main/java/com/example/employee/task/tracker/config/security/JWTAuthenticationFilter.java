@@ -1,8 +1,8 @@
 package com.example.employee.task.tracker.config.security;
 
 import com.example.employee.task.tracker.config.RestUtil;
-import com.example.employee.task.tracker.model.Department;
-import com.example.employee.task.tracker.service.department.DepartmentService;
+import com.example.employee.task.tracker.model.Organ;
+import com.example.employee.task.tracker.service.organ.OrganService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
@@ -21,22 +21,22 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.Collection;
-
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private final JWTTokenProvider tokenProvider;
     private final CustomUserDetailsService customUserDetailsService;
     private final Collection<String> excludedPatterns;
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
-    private final DepartmentService departmentService;
+    private final OrganService organService;
 
     public JWTAuthenticationFilter(JWTTokenProvider tokenProvider,
                                    CustomUserDetailsService customUserDetailsService,
-                                   Collection<String> excludedPatterns, DepartmentService departmentService) {
+                                   Collection<String> excludedPatterns,
+                                   OrganService organService) {
         this.tokenProvider = tokenProvider;
         this.customUserDetailsService = customUserDetailsService;
         this.excludedPatterns = excludedPatterns;
-        this.departmentService = departmentService;
+        this.organService = organService;
     }
 
     @Override
@@ -89,8 +89,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if (!StringUtils.hasText(username))
             return null;
 
-        String departmentCode=tokenProvider.getCurrentDepartment(request);
-        if (departmentCode==null)
+        String organCode=tokenProvider.getCurrentOrgan(request);
+        if (organCode==null)
             return null;
 
 
@@ -101,19 +101,17 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
         if (userDetails instanceof CustomUserDetail) {
             CustomUserDetail custom = (CustomUserDetail) userDetails;
-            if (custom.getEmployee() != null && custom.getCurrentUserDepartment() == null && !StringUtils.hasText(departmentCode)) {
+            if (custom.getEmployee() != null && custom.getOrgan() == null && !StringUtils.hasText(organCode)) {
                 return null;
             }
 
-            // If departmentCode provided, ensure it matches user's actual department (optional policy)
-            if (StringUtils.hasText(departmentCode)) {
-                Department dept = departmentService.getEmployeeCurrentDepartment(custom.getEmployee().getEmployeeNumber());
-                if (dept == null || !departmentCode.equals(dept.getDepartmentCode())) {
+            if (StringUtils.hasText(organCode)) {
+                Organ organ = organService.getEmployeeOrgan(custom.getEmployee().getEmployeeNumber());
+                if (organ == null || !organCode.equals(organ.getCode())) {
                     return null;
                 }
-                // set the current department in principal
                 // TODO have problem it is not mutable
-                custom.setCurrentUserDepartment(dept);
+                custom.setOrgan(organ);
             }
         }
 

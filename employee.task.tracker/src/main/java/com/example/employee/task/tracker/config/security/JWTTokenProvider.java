@@ -45,18 +45,17 @@ public class JWTTokenProvider {
     @Value("${jwt.registeraton-token-expiration}")
     private String registerTokenExpiration;
 
-    private final String CUR_DEPARTMENT_CLAIM = "X-Department-Code";
-    private final boolean isProduction;
+    public final String CUR_ORGAN_CLAIM = "X-Organt-Code";
+
     public JWTTokenProvider(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
-        this.isProduction= !profile.equals("dev");
     }
 
 
-    public String createAccessToken(String username, String role, String departmentCode) {
+    public String createAccessToken(String username, String role, String organCode) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("role", role);
-        claims.put(CUR_DEPARTMENT_CLAIM, departmentCode);
+        claims.put(CUR_ORGAN_CLAIM, organCode);
         Date now = new Date();
         Date exp = Date.from(Instant.now().plusMillis(Long.parseLong(registerTokenExpiration)));
         return Jwts.builder()
@@ -150,53 +149,56 @@ public class JWTTokenProvider {
                 .parseClaimsJws(token).getBody();
     }
 
-    public String getCurrentDepartment(HttpServletRequest request) {
+    public String getCurrentOrgan(HttpServletRequest request) {
         String token = this.resolveAccessToken(request);
-        String departmentCode = null;
-        Object deptClaim = getClaims(token).get(CUR_DEPARTMENT_CLAIM);
-        if (deptClaim != null && StringUtils.hasText(deptClaim.toString())) {
-            departmentCode = deptClaim.toString();
+        String OrganCode = null;
+        Object organClaim = getClaims(token).get(CUR_ORGAN_CLAIM);
+        if (organClaim != null && StringUtils.hasText(organClaim.toString())) {
+            OrganCode = organClaim.toString();
         } else {
-            String headerDept = request.getHeader(CUR_DEPARTMENT_CLAIM);
-            if (StringUtils.hasText(headerDept)) departmentCode = headerDept;
+            String headerOrgan = request.getHeader(CUR_ORGAN_CLAIM);
+            if (StringUtils.hasText(headerOrgan)) OrganCode = headerOrgan;
         }
-        return departmentCode;
+        return OrganCode;
     }
 
 
     public void sendTokens(HttpServletResponse response,
-                           String departmentCode,
+                           String OrganCode,
                            boolean useCookie,String username, String role) throws IOException {
-        String accessJwt = this.createAccessToken(username,role, departmentCode);
+        String accessJwt = this.createAccessToken(username,role, OrganCode);
         String refreshJwt= this.createRefreshToken(username);
         if (useCookie) {
             // ACCESS cookie
             Cookie accessCookie =  creatTokenCookie("ACCESS_TOKEN", accessJwt, accessTokenExpiration);
+            response.addCookie(accessCookie);
 
             // REFRESH cookie
             Cookie refreshCookie = creatTokenCookie( "REFRESH_TOKEN", refreshJwt, refreshTokenExpiration);
+            response.addCookie(refreshCookie);
 
-            if (departmentCode != null) {
-                response.setHeader(CUR_DEPARTMENT_CLAIM, departmentCode);
+            if (OrganCode != null) {
+                // organ cookie
+                response.setHeader(CUR_ORGAN_CLAIM, OrganCode);
             }
 
         } else {
             // JSON body for API/Mobile clients
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-            String dept = departmentCode == null ? "" : departmentCode;
-            String json = String.format("{\"department\":\"%s\",\"accessToken\":\"%s\",\"refreshToken\":\"%s\"}",
-                    escapeJson(dept), escapeJson(accessJwt), escapeJson(refreshJwt));
+            String org = OrganCode == null ? "" : OrganCode;
+            String json = String.format("{\"OrganCode\":\"%s\",\"accessToken\":\"%s\",\"refreshToken\":\"%s\"}",
+                    escapeJson(org), escapeJson(accessJwt), escapeJson(refreshJwt));
             response.getWriter().write(json);
         }
     }
 
-    private Cookie creatTokenCookie(String name,String value, String refreshTokenExpiration) {
+    private Cookie creatTokenCookie(String name,String value, String tokenExpiration) {
         Cookie cookie = new Cookie(name, value);
         cookie.setHttpOnly(true);
-        cookie.setSecure(isProduction);
+        cookie.setSecure(true);
         cookie.setPath("/");
-        Date expRefreshToken = Date.from(Instant.now().plusMillis(Long.parseLong(refreshTokenExpiration)));
+        Date expRefreshToken = Date.from(Instant.now().plusMillis(Long.parseLong(tokenExpiration)));
         cookie.setMaxAge((int) Duration.between(Instant.now(), expRefreshToken.toInstant()).getSeconds()       ); // 30 days example
          return  cookie;
     }

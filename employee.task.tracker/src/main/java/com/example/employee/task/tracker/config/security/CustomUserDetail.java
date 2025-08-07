@@ -1,8 +1,8 @@
 package com.example.employee.task.tracker.config.security;
 
 import com.example.employee.task.tracker.model.Account;
-import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.Employee;
+import com.example.employee.task.tracker.model.Organ;
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +20,7 @@ public class CustomUserDetail  implements UserDetails{
     private Employee employee;
 
     @Hidden
-    private Department CurrentUserDepartment = null;
+    private Organ organ = null;
 
     @Hidden
     private Map<String, Object> attributes;
@@ -31,15 +31,15 @@ public class CustomUserDetail  implements UserDetails{
         this(account,null,null);
     }
 
-    public CustomUserDetail(Account account, Department currentUserDepartment) {
-        this(account,currentUserDepartment,null);
+    public CustomUserDetail(Account account, Organ organ) {
+        this(account, organ,null);
     }
 
 
-    public CustomUserDetail(Account account, Department currentUserDepartment, HashMap<String, Object> attributes) {
+    public CustomUserDetail(Account account, Organ organ, HashMap<String, Object> attributes) {
         this.account = account;
         this.employee =account.getEmployee();
-        CurrentUserDepartment = currentUserDepartment;
+        this.organ = organ;
         this.attributes = attributes;
     }
 
@@ -53,8 +53,8 @@ public class CustomUserDetail  implements UserDetails{
                     GrantedAuthority roleGrantedAuthority = new SimpleGrantedAuthority(employee.getRole().name());
                     grantedAuthorities.add(roleGrantedAuthority);
             }
-            if (CurrentUserDepartment != null ) {
-                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("DEP_" + CurrentUserDepartment.getDepartmentCode()                                        );
+            if (organ != null ) {
+                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ORG_" + organ.getCode()                                        );
                 grantedAuthorities.add(grantedAuthority);
             }
 
@@ -88,12 +88,12 @@ public class CustomUserDetail  implements UserDetails{
         this.account = account;
     }
 
-    public Department getCurrentUserDepartment() {
-        return CurrentUserDepartment;
+    public Organ getOrgan() {
+        return organ;
     }
 
-    public void setCurrentUserDepartment(Department currentUserDepartment) {
-        CurrentUserDepartment = currentUserDepartment;
+    public void setOrgan(Organ organ) {
+        this.organ = organ;
     }
 
     public Map<String, Object> getAttributes() {

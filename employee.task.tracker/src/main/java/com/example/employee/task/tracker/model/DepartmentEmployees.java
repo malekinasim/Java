@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 @Table(name = "department_employees_history")
-public class DepartmentEmployees extends BaseEntity<Long> {
+public class DepartmentEmployees extends TenantBaseEntity<Long> {
 
     @ManyToOne(targetEntity = Employee.class)
     @JoinColumn(name = "employee_id")

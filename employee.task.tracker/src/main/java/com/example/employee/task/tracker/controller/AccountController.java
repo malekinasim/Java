@@ -7,12 +7,11 @@ import com.example.employee.task.tracker.config.security.JWTTokenProvider;
 import com.example.employee.task.tracker.config.security.OauthTemp;
 import com.example.employee.task.tracker.config.security.OidcTokenRedisService;
 import com.example.employee.task.tracker.model.Account;
-import com.example.employee.task.tracker.model.Department;
+import com.example.employee.task.tracker.model.Organ;
 import com.example.employee.task.tracker.model.dto.LoginRQ;
-import com.example.employee.task.tracker.model.dto.LoginResponse;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
 import com.example.employee.task.tracker.service.account.AccountService;
-import com.example.employee.task.tracker.service.department.DepartmentService;
+import com.example.employee.task.tracker.service.organ.OrganService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,15 +31,15 @@ public class AccountController {
     private final AccountService accountService;
     private final AuthenticationManager authenticationManager;
     private final JWTTokenProvider jwtTokenProvider;
-    private final DepartmentService departmentService;
+    private final OrganService organService;
     private final OidcTokenRedisService oidcTokenRedisService;
     @Value("app.frontend.url")
     private String frontUrl;
-    public AccountController(AccountService accountService, AuthenticationManager authenticationManager, JWTTokenProvider jwtTokenProvider, DepartmentService departmentService, OidcTokenRedisService oidcTokenRedisService) {
+    public AccountController(AccountService accountService, AuthenticationManager authenticationManager, JWTTokenProvider jwtTokenProvider, OrganService organService, OidcTokenRedisService oidcTokenRedisService) {
         this.accountService = accountService;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
-        this.departmentService = departmentService;
+        this.organService = organService;
         this.oidcTokenRedisService = oidcTokenRedisService;
     }
 
@@ -64,8 +63,8 @@ public class AccountController {
                 new UsernamePasswordAuthenticationToken(loginRQ.getUserName(), loginRQ.getPassword()));
         CustomUserDetail userDetail = (CustomUserDetail) authentication.getPrincipal();
 
-        String departmentCode = userDetail.getCurrentUserDepartment() != null
-                ? userDetail.getCurrentUserDepartment().getDepartmentCode()
+        String departmentCode = userDetail.getOrgan() != null
+                ? userDetail.getOrgan().getCode()
                 : null;
         boolean isApiOrMobile = RestUtil.isApiClient(request) || RestUtil.isMobileClient(request);
         boolean useCookie = !isApiOrMobile;
@@ -79,18 +78,25 @@ public class AccountController {
 
 
     @GetMapping("/refresh-token/{username}")
-    public ResponseEntity<?> refreshToken(@PathVariable String username) {
+    public ResponseEntity<?> refreshToken(@PathVariable String username, HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (username != null) {
             String refreshToken = jwtTokenProvider.getRefreshToken(username);
             if (StringUtils.hasText(refreshToken)) {
                 Account account = accountService.findByUserName(username);
-                Department currentDP = departmentService.getEmployeeCurrentDepartment(account.getEmployee().getEmployeeNumber());
-                String token = jwtTokenProvider.createAccessToken(username, account.getEmployee().getRole().name(), currentDP.getDepartmentCode());
-                return new ResponseEntity<>(new LoginResponse(currentDP.getDepartmentCode(), refreshToken,token), HttpStatus.OK);
+                Organ Organ = organService.getEmployeeOrgan(account.getEmployee().getEmployeeNumber());
+
+                boolean isApiOrMobile = RestUtil.isApiClient(request) || RestUtil.isMobileClient(request);
+                boolean useCookie = !isApiOrMobile;
+
+                // Optionally send tokens via response (cookie/header)
+                jwtTokenProvider.sendTokens(response, Organ.getCode(), useCookie, username, account.getEmployee().getRole().name());
+                return new ResponseEntity<>( HttpStatus.OK);
             }
         }
-        return new ResponseEntity<>( HttpStatus.EXPECTATION_FAILED);
+
+        return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
     }
+
 
 
     @GetMapping(value = "/valid-jwt")
