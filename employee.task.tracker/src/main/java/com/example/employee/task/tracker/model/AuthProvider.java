@@ -43,6 +43,8 @@ public class AuthProvider extends BaseEntity<Long>{
 
     @Column(name = "authorization_uri")
     private String authorizationUri;
+    @Column(name = "refresh_uri")
+    private String refreshUri;
 
     @Column(name = "usernam_attr")
     private String userNameAttribute;
@@ -156,6 +158,14 @@ public class AuthProvider extends BaseEntity<Long>{
 
     public void setType(ProviderType type) {
         this.type = type;
+    }
+
+    public String getRefreshUri() {
+        return refreshUri;
+    }
+
+    public void setRefreshUri(String refreshUri) {
+        this.refreshUri = refreshUri;
     }
 
     public enum ProviderType {
