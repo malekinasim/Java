@@ -1,30 +1,36 @@
 package com.example.employee.task.tracker.config.security;
 
 
-import com.example.employee.task.tracker.model.AuthProvider;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.crypto.SecretKey;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class JWTTokenProvider {
+    @Value("spring.profiles.active")
+    private String profile;
     private final RedisTemplate<String, String> redisTemplate;
 
     @Value("${jwt.secret}")
@@ -36,10 +42,14 @@ public class JWTTokenProvider {
     @Value("${jwt.refresh-token-expiration}")
     private String refreshTokenExpiration;
 
-    private final String CUR_DEPARTMENT_CLAIM = "departmentCode";
+    @Value("${jwt.registeraton-token-expiration}")
+    private String registerTokenExpiration;
 
+    private final String CUR_DEPARTMENT_CLAIM = "X-Department-Code";
+    private final boolean isProduction;
     public JWTTokenProvider(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
+        this.isProduction= !profile.equals("dev");
     }
 
 
@@ -48,22 +58,7 @@ public class JWTTokenProvider {
         claims.put("role", role);
         claims.put(CUR_DEPARTMENT_CLAIM, departmentCode);
         Date now = new Date();
-        Date exp = new Date(now.getTime() + Long.parseLong(accessTokenExpiration));
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(exp)
-                .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS256)
-                .compact();
-    }
-
-    public String createAccessToken(String username, String role, AuthProvider authProvider) {
-        Claims claims = Jwts.claims().setSubject(username);
-        claims.put("role", role);
-        String PROVIDER_CLAIM = "provider";
-        claims.put(PROVIDER_CLAIM, authProvider.getRegistrationId());
-        Date now = new Date();
-        Date exp = new Date(now.getTime() +Long.parseLong( accessTokenExpiration));
+        Date exp = Date.from(Instant.now().plusMillis(Long.parseLong(registerTokenExpiration)));
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
@@ -75,7 +70,7 @@ public class JWTTokenProvider {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("type", "refresh");
         Date now = new Date();
-        Date exp = new Date(now.getTime() + Long.parseLong(refreshTokenExpiration));
+        Date exp = Date.from(Instant.now().plusMillis(Long.parseLong(registerTokenExpiration)));
         String refreshToken= Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
@@ -114,8 +109,20 @@ public class JWTTokenProvider {
     }
 
     public String resolveAccessToken(HttpServletRequest request) {
-        String bearer = request.getHeader("Authorization");
-        return bearer != null && bearer.startsWith("Bearer ") ? bearer.substring(7) : null;
+        String header = request.getHeader("Authorization");
+        if (StringUtils.hasText(header) && header.startsWith("Bearer ")) {
+            return header.substring(7);
+        }
+        // fallback to cookie
+        if (request.getCookies() != null) {
+            return Arrays.stream(request.getCookies())
+                    .filter(c -> "ACCESS_TOKEN".equals(c.getName()))
+                    .map(Cookie::getValue)
+                    .filter(StringUtils::hasText)
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
     }
 
     public boolean validateToken(String token) {
@@ -145,13 +152,60 @@ public class JWTTokenProvider {
 
     public String getCurrentDepartment(HttpServletRequest request) {
         String token = this.resolveAccessToken(request);
-        if (token != null) {
-            Claims claims = this.getClaims(token);
-            if (claims.get(CUR_DEPARTMENT_CLAIM) != null && StringUtils.hasText(claims.get(CUR_DEPARTMENT_CLAIM).toString())) {
-                return claims.get(CUR_DEPARTMENT_CLAIM).toString();
-
-            }
+        String departmentCode = null;
+        Object deptClaim = getClaims(token).get(CUR_DEPARTMENT_CLAIM);
+        if (deptClaim != null && StringUtils.hasText(deptClaim.toString())) {
+            departmentCode = deptClaim.toString();
+        } else {
+            String headerDept = request.getHeader(CUR_DEPARTMENT_CLAIM);
+            if (StringUtils.hasText(headerDept)) departmentCode = headerDept;
         }
-        return null;
+        return departmentCode;
+    }
+
+
+    public void sendTokens(HttpServletResponse response,
+                           String departmentCode,
+                           boolean useCookie,String username, String role) throws IOException {
+        String accessJwt = this.createAccessToken(username,role, departmentCode);
+        String refreshJwt= this.createRefreshToken(username);
+        if (useCookie) {
+            // ACCESS cookie
+            Cookie accessCookie =  creatTokenCookie("ACCESS_TOKEN", accessJwt, accessTokenExpiration);
+
+            // REFRESH cookie
+            Cookie refreshCookie = creatTokenCookie( "REFRESH_TOKEN", refreshJwt, refreshTokenExpiration);
+
+            if (departmentCode != null) {
+                response.setHeader(CUR_DEPARTMENT_CLAIM, departmentCode);
+            }
+
+        } else {
+            // JSON body for API/Mobile clients
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+            String dept = departmentCode == null ? "" : departmentCode;
+            String json = String.format("{\"department\":\"%s\",\"accessToken\":\"%s\",\"refreshToken\":\"%s\"}",
+                    escapeJson(dept), escapeJson(accessJwt), escapeJson(refreshJwt));
+            response.getWriter().write(json);
+        }
+    }
+
+    private Cookie creatTokenCookie(String name,String value, String refreshTokenExpiration) {
+        Cookie cookie = new Cookie(name, value);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(isProduction);
+        cookie.setPath("/");
+        Date expRefreshToken = Date.from(Instant.now().plusMillis(Long.parseLong(refreshTokenExpiration)));
+        cookie.setMaxAge((int) Duration.between(Instant.now(), expRefreshToken.toInstant()).getSeconds()       ); // 30 days example
+         return  cookie;
+    }
+
+    private String escapeJson(String s) {
+        if (s == null) return "";
+        return s.replace("\\", "\\\\").replace("\"", "\\\"");
+    }
+    public enum TokenType{
+        REFRESH_TOKEN,ACCESS_TOKEN,REGISTER_TOKEN;
     }
 }

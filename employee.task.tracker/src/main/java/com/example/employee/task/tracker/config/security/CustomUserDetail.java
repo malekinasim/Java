@@ -27,6 +27,9 @@ public class CustomUserDetail  implements UserDetails{
 
     public CustomUserDetail() {
     }
+    public CustomUserDetail(Account account) {
+        this(account,null,null);
+    }
 
     public CustomUserDetail(Account account, Department currentUserDepartment) {
         this(account,currentUserDepartment,null);

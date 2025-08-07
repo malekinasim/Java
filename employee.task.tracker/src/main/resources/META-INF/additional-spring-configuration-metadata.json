@@ -1,13 +1,29 @@
+
 {
   "properties": [
     {
       "name": "jwt.access-token-expiration",
-      "type": "java.lang.String",
+      "type": "java.lang.Integer",
       "description": "Description for jwt.access-token-expiration."
     },
     {
       "name": "jwt.refresh-token-expiration",
-      "type": "java.lang.String",
+      "type": "java.lang.Integer",
+      "description": "Description for jwt.refresh-token-expiration."
+    },
+    {
+      "name": "jwt.registeraton-token-expiration",
+      "type": "java.lang.Integer",
+      "description": "Description for jwt.refresh-token-expiration."
+    },
+    {
+      "name": "oauth.access-token-default-expiration-minute",
+      "type": "java.lang.Integer",
+      "description": "Description for jwt.refresh-token-expiration."
+    },
+    {
+      "name": "app.auth.registration.ttl-seconds",
+      "type": "java.lang.Integer",
       "description": "Description for jwt.refresh-token-expiration."
     },
     {
@@ -18,5 +34,11 @@
       "name": "datasource.admin.url",
       "type": "java.lang.String",
       "description": "Description for jwt.refresh-token-expiration."
-    }
+    },
+    , {
+      "name": "app.mobile.deep-link",
+      "type": "java.lang.String",
+      "description": "Description for jwt.refresh-token-expiration."
+    },
+
   ] }

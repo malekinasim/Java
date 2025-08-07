@@ -3,6 +3,7 @@ package com.example.employee.task.tracker.config.security;
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.repoeitory.authprovider.AuthProviderDataInitializer;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
+import com.example.employee.task.tracker.service.department.DepartmentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -39,6 +40,7 @@ public class SecurityBeanConfig {
     private final Environment environment;
     private final AuthProviderService providerService;
     private final AuthProviderDataInitializer authProviderDataInitializer;
+    private final DepartmentService departmentService;
 
     private static final String[] AUTH_WHITELIST = {
             "/v3/api-docs/**",
@@ -52,13 +54,14 @@ public class SecurityBeanConfig {
                               JWTTokenProvider jwtTokenProvider,
                               CustomUserDetailsService customUserDetailsService,
                               Environment environment,
-                              AuthProviderService providerService, AuthProviderDataInitializer authProviderDataInitializer) {
+                              AuthProviderService providerService, AuthProviderDataInitializer authProviderDataInitializer, DepartmentService departmentService) {
         this.customOAuth2SuccessHandler = customOAuth2SuccessHandler;
         this.jwtTokenProvider = jwtTokenProvider;
         this.customUserDetailsService = customUserDetailsService;
         this.environment = environment;
         this.providerService = providerService;
         this.authProviderDataInitializer = authProviderDataInitializer;
+        this.departmentService = departmentService;
     }
 
     @Bean
@@ -113,7 +116,7 @@ public class SecurityBeanConfig {
 
     @Bean
     public JWTAuthenticationFilter tokenAuthenticationFilter() {
-        return new JWTAuthenticationFilter(jwtTokenProvider, customUserDetailsService, List.of(AUTH_WHITELIST));
+        return new JWTAuthenticationFilter(jwtTokenProvider, customUserDetailsService, List.of(AUTH_WHITELIST),departmentService);
     }
 
     @Bean
