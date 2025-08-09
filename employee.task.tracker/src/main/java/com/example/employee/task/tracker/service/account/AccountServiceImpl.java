@@ -2,15 +2,12 @@ package com.example.employee.task.tracker.service.account;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.config.hibernate.StatusFilter;
-import com.example.employee.task.tracker.model.Account;
-import com.example.employee.task.tracker.model.AuthProvider;
-import com.example.employee.task.tracker.model.BaseEntity;
-import com.example.employee.task.tracker.model.Employee;
+import com.example.employee.task.tracker.model.*;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
-import com.example.employee.task.tracker.repoeitory.account.AccountRepository;
+import com.example.employee.task.tracker.repository.account.AccountRepository;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
-import com.example.employee.task.tracker.service.department.DepartmentService;
 import com.example.employee.task.tracker.service.employee.EmployeeService;
+import com.example.employee.task.tracker.service.organ.OrganService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,14 +22,14 @@ public class AccountServiceImpl implements AccountService {
     private final PasswordEncoder passwordEncoder;
     private final EmployeeService employeeService;
     private final AuthProviderService authProviderService;
-    private final DepartmentService departmentService;
+    private final OrganService organService;
 
-    public AccountServiceImpl(AccountRepository accountRepository, @Lazy PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService, DepartmentService departmentService) {
+    public AccountServiceImpl(AccountRepository accountRepository, @Lazy PasswordEncoder passwordEncoder, EmployeeService employeeService, AuthProviderService authProviderService, OrganService organService) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
         this.employeeService = employeeService;
         this.authProviderService = authProviderService;
-        this.departmentService = departmentService;
+        this.organService = organService;
     }
 
 
@@ -110,6 +107,8 @@ public class AccountServiceImpl implements AccountService {
         account.setUsername(signupRQ.getUserName());
         account.setPassword(passwordEncoder.encode(signupRQ.getPassword()));
         account.setStatus(BaseEntity.Status.ACTIVE);
+        Organ organ=organService.getOrganByCode(signupRQ.getOrganCode());
+        account.setOrgan(organ);
         return account;
     }
 }
