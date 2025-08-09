@@ -1,4 +1,4 @@
-package com.example.employee.task.tracker.repoeitory;
+package com.example.employee.task.tracker.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
