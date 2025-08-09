@@ -2,7 +2,6 @@ package com.example.employee.task.tracker.model;
 
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Formula;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,18 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "employees")
-public class Employee extends BaseEntity<Long> {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tenant_id", nullable = false)
-    private Organ organ;
-
-    public Organ getOrgan() {
-        return organ;
-    }
-
-    public void setOrgan(Organ organ) {
-        this.organ = organ;
-    }
+public class Employee extends OrganBaseEntity<Long> {
     @Enumerated
     @Column(name = "Role",nullable = true )
     private Role role;
@@ -42,8 +30,7 @@ public class Employee extends BaseEntity<Long> {
     @Column(name = "employee_number", nullable = false, unique = true)
     private String employeeNumber;
 
-    @Formula("name || ' ' || family")
-    private String fullName;
+
 
     @Column(name = "start_date", nullable = false)
     private LocalDate StartDate;
@@ -103,9 +90,6 @@ public class Employee extends BaseEntity<Long> {
         this.employeeNumber = employeeNumber;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
 
     public List<Task> getTasks() {
         return tasks;
@@ -182,7 +166,6 @@ public class Employee extends BaseEntity<Long> {
         return "Employee{" +
                 ", EndDate=" + EndDate +
                 ", StartDate=" + StartDate +
-                ", fullName='" + fullName + '\'' +
                 ", employeeNumber='" + employeeNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +

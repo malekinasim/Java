@@ -75,7 +75,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDto.setFamily(employee.getFamily());
         employeeDto.setEmployeeNumber(employee.getEmployeeNumber());
         employeeDto.setAddress(employee.getAddress());
-        employeeDto.setFullName(employee.getFullName());
+        employeeDto.setFullName(String.join(" ",
+                List.of(employee.getName(),employee.getFamily()
+        )));
         employeeDto.setStartDate(employee.getStartDate());
         employeeDto.setEndDate(employee.getEndDate());
         Department department = departmentService.getEmployeeCurrentDepartment(

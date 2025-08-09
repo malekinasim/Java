@@ -21,7 +21,7 @@ public class DepartmentController {
     @GetMapping("/{id}")
     ResponseEntity<?> one(@PathVariable Long id) {
         Department department = departmentService.findById(id);
-        return new ResponseEntity<>(department, HttpStatus.OK);
+        return new ResponseEntity<>(departmentService.mapToDto(department), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

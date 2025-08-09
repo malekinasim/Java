@@ -18,14 +18,14 @@ public class Department extends OrganBaseEntity<Long> {
     private Employee manager;
 
     // A department can have a higher (parent) department
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_dep_id")
     private Department higherDepartment;
 
-    @OneToMany(mappedBy = "department",targetEntity = DepartmentEmployees.class)
+    @OneToMany(mappedBy = "department",targetEntity = DepartmentEmployees.class, fetch = FetchType.LAZY)
     Set<DepartmentEmployees>    departmentEmployeesHistories;
 
-    @OneToMany(mappedBy = "higherDepartment", targetEntity = Department.class)
+    @OneToMany(mappedBy = "higherDepartment", targetEntity = Department.class,fetch = FetchType.LAZY)
     private Set<Department> subDepartment;
 
 

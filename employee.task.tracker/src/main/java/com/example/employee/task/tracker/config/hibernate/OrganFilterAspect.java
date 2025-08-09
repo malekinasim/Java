@@ -3,11 +3,12 @@ package com.example.employee.task.tracker.config.hibernate;
 import com.example.employee.task.tracker.model.Organ;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
-//@Aspect
+@Aspect
 @Component
 public class OrganFilterAspect {
 
@@ -18,8 +19,8 @@ public class OrganFilterAspect {
         this.entityManager = entityManager;
     }
 
-    @Before("execution(* com.example.employee.task.tracker.repository..*(..))")
-    public void applyTenantFilter() {
+    @Before(value = "execution(* com.example.employee.task.tracker.repository..*(..))")
+    public void applyOrganFilter() {
         Organ organ = OrganContext.getOrgan();
         if (organ != null) {
             Session session = entityManager.unwrap(Session.class);
