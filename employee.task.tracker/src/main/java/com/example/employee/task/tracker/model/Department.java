@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 @Entity
 @Table(name = "department")
-public class Department extends TenantBaseEntity<Long> {
+public class Department extends OrganBaseEntity<Long> {
     @Column(name = "code", unique = true, nullable = false)
     private String departmentCode;
 
