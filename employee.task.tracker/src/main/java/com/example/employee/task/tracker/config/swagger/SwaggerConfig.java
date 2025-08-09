@@ -2,10 +2,12 @@ package com.example.employee.task.tracker.config.swagger;
 
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.*;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.parameters.HeaderParameter;
+import io.swagger.v3.oas.models.parameters.Parameter;
 import io.swagger.v3.oas.models.security.*;
+import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
@@ -13,7 +15,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
-
 @Configuration
 public class SwaggerConfig {
     private final AuthProviderService authProviderService;
@@ -73,6 +74,27 @@ public class SwaggerConfig {
         return openAPI;
     }
 
+
+    @Bean
+    public OpenApiCustomizer globalHeaderCustomiser() {
+        return openApi -> {
+            Paths paths = openApi.getPaths();
+            if (paths != null) {
+                paths.forEach((path, pathItem) -> {
+                    for (PathItem.HttpMethod method : pathItem.readOperationsMap().keySet()) {
+                        Operation operation = pathItem.readOperationsMap().get(method);
+                        if (operation != null) {
+                            Parameter apiClientHeader = new HeaderParameter()
+                                    .name("X-API-CLIENT")
+                                    .description("API Client Request")
+                                    .required(true);
+                            operation.addParametersItem(apiClientHeader);
+                        }
+                    }
+                });
+            }
+        };
+    }
     private Scopes parseScopes(String scopeStr) {
         Scopes scopes = new Scopes();
         if (StringUtils.hasText(scopeStr)) {
