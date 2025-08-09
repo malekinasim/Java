@@ -1,6 +1,5 @@
 package com.example.employee.task.tracker.config.hibernate;
 
-import com.example.employee.task.tracker.config.FilterConstants;
 import com.example.employee.task.tracker.model.BaseEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -35,7 +34,7 @@ public class StatusFilterAspect {
         if (session.getEnabledFilter(FilterConstants.STATUS_FILTER) == null) {
 
             session.enableFilter(FilterConstants.STATUS_FILTER)
-                    .setParameter(FilterConstants.STATUS_FILTER_PARAM, "ACTIVE");
+                    .setParameter(FilterConstants.STATUS_FILTER_PARAM,statusValue);
             enabledHere = true;
         }
 
@@ -43,7 +42,7 @@ public class StatusFilterAspect {
             return pjp.proceed();
         } finally {
             if (enabledHere) {
-                session.disableFilter("statusFilter");
+                session.disableFilter(FilterConstants.STATUS_FILTER);
             }
         }
     }
