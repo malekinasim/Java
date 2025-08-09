@@ -1,6 +1,7 @@
 package com.example.employee.task.tracker.service.employee;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
+import com.example.employee.task.tracker.config.hibernate.FilterConstants;
 import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.model.Department;
@@ -8,8 +9,10 @@ import com.example.employee.task.tracker.model.DepartmentEmployees;
 import com.example.employee.task.tracker.model.Employee;
 import com.example.employee.task.tracker.model.dto.EmployeeDto;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
-import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;
+import com.example.employee.task.tracker.repository.employee.EmployeeRepository;
 import com.example.employee.task.tracker.service.department.DepartmentService;
+import jakarta.persistence.EntityManager;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,22 +26,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final DepartmentService departmentService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository,DepartmentService departmentService) {
+    private final EntityManager entityManager;
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentService departmentService, EntityManager entityManager) {
         this.employeeRepository = employeeRepository;
         this.departmentService = departmentService;
+        this.entityManager = entityManager;
     }
 
- 
 
     @Override
+    //@StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Employee findById(Long id) {
+
+        Session session = entityManager.unwrap(Session.class);
+        session.enableFilter(FilterConstants.STATUS_FILTER)
+                .setParameter(FilterConstants.STATUS_FILTER_PARAM,"ACTIVE");
         return employeeRepository.findById(id).orElseThrow(
-                ()->new  CustomException("employee.not_found") );
+                () -> new CustomException("employee.not_found"));
     }
 
     @Override
     public void deleteById(Long id) {
-         this.employeeRepository.deleteById(id);
+        this.employeeRepository.deleteById(id);
     }
 
     @Override
@@ -49,19 +59,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Employee save(Employee employee) {
-        if(employee.getStartDate()==null)
+        if (employee.getStartDate() == null)
             employee.setStartDate(LocalDate.now());
         return employeeRepository.save(employee);
     }
 
     @Override
     public Employee update(Employee employee) {
-        Employee find=this.findById(employee.getId());
+        Employee find = this.findById(employee.getId());
         find.setName(employee.getName());
         find.setFamily(employee.getFamily());
         find.setStartDate(employee.getStartDate());
         find.setEndDate(employee.getEndDate());
         find.setAddress(employee.getAddress());
+        find.setEmail(employee.getEmail());
         find.setPhoneNumber(employee.getPhoneNumber());
         find.setTasks(employee.getTasks());
         return employeeRepository.save(find);
@@ -69,7 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto mapToDto(Employee employee) {
-        EmployeeDto employeeDto=new EmployeeDto();
+        EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName(employee.getName());
         employeeDto.setFamily(employee.getFamily());
         employeeDto.setEmployeeNumber(employee.getEmployeeNumber());
@@ -80,10 +91,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         Department department = departmentService.getEmployeeCurrentDepartment(
                 employee.getEmployeeNumber());
         employeeDto.setCurrentDepartment(departmentService.mapToDto(department));
-        if(employee.getRole()!=null)
+        if (employee.getRole() != null)
             employeeDto.setRole(employee.getRole().name());
         return employeeDto;
     }
+
     @Override
     public Employee mapToEntity(EmployeeDto employeeDto) {
         Employee employee = new Employee();
@@ -108,19 +120,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setStartDate(LocalDate.now());
         employee.setStatus(BaseEntity.Status.ACTIVE);
         employee.setPhoneNumber(signupRQ.getPhone_number());
-        Department department=departmentService.findByDepartmentCode(signupRQ.getDepartmentCode());
-        DepartmentEmployees departmentEmployees =new DepartmentEmployees();
+        Department department = departmentService.findByDepartmentCodeAndOrganCode(signupRQ.getDepartmentCode(),
+                signupRQ.getOrganCode());
+        DepartmentEmployees departmentEmployees = new DepartmentEmployees();
         departmentEmployees.setDepartment(department);
         departmentEmployees.setFromDate(LocalDateTime.now());
+        departmentEmployees.setOrgan(department.getOrgan());
         employee.setDepartmentEmployees(List.of(departmentEmployees));
         departmentEmployees.setEmployee(employee);
+        employee.setOrgan(department.getOrgan());
         return employee;
     }
 
     @Override
     @StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Optional<Employee> findByEmployeeNumber(String employeeNumber) {
-        return  this.employeeRepository.findByEmployeeNumber(employeeNumber);
+        return this.employeeRepository.findByEmployeeNumber(employeeNumber);
 
     }
 }
