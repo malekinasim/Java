@@ -1,6 +1,6 @@
 package com.example.employee.task.tracker.config.security;
 
-import com.example.employee.task.tracker.config.RestUtil;
+import com.example.employee.task.tracker.util.RestUtil;
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.Account;
 import com.example.employee.task.tracker.model.AuthProvider;
