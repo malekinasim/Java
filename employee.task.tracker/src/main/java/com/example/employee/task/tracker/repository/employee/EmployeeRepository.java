@@ -1,6 +1,6 @@
-package com.example.employee.task.tracker.repoeitory.employee;
+package com.example.employee.task.tracker.repository.employee;
 import com.example.employee.task.tracker.model.Employee;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
+import com.example.employee.task.tracker.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
