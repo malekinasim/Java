@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table(name = "task_history")
-public class TaskHistory extends TenantBaseEntity<Long> {
+public class TaskHistory extends OrganBaseEntity<Long> {
     @Column(name = "from_date", nullable = false)
     private LocalDate fromDate;
 

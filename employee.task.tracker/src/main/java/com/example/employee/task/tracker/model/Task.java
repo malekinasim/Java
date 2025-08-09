@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 @Entity
 @Table(name = "tasks")
-public class Task extends TenantBaseEntity<Long> {
+public class Task extends OrganBaseEntity<Long> {
 
     @Column(name = "task_number", nullable = false, unique = true)
     private String taskNumber;
