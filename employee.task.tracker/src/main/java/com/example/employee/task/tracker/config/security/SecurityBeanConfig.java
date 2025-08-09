@@ -75,10 +75,8 @@ public class SecurityBeanConfig {
     @Lazy
     public ClientRegistrationRepository clientRegistrationRepository() {
         authProviderDataInitializer.initializeAuthProviders(providerService);
-        List<AuthProvider> oauthProviders = providerService.findAll();
-
+        List<AuthProvider> oauthProviders = providerService.findAllByType(AuthProvider.ProviderType.OIDC);
         List<ClientRegistration> registrations = oauthProviders.stream()
-                .filter(provider -> provider.getType() == AuthProvider.ProviderType.OIDC)
                 .map(OAuthClientRegistrationFactory::create)
                 .toList();
 

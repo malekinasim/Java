@@ -10,8 +10,18 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "employees")
-public class Employee extends OrganBaseEntity<Long> {
+public class Employee extends BaseEntity<Long> {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tenant_id", nullable = false)
+    private Organ organ;
 
+    public Organ getOrgan() {
+        return organ;
+    }
+
+    public void setOrgan(Organ organ) {
+        this.organ = organ;
+    }
     @Enumerated
     @Column(name = "Role",nullable = true )
     private Role role;

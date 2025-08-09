@@ -1,8 +1,6 @@
 package com.example.employee.task.tracker.service.employee;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
-import com.example.employee.task.tracker.config.hibernate.FilterConstants;
-import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.DepartmentEmployees;
@@ -11,8 +9,6 @@ import com.example.employee.task.tracker.model.dto.EmployeeDto;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
 import com.example.employee.task.tracker.repository.employee.EmployeeRepository;
 import com.example.employee.task.tracker.service.department.DepartmentService;
-import jakarta.persistence.EntityManager;
-import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,23 +22,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final DepartmentService departmentService;
 
-    private final EntityManager entityManager;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentService departmentService, EntityManager entityManager) {
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentService departmentService) {
         this.employeeRepository = employeeRepository;
         this.departmentService = departmentService;
-        this.entityManager = entityManager;
     }
 
 
     @Override
-    //@StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Employee findById(Long id) {
-
-        Session session = entityManager.unwrap(Session.class);
-        session.enableFilter(FilterConstants.STATUS_FILTER)
-                .setParameter(FilterConstants.STATUS_FILTER_PARAM,"ACTIVE");
-        return employeeRepository.findById(id).orElseThrow(
+      return employeeRepository.findById(id).orElseThrow(
                 () -> new CustomException("employee.not_found"));
     }
 
@@ -133,7 +123,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Optional<Employee> findByEmployeeNumber(String employeeNumber) {
         return this.employeeRepository.findByEmployeeNumber(employeeNumber);
 

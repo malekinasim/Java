@@ -9,8 +9,8 @@ import java.util.Optional;
 @Repository
 public interface DepartmentRepository extends BaseRepository<Department, Long> {
 
-    @Query(value = "select d from Department d " +
-            "inner join  d.departmentEmployeesHistories dh " +
+    @Query(value = "select d from DepartmentEmployees dh " +
+            "inner join  dh.department d " +
             "inner join dh.employee e " +
             "where e.employeeNumber=:employeeNumber ")
     Optional<Department> getEmployeeCurrentDepartment(String employeeNumber);

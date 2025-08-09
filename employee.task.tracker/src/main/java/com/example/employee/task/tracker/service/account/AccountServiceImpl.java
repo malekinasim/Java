@@ -1,7 +1,6 @@
 package com.example.employee.task.tracker.service.account;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
-import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.*;
 import com.example.employee.task.tracker.model.dto.SignupRQ;
 import com.example.employee.task.tracker.repository.account.AccountRepository;
@@ -59,7 +58,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @StatusFilter(status = BaseEntity.Status.ACTIVE)
     public Account findByUserName(String userName) {
         return accountRepository.findByUsername(userName).orElseThrow(
                 () -> new CustomException("account.not_find.error")
@@ -81,7 +79,7 @@ public class AccountServiceImpl implements AccountService {
                         }
                 );
         account.setEmployee(newEmployee);
-        AuthProvider authProvider = authProviderService.findByRegisterationId(signupRQ.getAuthProvider());
+        AuthProvider authProvider = authProviderService.findByRegistrationId(signupRQ.getAuthProvider());
         account.setProvider(authProvider);
         account.setStatus(BaseEntity.Status.ACTIVE);
         this.save(account);

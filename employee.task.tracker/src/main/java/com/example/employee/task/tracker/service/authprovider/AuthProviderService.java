@@ -7,9 +7,11 @@ import java.util.List;
 
 
 public interface AuthProviderService extends BaseService<AuthProvider,Long> {
-    AuthProvider findByRegisterationId(String authProvider);
+    AuthProvider findByRegistrationId(String authProvider);
 
     long countActive();
 
     void saveAll(List<AuthProvider> authProviders);
+
+    List<AuthProvider> findAllByType(AuthProvider.ProviderType providerType);
 }

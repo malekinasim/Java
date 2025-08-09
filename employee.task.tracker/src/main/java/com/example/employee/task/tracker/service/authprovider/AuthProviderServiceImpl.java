@@ -1,7 +1,6 @@
 package com.example.employee.task.tracker.service.authprovider;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
-import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.repository.authprovider.AuthProviderRepository;
@@ -51,14 +50,12 @@ public class AuthProviderServiceImpl implements AuthProviderService {
     }
 
     @Override
-    @StatusFilter(status = BaseEntity.Status.ACTIVE)
-    public AuthProvider findByRegisterationId(String name) {
+    public AuthProvider findByRegistrationId(String name) {
         return authProviderRepository.findByRegistrationId(name).orElseThrow(()->
                 new CustomException("authProvider.not_found.error"));
     }
 
     @Override
-    @StatusFilter(status = BaseEntity.Status.ACTIVE)
     @Transactional
     public long countActive() {
 
@@ -70,5 +67,10 @@ public class AuthProviderServiceImpl implements AuthProviderService {
     public void saveAll(List<AuthProvider> authProviders) {
         authProviders.forEach(authProvider->authProvider.setStatus(BaseEntity.Status.ACTIVE));
         this.authProviderRepository.saveAll(authProviders);
+    }
+
+    @Override
+    public List<AuthProvider> findAllByType(AuthProvider.ProviderType providerType) {
+        return this.authProviderRepository.getAllByType(providerType);
     }
 }

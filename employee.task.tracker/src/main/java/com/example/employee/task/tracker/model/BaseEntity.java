@@ -4,15 +4,14 @@ import com.example.employee.task.tracker.config.hibernate.FilterConstants;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 @MappedSuperclass
-@FilterDef(name = FilterConstants.STATUS_FILTER, parameters = @ParamDef(name = FilterConstants.STATUS_FILTER_PARAM, type = String.class))
-@Filter(name = FilterConstants.STATUS_FILTER, condition = "status = :status_prm")
+@FilterDef(name = FilterConstants.STATUS_FILTER,applyToLoadByKey = true,autoEnabled = true)
+@Filter(name = FilterConstants.STATUS_FILTER, condition = "status = 'ACTIVE'" )
 public class BaseEntity <ID>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
