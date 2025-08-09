@@ -34,11 +34,14 @@
       "name": "datasource.admin.url",
       "type": "java.lang.String",
       "description": "Description for jwt.refresh-token-expiration."
-    },
-    , {
+    }, {
       "name": "app.mobile.deep-link",
       "type": "java.lang.String",
       "description": "Description for jwt.refresh-token-expiration."
     },
-
+    {
+      "name": "app.frontend.url",
+      "type": "java.lang.String",
+      "description": "Description for jwt.refresh-token-expiration."
+    }
   ] }
