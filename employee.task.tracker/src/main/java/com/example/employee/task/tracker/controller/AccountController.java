@@ -1,6 +1,6 @@
 package com.example.employee.task.tracker.controller;
 
-import com.example.employee.task.tracker.config.RestUtil;
+import com.example.employee.task.tracker.util.RestUtil;
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.config.security.CustomUserDetail;
 import com.example.employee.task.tracker.config.security.JWTTokenProvider;
@@ -63,13 +63,13 @@ public class AccountController {
                 new UsernamePasswordAuthenticationToken(loginRQ.getUserName(), loginRQ.getPassword()));
         CustomUserDetail userDetail = (CustomUserDetail) authentication.getPrincipal();
 
-        String departmentCode = userDetail.getOrgan() != null
+        String organCode = userDetail.getOrgan() != null
                 ? userDetail.getOrgan().getCode()
                 : null;
         boolean isApiOrMobile = RestUtil.isApiClient(request) || RestUtil.isMobileClient(request);
         boolean useCookie = !isApiOrMobile;
 
-        jwtTokenProvider.sendTokens( response,departmentCode,  useCookie,loginRQ.getUserName(),userDetail.getEmployee().getRole().name());
+        jwtTokenProvider.sendTokens( response,organCode,  useCookie,loginRQ.getUserName(),userDetail.getEmployee().getRole().name());
 
         if (!isApiOrMobile) {
             response.sendRedirect(frontUrl + "/home");
