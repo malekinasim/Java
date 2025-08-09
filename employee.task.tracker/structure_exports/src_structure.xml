@@ -2021,24 +2021,24 @@ public interface BaseRepository&lt;T, ID> extends JpaRepository&lt;T, ID> {&#xd;
     </XmlFileContent>
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\repoeitory\department\DepartmentRepository.java</path>
-      <content>package com.example.employee.task.tracker.repoeitory.department;&#xd;
-&#xd;
-import com.example.employee.task.tracker.model.Department;&#xd;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
-import org.springframework.data.jpa.repository.Query;&#xd;
-import org.springframework.stereotype.Repository;&#xd;
-&#xd;
-import java.util.Optional;&#xd;
-@Repository&#xd;
-public interface DepartmentRepository extends BaseRepository&lt;Department, Long> {&#xd;
-&#xd;
-    @Query(value = "select d from Department d " +&#xd;
-            "inner join  d.departmentEmployeesHistories dh " +&#xd;
-            "inner join dh.employee e " +&#xd;
-            "where e.employeeNumber=:employeeNumber ")&#xd;
-    Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
-}&#xd;
-</content>
+      <content>package com.example.employee.task.tracker.repository.department;&#xd;
+          &#xd;
+          import com.example.employee.task.tracker.model.Department;&#xd;
+          import com.example.employee.task.tracker.repository.BaseRepository;&#xd;
+          import org.springframework.data.jpa.repository.Query;&#xd;
+          import org.springframework.stereotype.Repository;&#xd;
+          &#xd;
+          import java.util.Optional;&#xd;
+          @Repository&#xd;
+          public interface DepartmentRepository extends BaseRepository&lt;Department, Long> {&#xd;
+          &#xd;
+          @Query(value = "select d from Department d " +&#xd;
+          "inner join d.departmentEmployeesHistories dh " +&#xd;
+          "inner join dh.employee e " +&#xd;
+          "where e.employeeNumber=:employeeNumber ")&#xd;
+          Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>727</size>
         <modified></modified>
@@ -2048,14 +2048,14 @@ public interface DepartmentRepository extends BaseRepository&lt;Department, Long
     </XmlFileContent>
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\repoeitory\employee\EmployeeRepository.java</path>
-      <content>package com.example.employee.task.tracker.repoeitory.employee;&#xd;
-import com.example.employee.task.tracker.model.Employee;&#xd;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
-import org.springframework.stereotype.Repository;&#xd;
-@Repository&#xd;
-public interface EmployeeRepository extends BaseRepository&lt;Employee, Long> {&#xd;
-}&#xd;
-</content>
+      <content>package com.example.employee.task.tracker.repository.employee;&#xd;
+          import com.example.employee.task.tracker.model.Employee;&#xd;
+          import com.example.employee.task.tracker.repository.BaseRepository;&#xd;
+          import org.springframework.stereotype.Repository;&#xd;
+          @Repository&#xd;
+          public interface EmployeeRepository extends BaseRepository&lt;Employee, Long> {&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>336</size>
         <modified></modified>
@@ -2065,22 +2065,22 @@ public interface EmployeeRepository extends BaseRepository&lt;Employee, Long> {&
     </XmlFileContent>
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\repoeitory\task\TaskHistoryRepository.java</path>
-      <content>package com.example.employee.task.tracker.repoeitory.task;&#xd;
-&#xd;
-import com.example.employee.task.tracker.model.TaskHistory;&#xd;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
-import org.springframework.data.jpa.repository.Query;&#xd;
-import org.springframework.stereotype.Repository;&#xd;
-&#xd;
-import java.util.Optional;&#xd;
-@Repository&#xd;
-public interface TaskHistoryRepository extends BaseRepository&lt;TaskHistory, Long> {&#xd;
-    @Query(value = "select  th from TaskHistory th " +&#xd;
-            " inner join th.task t where t.id=:taskId  " +&#xd;
-            "order by th.fromDate asc limit 1")&#xd;
-    Optional&lt;TaskHistory> getLastTaskStatus(Long taskId);&#xd;
-}&#xd;
-</content>
+      <content>package com.example.employee.task.tracker.repository.task;&#xd;
+          &#xd;
+          import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+          import com.example.employee.task.tracker.repository.BaseRepository;&#xd;
+          import org.springframework.data.jpa.repository.Query;&#xd;
+          import org.springframework.stereotype.Repository;&#xd;
+          &#xd;
+          import java.util.Optional;&#xd;
+          @Repository&#xd;
+          public interface TaskHistoryRepository extends BaseRepository&lt;TaskHistory, Long> {&#xd;
+          @Query(value = "select th from TaskHistory th " +&#xd;
+          " inner join th.task t where t.id=:taskId " +&#xd;
+          "order by th.fromDate asc limit 1")&#xd;
+          Optional&lt;TaskHistory> getLastTaskStatus(Long taskId);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>652</size>
         <modified></modified>
@@ -2090,14 +2090,14 @@ public interface TaskHistoryRepository extends BaseRepository&lt;TaskHistory, Lo
     </XmlFileContent>
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\repoeitory\task\TaskRepository.java</path>
-      <content>package com.example.employee.task.tracker.repoeitory.task;&#xd;
-import com.example.employee.task.tracker.model.Task;&#xd;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
-import org.springframework.stereotype.Repository;&#xd;
-@Repository&#xd;
-public interface TaskRepository extends BaseRepository&lt;Task, Long> {&#xd;
-}&#xd;
-</content>
+      <content>package com.example.employee.task.tracker.repository.task;&#xd;
+          import com.example.employee.task.tracker.model.Task;&#xd;
+          import com.example.employee.task.tracker.repository.BaseRepository;&#xd;
+          import org.springframework.stereotype.Repository;&#xd;
+          @Repository&#xd;
+          public interface TaskRepository extends BaseRepository&lt;Task, Long> {&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>320</size>
         <modified></modified>
@@ -2108,21 +2108,21 @@ public interface TaskRepository extends BaseRepository&lt;Task, Long> {&#xd;
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\BaseService.java</path>
       <content>package com.example.employee.task.tracker.service;&#xd;
-&#xd;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;&#xd;
-&#xd;
-import java.util.List;&#xd;
-&#xd;
-public interface BaseService&lt;T,ID,R extends BaseRepository&lt;T,ID>>{&#xd;
-    R getRepository();&#xd;
-    T findById(ID id);&#xd;
-    void deleteById(ID id);&#xd;
-    List&lt;T> findAll();&#xd;
-    T save(T t);&#xd;
-    T update(T t);&#xd;
-&#xd;
-}&#xd;
-</content>
+          &#xd;
+          import com.example.employee.task.tracker.repository.BaseRepository;&#xd;
+          &#xd;
+          import java.util.List;&#xd;
+          &#xd;
+          public interface BaseService&lt;T,ID,R extends BaseRepository&lt;T,ID>>{&#xd;
+          R getRepository();&#xd;
+          T findById(ID id);&#xd;
+          void deleteById(ID id);&#xd;
+          List&lt;T> findAll();&#xd;
+          T save(T t);&#xd;
+          T update(T t);&#xd;
+          &#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>363</size>
         <modified></modified>
@@ -2133,21 +2133,21 @@ public interface BaseService&lt;T,ID,R extends BaseRepository&lt;T,ID>>{&#xd;
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\department\DepartmentService.java</path>
       <content>package com.example.employee.task.tracker.service.department;&#xd;
-import com.example.employee.task.tracker.model.Department;&#xd;
-import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;&#xd;
-import com.example.employee.task.tracker.service.BaseService;&#xd;
-&#xd;
-import java.util.Optional;&#xd;
-&#xd;
-public interface DepartmentService extends BaseService&lt;Department, Long, DepartmentRepository> {&#xd;
-    Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
-&#xd;
-    DepartmentDto mapToDto(Department department);&#xd;
-&#xd;
-    Department mapToEntity(DepartmentDto departmentDto);&#xd;
-}&#xd;
-</content>
+          import com.example.employee.task.tracker.model.Department;&#xd;
+          import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
+          import com.example.employee.task.tracker.repository.department.DepartmentRepository;&#xd;
+          import com.example.employee.task.tracker.service.BaseService;&#xd;
+          &#xd;
+          import java.util.Optional;&#xd;
+          &#xd;
+          public interface DepartmentService extends BaseService&lt;Department, Long, DepartmentRepository> {&#xd;
+          Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber);&#xd;
+          &#xd;
+          DepartmentDto mapToDto(Department department);&#xd;
+          &#xd;
+          Department mapToEntity(DepartmentDto departmentDto);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>665</size>
         <modified></modified>
@@ -2158,89 +2158,89 @@ public interface DepartmentService extends BaseService&lt;Department, Long, Depa
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\department\DepartmentServiceImpl.java</path>
       <content>package com.example.employee.task.tracker.service.department;&#xd;
-&#xd;
-import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
-import com.example.employee.task.tracker.model.Department;&#xd;
-import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;&#xd;
-import org.springframework.stereotype.Service;&#xd;
-import org.springframework.util.CollectionUtils;&#xd;
-&#xd;
-import java.util.List;&#xd;
-import java.util.Optional;&#xd;
-import java.util.stream.Collectors;&#xd;
-@Service&#xd;
-public class DepartmentServiceImpl implements DepartmentService {&#xd;
-    private final DepartmentRepository departmentRepository;&#xd;
-&#xd;
-&#xd;
-    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {&#xd;
-        this.departmentRepository = departmentRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public DepartmentRepository getRepository() {&#xd;
-        return departmentRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Department findById(Long id) {&#xd;
-        return getRepository().findById(id).orElseThrow(&#xd;
-                () -> new CustomException("department.not_found"));&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public void deleteById(Long id) {&#xd;
-        this.getRepository().deleteById(id);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public List&lt;Department> findAll() {&#xd;
-        return getRepository().findAll();&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Department save(Department department) {&#xd;
-        return getRepository().save(department);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Department update(Department department) {&#xd;
-        Department find = this.findById(department.getId());&#xd;
-        find.setName(department.getName());&#xd;
-        if (find.getManager() != null) {&#xd;
-            if (department.getManager() != null)&#xd;
-                if (!find.getManager().getId().equals(department.getManager().getId()))&#xd;
-                    find.setManager(department.getManager());&#xd;
-                else&#xd;
-                    find.setManager(null);&#xd;
-        }&#xd;
-        if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
-            find.setSubDepartment(department.getSubDepartment());&#xd;
-        return getRepository().save(find);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber) {&#xd;
-        return getRepository().getEmployeeCurrentDepartment(employeeNumber);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public DepartmentDto mapToDto(Department department) {&#xd;
-        DepartmentDto departmentDto = new DepartmentDto();&#xd;
-        departmentDto.setName(department.getName());&#xd;
-        departmentDto.setDepartmentCode(department.getDepartmentCode());&#xd;
-        if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
-            departmentDto.setSubDepartment(department.getSubDepartment().stream().map(this::mapToDto).collect(Collectors.toSet()));&#xd;
-        return departmentDto;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Department mapToEntity(DepartmentDto departmentDto) {&#xd;
-        return null;&#xd;
-    }&#xd;
-}&#xd;
-</content>
+          &#xd;
+          import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+          import com.example.employee.task.tracker.model.Department;&#xd;
+          import com.example.employee.task.tracker.model.dto.DepartmentDto;&#xd;
+          import com.example.employee.task.tracker.repository.department.DepartmentRepository;&#xd;
+          import org.springframework.stereotype.Service;&#xd;
+          import org.springframework.util.CollectionUtils;&#xd;
+          &#xd;
+          import java.util.List;&#xd;
+          import java.util.Optional;&#xd;
+          import java.util.stream.Collectors;&#xd;
+          @Service&#xd;
+          public class DepartmentServiceImpl implements DepartmentService {&#xd;
+          private final DepartmentRepository departmentRepository;&#xd;
+          &#xd;
+          &#xd;
+          public DepartmentServiceImpl(DepartmentRepository departmentRepository) {&#xd;
+          this.departmentRepository = departmentRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public DepartmentRepository getRepository() {&#xd;
+          return departmentRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Department findById(Long id) {&#xd;
+          return getRepository().findById(id).orElseThrow(&#xd;
+          () -> new CustomException("department.not_found"));&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public void deleteById(Long id) {&#xd;
+          this.getRepository().deleteById(id);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public List&lt;Department> findAll() {&#xd;
+          return getRepository().findAll();&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Department save(Department department) {&#xd;
+          return getRepository().save(department);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Department update(Department department) {&#xd;
+          Department find = this.findById(department.getId());&#xd;
+          find.setName(department.getName());&#xd;
+          if (find.getManager() != null) {&#xd;
+          if (department.getManager() != null)&#xd;
+          if (!find.getManager().getId().equals(department.getManager().getId()))&#xd;
+          find.setManager(department.getManager());&#xd;
+          else&#xd;
+          find.setManager(null);&#xd;
+          }&#xd;
+          if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
+          find.setSubDepartment(department.getSubDepartment());&#xd;
+          return getRepository().save(find);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Optional&lt;Department> getEmployeeCurrentDepartment(String employeeNumber) {&#xd;
+          return getRepository().getEmployeeCurrentDepartment(employeeNumber);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public DepartmentDto mapToDto(Department department) {&#xd;
+          DepartmentDto departmentDto = new DepartmentDto();&#xd;
+          departmentDto.setName(department.getName());&#xd;
+          departmentDto.setDepartmentCode(department.getDepartmentCode());&#xd;
+          if (!CollectionUtils.isEmpty(department.getSubDepartment()))&#xd;
+          departmentDto.setSubDepartment(department.getSubDepartment().stream().map(this::mapToDto).collect(Collectors.toSet()));&#xd;
+          return departmentDto;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Department mapToEntity(DepartmentDto departmentDto) {&#xd;
+          return null;&#xd;
+          }&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>2980</size>
         <modified></modified>
@@ -2251,16 +2251,16 @@ public class DepartmentServiceImpl implements DepartmentService {&#xd;
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\employee\EmployeeService.java</path>
       <content>package com.example.employee.task.tracker.service.employee;&#xd;
-import com.example.employee.task.tracker.model.Employee;&#xd;
-import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;&#xd;
-import com.example.employee.task.tracker.service.BaseService;&#xd;
-&#xd;
-public interface EmployeeService extends BaseService&lt;Employee, Long, EmployeeRepository> {&#xd;
-    EmployeeDto mapToDto(Employee employee);&#xd;
-    Employee mapToEntity(EmployeeDto employeeDto);&#xd;
-}&#xd;
-</content>
+          import com.example.employee.task.tracker.model.Employee;&#xd;
+          import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
+          import com.example.employee.task.tracker.repository.employee.EmployeeRepository;&#xd;
+          import com.example.employee.task.tracker.service.BaseService;&#xd;
+          &#xd;
+          public interface EmployeeService extends BaseService&lt;Employee, Long, EmployeeRepository> {&#xd;
+          EmployeeDto mapToDto(Employee employee);&#xd;
+          Employee mapToEntity(EmployeeDto employeeDto);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>524</size>
         <modified></modified>
@@ -2271,100 +2271,101 @@ public interface EmployeeService extends BaseService&lt;Employee, Long, Employee
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\employee\EmployeeServiceImpl.java</path>
       <content>package com.example.employee.task.tracker.service.employee;&#xd;
-&#xd;
-import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
-import com.example.employee.task.tracker.model.Department;&#xd;
-import com.example.employee.task.tracker.model.Employee;&#xd;
-import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.employee.EmployeeRepository;&#xd;
-import com.example.employee.task.tracker.service.department.DepartmentService;&#xd;
-import org.springframework.stereotype.Service;&#xd;
-&#xd;
-import java.time.LocalDate;&#xd;
-import java.util.List;&#xd;
-import java.util.Optional;&#xd;
-&#xd;
-@Service&#xd;
-public class EmployeeServiceImpl implements EmployeeService {&#xd;
-    private final EmployeeRepository employeeRepository;&#xd;
-    private final DepartmentService departmentService;&#xd;
-&#xd;
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository,DepartmentService departmentService) {&#xd;
-        this.employeeRepository = employeeRepository;&#xd;
-        this.departmentService = departmentService;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public EmployeeRepository getRepository() {&#xd;
-        return employeeRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Employee findById(Long id) {&#xd;
-        return getRepository().findById(id).orElseThrow(&#xd;
-                ()->new  CustomException("employee.not_found") );&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public void deleteById(Long id) {&#xd;
-         this.getRepository().deleteById(id);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public List&lt;Employee> findAll() {&#xd;
-        return getRepository().findAll();&#xd;
-    }&#xd;
-    @Override&#xd;
-    public Employee save(Employee employee) {&#xd;
-        if(employee.getStartDate()==null)&#xd;
-            employee.setStartDate(LocalDate.now());&#xd;
-        return getRepository().save(employee);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Employee update(Employee employee) {&#xd;
-        Employee find=this.findById(employee.getId());&#xd;
-        find.setName(employee.getName());&#xd;
-        find.setFamily(employee.getFamily());&#xd;
-        find.setStartDate(employee.getStartDate());&#xd;
-        find.setEndDate(employee.getEndDate());&#xd;
-        find.setAddress(employee.getAddress());&#xd;
-        find.setPhoneNumber(employee.getPhoneNumber());&#xd;
-        find.setTasks(employee.getTasks());&#xd;
-        return getRepository().save(find);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public EmployeeDto mapToDto(Employee employee) {&#xd;
-        EmployeeDto employeeDto=new EmployeeDto();&#xd;
-        employeeDto.setName(employee.getName());&#xd;
-        employeeDto.setFamily(employee.getFamily());&#xd;
-        employeeDto.setEmployeeNumber(employee.getEmployeeNumber());&#xd;
-        employeeDto.setAddress(employee.getAddress());&#xd;
-        employeeDto.setFullName(employee.getFullName());&#xd;
-        employeeDto.setStartDate(employee.getStartDate());&#xd;
-        employeeDto.setEndDate(employee.getEndDate());&#xd;
-&#xd;
-        Optional&lt;Department> department = departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());&#xd;
-        if (department.isPresent())&#xd;
-            employeeDto.setCurrentDepartment(departmentService.mapToDto(department.get()));&#xd;
-&#xd;
-        return employeeDto;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Employee mapToEntity(EmployeeDto employeeDto) {&#xd;
-        Employee employee = new Employee();&#xd;
-        employee.setName(employeeDto.getName());&#xd;
-        employee.setFamily(employeeDto.getFamily());&#xd;
-        employee.setStartDate(employeeDto.getStartDate());&#xd;
-        employee.setEndDate(employeeDto.getEndDate());&#xd;
-        employee.setAddress(employeeDto.getAddress());&#xd;
-        employee.setPhoneNumber(employeeDto.getPhoneNumber());&#xd;
-        return employee;&#xd;
-    }&#xd;
-}&#xd;
-</content>
+          &#xd;
+          import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+          import com.example.employee.task.tracker.model.Department;&#xd;
+          import com.example.employee.task.tracker.model.Employee;&#xd;
+          import com.example.employee.task.tracker.model.dto.EmployeeDto;&#xd;
+          import com.example.employee.task.tracker.repository.employee.EmployeeRepository;&#xd;
+          import com.example.employee.task.tracker.service.department.DepartmentService;&#xd;
+          import org.springframework.stereotype.Service;&#xd;
+          &#xd;
+          import java.time.LocalDate;&#xd;
+          import java.util.List;&#xd;
+          import java.util.Optional;&#xd;
+          &#xd;
+          @Service&#xd;
+          public class EmployeeServiceImpl implements EmployeeService {&#xd;
+          private final EmployeeRepository employeeRepository;&#xd;
+          private final DepartmentService departmentService;&#xd;
+          &#xd;
+          public EmployeeServiceImpl(EmployeeRepository employeeRepository,DepartmentService departmentService) {&#xd;
+          this.employeeRepository = employeeRepository;&#xd;
+          this.departmentService = departmentService;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public EmployeeRepository getRepository() {&#xd;
+          return employeeRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Employee findById(Long id) {&#xd;
+          return getRepository().findById(id).orElseThrow(&#xd;
+          ()->new CustomException("employee.not_found") );&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public void deleteById(Long id) {&#xd;
+          this.getRepository().deleteById(id);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public List&lt;Employee> findAll() {&#xd;
+          return getRepository().findAll();&#xd;
+          }&#xd;
+          @Override&#xd;
+          public Employee save(Employee employee) {&#xd;
+          if(employee.getStartDate()==null)&#xd;
+          employee.setStartDate(LocalDate.now());&#xd;
+          return getRepository().save(employee);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Employee update(Employee employee) {&#xd;
+          Employee find=this.findById(employee.getId());&#xd;
+          find.setName(employee.getName());&#xd;
+          find.setFamily(employee.getFamily());&#xd;
+          find.setStartDate(employee.getStartDate());&#xd;
+          find.setEndDate(employee.getEndDate());&#xd;
+          find.setAddress(employee.getAddress());&#xd;
+          find.setPhoneNumber(employee.getPhoneNumber());&#xd;
+          find.setTasks(employee.getTasks());&#xd;
+          return getRepository().save(find);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public EmployeeDto mapToDto(Employee employee) {&#xd;
+          EmployeeDto employeeDto=new EmployeeDto();&#xd;
+          employeeDto.setName(employee.getName());&#xd;
+          employeeDto.setFamily(employee.getFamily());&#xd;
+          employeeDto.setEmployeeNumber(employee.getEmployeeNumber());&#xd;
+          employeeDto.setAddress(employee.getAddress());&#xd;
+          employeeDto.setFullName(employee.getFullName());&#xd;
+          employeeDto.setStartDate(employee.getStartDate());&#xd;
+          employeeDto.setEndDate(employee.getEndDate());&#xd;
+          &#xd;
+          Optional&lt;Department> department =
+          departmentService.getEmployeeCurrentDepartment(employee.getEmployeeNumber());&#xd;
+          if (department.isPresent())&#xd;
+          employeeDto.setCurrentDepartment(departmentService.mapToDto(department.get()));&#xd;
+          &#xd;
+          return employeeDto;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Employee mapToEntity(EmployeeDto employeeDto) {&#xd;
+          Employee employee = new Employee();&#xd;
+          employee.setName(employeeDto.getName());&#xd;
+          employee.setFamily(employeeDto.getFamily());&#xd;
+          employee.setStartDate(employeeDto.getStartDate());&#xd;
+          employee.setEndDate(employeeDto.getEndDate());&#xd;
+          employee.setAddress(employeeDto.getAddress());&#xd;
+          employee.setPhoneNumber(employeeDto.getPhoneNumber());&#xd;
+          return employee;&#xd;
+          }&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>3590</size>
         <modified></modified>
@@ -2375,15 +2376,15 @@ public class EmployeeServiceImpl implements EmployeeService {&#xd;
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\task\TaskHistoryService.java</path>
       <content>package com.example.employee.task.tracker.service.task;&#xd;
-&#xd;
-import com.example.employee.task.tracker.model.TaskHistory;&#xd;
-import com.example.employee.task.tracker.repoeitory.task.TaskHistoryRepository;&#xd;
-import com.example.employee.task.tracker.service.BaseService;&#xd;
-public interface TaskHistoryService extends BaseService&lt;TaskHistory, Long, TaskHistoryRepository> {&#xd;
-&#xd;
-    TaskHistory getLastTaskStatus(Long taskId);&#xd;
-}&#xd;
-</content>
+          &#xd;
+          import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+          import com.example.employee.task.tracker.repository.task.TaskHistoryRepository;&#xd;
+          import com.example.employee.task.tracker.service.BaseService;&#xd;
+          public interface TaskHistoryService extends BaseService&lt;TaskHistory, Long, TaskHistoryRepository> {&#xd;
+          &#xd;
+          TaskHistory getLastTaskStatus(Long taskId);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>419</size>
         <modified></modified>
@@ -2394,60 +2395,60 @@ public interface TaskHistoryService extends BaseService&lt;TaskHistory, Long, Ta
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\task\TaskHistoryServiceImpl.java</path>
       <content>package com.example.employee.task.tracker.service.task;&#xd;
-&#xd;
-import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
-import com.example.employee.task.tracker.model.TaskHistory;&#xd;
-import com.example.employee.task.tracker.repoeitory.task.TaskHistoryRepository;&#xd;
-import org.springframework.stereotype.Service;&#xd;
-&#xd;
-import java.util.List;&#xd;
-&#xd;
-@Service&#xd;
-public class TaskHistoryServiceImpl implements TaskHistoryService {&#xd;
-    private final TaskHistoryRepository taskHistoryRepository;&#xd;
-&#xd;
-    public TaskHistoryServiceImpl(TaskHistoryRepository taskHistoryRepository) {&#xd;
-        this.taskHistoryRepository = taskHistoryRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskHistoryRepository getRepository() {&#xd;
-        return this.taskHistoryRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskHistory findById(Long aLong) {&#xd;
-        return null;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public void deleteById(Long aLong) {&#xd;
-&#xd;
-    }&#xd;
-    @Override&#xd;
-    public List&lt;TaskHistory> findAll() {&#xd;
-        return List.of();&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskHistory save(TaskHistory taskHistory) {&#xd;
-        return null;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskHistory update(TaskHistory taskHistory) {&#xd;
-        return null;&#xd;
-    }&#xd;
-&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskHistory getLastTaskStatus(Long taskId) {&#xd;
-        return this.getRepository().getLastTaskStatus(taskId).orElseThrow(&#xd;
-                () -> new CustomException("taskHistory.notFound")&#xd;
-        );&#xd;
-    }&#xd;
-}&#xd;
-</content>
+          &#xd;
+          import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+          import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+          import com.example.employee.task.tracker.repository.task.TaskHistoryRepository;&#xd;
+          import org.springframework.stereotype.Service;&#xd;
+          &#xd;
+          import java.util.List;&#xd;
+          &#xd;
+          @Service&#xd;
+          public class TaskHistoryServiceImpl implements TaskHistoryService {&#xd;
+          private final TaskHistoryRepository taskHistoryRepository;&#xd;
+          &#xd;
+          public TaskHistoryServiceImpl(TaskHistoryRepository taskHistoryRepository) {&#xd;
+          this.taskHistoryRepository = taskHistoryRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskHistoryRepository getRepository() {&#xd;
+          return this.taskHistoryRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskHistory findById(Long aLong) {&#xd;
+          return null;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public void deleteById(Long aLong) {&#xd;
+          &#xd;
+          }&#xd;
+          @Override&#xd;
+          public List&lt;TaskHistory> findAll() {&#xd;
+          return List.of();&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskHistory save(TaskHistory taskHistory) {&#xd;
+          return null;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskHistory update(TaskHistory taskHistory) {&#xd;
+          return null;&#xd;
+          }&#xd;
+          &#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskHistory getLastTaskStatus(Long taskId) {&#xd;
+          return this.getRepository().getLastTaskStatus(taskId).orElseThrow(&#xd;
+          () -> new CustomException("taskHistory.notFound")&#xd;
+          );&#xd;
+          }&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>1467</size>
         <modified></modified>
@@ -2458,16 +2459,16 @@ public class TaskHistoryServiceImpl implements TaskHistoryService {&#xd;
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\task\TaskService.java</path>
       <content>package com.example.employee.task.tracker.service.task;&#xd;
-import com.example.employee.task.tracker.model.Task;&#xd;
-import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.task.TaskRepository;&#xd;
-import com.example.employee.task.tracker.service.BaseService;&#xd;
-&#xd;
-public interface TaskService extends BaseService&lt;Task, Long, TaskRepository> {&#xd;
-    public Task mapToEntity(TaskDto taskDto);&#xd;
-    public TaskDto mapToDto(Task task);&#xd;
-}&#xd;
-</content>
+          import com.example.employee.task.tracker.model.Task;&#xd;
+          import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
+          import com.example.employee.task.tracker.repository.task.TaskRepository;&#xd;
+          import com.example.employee.task.tracker.service.BaseService;&#xd;
+          &#xd;
+          public interface TaskService extends BaseService&lt;Task, Long, TaskRepository> {&#xd;
+          public Task mapToEntity(TaskDto taskDto);&#xd;
+          public TaskDto mapToDto(Task task);&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>482</size>
         <modified></modified>
@@ -2478,142 +2479,143 @@ public interface TaskService extends BaseService&lt;Task, Long, TaskRepository> 
     <XmlFileContent>
       <path>main\java\com\example\employee\task\tracker\service\task\TaskServiceImpl.java</path>
       <content>package com.example.employee.task.tracker.service.task;&#xd;
-&#xd;
-import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
-import com.example.employee.task.tracker.model.Employee;&#xd;
-import com.example.employee.task.tracker.model.Task;&#xd;
-import com.example.employee.task.tracker.model.TaskHistory;&#xd;
-import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
-import com.example.employee.task.tracker.repoeitory.task.TaskRepository;&#xd;
-import com.example.employee.task.tracker.service.employee.EmployeeService;&#xd;
-import org.springframework.context.annotation.Lazy;&#xd;
-import org.springframework.stereotype.Service;&#xd;
-import org.springframework.util.CollectionUtils;&#xd;
-import java.time.LocalDate;&#xd;
-import java.util.List;&#xd;
-import java.util.Set;&#xd;
-&#xd;
-@Service&#xd;
-public class TaskServiceImpl implements com.example.employee.task.tracker.service.task.TaskService {&#xd;
-    private final TaskRepository taskRepository;&#xd;
-    @Lazy&#xd;
-    private final EmployeeService employeeService;&#xd;
-    private final TaskHistoryService taskHistoryService;&#xd;
-&#xd;
-    public TaskServiceImpl(TaskRepository taskRepository, EmployeeService employeeService, TaskHistoryService taskHistoryService) {&#xd;
-        this.taskRepository = taskRepository;&#xd;
-        this.employeeService = employeeService;&#xd;
-        this.taskHistoryService = taskHistoryService;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskRepository getRepository() {&#xd;
-        return taskRepository;&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Task findById(Long id) {&#xd;
-        return getRepository().findById(id).orElseThrow(() ->&#xd;
-                new CustomException("task.not_found", id));&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public void deleteById(Long id) {&#xd;
-        this.findById(id);&#xd;
-        getRepository().deleteById(id);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public List&lt;Task> findAll() {&#xd;
-        return getRepository().findAll();&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public TaskDto mapToDto(Task task) {&#xd;
-        TaskDto taskDto = new TaskDto();&#xd;
-        taskDto.setName(task.getName());&#xd;
-        taskDto.setDescription(task.getDescription());&#xd;
-        taskDto.setStartDate(task.getStartDate());&#xd;
-        taskDto.setEndDate(task.getEndDate());&#xd;
-        try {&#xd;
-&#xd;
-            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
-            taskDto.setStatus(taskHistory.getState().name());&#xd;
-        } catch (CustomException e) {&#xd;
-            e.printStackTrace();&#xd;
-        }&#xd;
-        taskDto.setTaskNumber(task.getTaskNumber());&#xd;
-        if(task.getResponsible()!=null)&#xd;
+          &#xd;
+          import com.example.employee.task.tracker.config.exception.CustomException;&#xd;
+          import com.example.employee.task.tracker.model.Employee;&#xd;
+          import com.example.employee.task.tracker.model.Task;&#xd;
+          import com.example.employee.task.tracker.model.TaskHistory;&#xd;
+          import com.example.employee.task.tracker.model.dto.TaskDto;&#xd;
+          import com.example.employee.task.tracker.repository.task.TaskRepository;&#xd;
+          import com.example.employee.task.tracker.service.employee.EmployeeService;&#xd;
+          import org.springframework.context.annotation.Lazy;&#xd;
+          import org.springframework.stereotype.Service;&#xd;
+          import org.springframework.util.CollectionUtils;&#xd;
+          import java.time.LocalDate;&#xd;
+          import java.util.List;&#xd;
+          import java.util.Set;&#xd;
+          &#xd;
+          @Service&#xd;
+          public class TaskServiceImpl implements com.example.employee.task.tracker.service.task.TaskService {&#xd;
+          private final TaskRepository taskRepository;&#xd;
+          @Lazy&#xd;
+          private final EmployeeService employeeService;&#xd;
+          private final TaskHistoryService taskHistoryService;&#xd;
+          &#xd;
+          public TaskServiceImpl(TaskRepository taskRepository, EmployeeService employeeService, TaskHistoryService
+          taskHistoryService) {&#xd;
+          this.taskRepository = taskRepository;&#xd;
+          this.employeeService = employeeService;&#xd;
+          this.taskHistoryService = taskHistoryService;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskRepository getRepository() {&#xd;
+          return taskRepository;&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Task findById(Long id) {&#xd;
+          return getRepository().findById(id).orElseThrow(() ->&#xd;
+          new CustomException("task.not_found", id));&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public void deleteById(Long id) {&#xd;
+          this.findById(id);&#xd;
+          getRepository().deleteById(id);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public List&lt;Task> findAll() {&#xd;
+          return getRepository().findAll();&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public TaskDto mapToDto(Task task) {&#xd;
+          TaskDto taskDto = new TaskDto();&#xd;
+          taskDto.setName(task.getName());&#xd;
+          taskDto.setDescription(task.getDescription());&#xd;
+          taskDto.setStartDate(task.getStartDate());&#xd;
+          taskDto.setEndDate(task.getEndDate());&#xd;
+          try {&#xd;
+          &#xd;
+          TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
+          taskDto.setStatus(taskHistory.getState().name());&#xd;
+          } catch (CustomException e) {&#xd;
+          e.printStackTrace();&#xd;
+          }&#xd;
+          taskDto.setTaskNumber(task.getTaskNumber());&#xd;
+          if(task.getResponsible()!=null)&#xd;
           taskDto.setEmployeeDto(employeeService.mapToDto(task.getResponsible()));&#xd;
-        return taskDto;&#xd;
-    }&#xd;
-    @Override&#xd;
-    public Task mapToEntity(TaskDto taskDto) {&#xd;
-        Task task = new Task();&#xd;
-        task.setName(taskDto.getName());&#xd;
-        task.setDescription(taskDto.getDescription());&#xd;
-        task.setStartDate(taskDto.getStartDate());&#xd;
-        task.setEndDate(taskDto.getEndDate());&#xd;
-&#xd;
-&#xd;
-        try {&#xd;
-&#xd;
-            TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
-            taskDto.setStatus(taskHistory.getState().name());&#xd;
-        } catch (CustomException e) {&#xd;
-            e.printStackTrace();&#xd;
-        }&#xd;
-        TaskHistory taskHistory = new TaskHistory();&#xd;
-        if (taskDto.getStatus() != null) {&#xd;
-            taskHistory.setState(TaskHistory.StateType.valueOf(taskDto.getStatus()));&#xd;
-&#xd;
-        } else {&#xd;
-            if (task.getStartDate().isAfter(LocalDate.now()))&#xd;
-                taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
-            else if (task.getStartDate().isBefore(LocalDate.now())) {&#xd;
-                if (task.getEndDate() == null || task.getEndDate().isAfter(LocalDate.now()))&#xd;
-                    taskHistory.setState(TaskHistory.StateType.DOING);&#xd;
-                else&#xd;
-                    taskHistory.setState(TaskHistory.StateType.DONE);&#xd;
-            }&#xd;
-        }&#xd;
-&#xd;
-        task.setTaskHistorySet(Set.of(taskHistory));&#xd;
-        if (taskDto.getResponsible_id() != null) {&#xd;
-            Employee employee = employeeService.findById(taskDto.getResponsible_id());&#xd;
-            task.setResponsible(employee);&#xd;
-        }&#xd;
-        task.setTaskNumber(taskDto.getTaskNumber());&#xd;
-        return task;&#xd;
-    }&#xd;
-    @Override&#xd;
-    public Task save(Task task) {&#xd;
-        if (task.getStartDate() == null)&#xd;
-            task.setStartDate(LocalDate.now());&#xd;
-        if (CollectionUtils.isEmpty(task.getTaskHistorySet())) {&#xd;
-            TaskHistory taskHistory = new TaskHistory();&#xd;
-            taskHistory.setFromDate(LocalDate.now());&#xd;
-            taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
-            taskHistory.setTask(task);&#xd;
-            task.setTaskHistorySet(Set.of(taskHistory));&#xd;
-        }&#xd;
-        return getRepository().save(task);&#xd;
-    }&#xd;
-&#xd;
-    @Override&#xd;
-    public Task update(Task task) {&#xd;
-        Task find = this.findById(task.getId());&#xd;
-        find.setName(task.getName());&#xd;
-        find.setDescription(task.getDescription());&#xd;
-        find.setStartDate(task.getStartDate());&#xd;
-        find.setEndDate(task.getEndDate());&#xd;
-        find.setResponsible(task.getResponsible());&#xd;
-        find.setTaskNumber(task.getTaskNumber());&#xd;
-        find.setResponsible(task.getResponsible());&#xd;
-        return getRepository().save(find);&#xd;
-    }&#xd;
-}&#xd;
-</content>
+          return taskDto;&#xd;
+          }&#xd;
+          @Override&#xd;
+          public Task mapToEntity(TaskDto taskDto) {&#xd;
+          Task task = new Task();&#xd;
+          task.setName(taskDto.getName());&#xd;
+          task.setDescription(taskDto.getDescription());&#xd;
+          task.setStartDate(taskDto.getStartDate());&#xd;
+          task.setEndDate(taskDto.getEndDate());&#xd;
+          &#xd;
+          &#xd;
+          try {&#xd;
+          &#xd;
+          TaskHistory taskHistory = taskHistoryService.getLastTaskStatus(task.getId());&#xd;
+          taskDto.setStatus(taskHistory.getState().name());&#xd;
+          } catch (CustomException e) {&#xd;
+          e.printStackTrace();&#xd;
+          }&#xd;
+          TaskHistory taskHistory = new TaskHistory();&#xd;
+          if (taskDto.getStatus() != null) {&#xd;
+          taskHistory.setState(TaskHistory.StateType.valueOf(taskDto.getStatus()));&#xd;
+          &#xd;
+          } else {&#xd;
+          if (task.getStartDate().isAfter(LocalDate.now()))&#xd;
+          taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
+          else if (task.getStartDate().isBefore(LocalDate.now())) {&#xd;
+          if (task.getEndDate() == null || task.getEndDate().isAfter(LocalDate.now()))&#xd;
+          taskHistory.setState(TaskHistory.StateType.DOING);&#xd;
+          else&#xd;
+          taskHistory.setState(TaskHistory.StateType.DONE);&#xd;
+          }&#xd;
+          }&#xd;
+          &#xd;
+          task.setTaskHistorySet(Set.of(taskHistory));&#xd;
+          if (taskDto.getResponsible_id() != null) {&#xd;
+          Employee employee = employeeService.findById(taskDto.getResponsible_id());&#xd;
+          task.setResponsible(employee);&#xd;
+          }&#xd;
+          task.setTaskNumber(taskDto.getTaskNumber());&#xd;
+          return task;&#xd;
+          }&#xd;
+          @Override&#xd;
+          public Task save(Task task) {&#xd;
+          if (task.getStartDate() == null)&#xd;
+          task.setStartDate(LocalDate.now());&#xd;
+          if (CollectionUtils.isEmpty(task.getTaskHistorySet())) {&#xd;
+          TaskHistory taskHistory = new TaskHistory();&#xd;
+          taskHistory.setFromDate(LocalDate.now());&#xd;
+          taskHistory.setState(TaskHistory.StateType.TO_DO);&#xd;
+          taskHistory.setTask(task);&#xd;
+          task.setTaskHistorySet(Set.of(taskHistory));&#xd;
+          }&#xd;
+          return getRepository().save(task);&#xd;
+          }&#xd;
+          &#xd;
+          @Override&#xd;
+          public Task update(Task task) {&#xd;
+          Task find = this.findById(task.getId());&#xd;
+          find.setName(task.getName());&#xd;
+          find.setDescription(task.getDescription());&#xd;
+          find.setStartDate(task.getStartDate());&#xd;
+          find.setEndDate(task.getEndDate());&#xd;
+          find.setResponsible(task.getResponsible());&#xd;
+          find.setTaskNumber(task.getTaskNumber());&#xd;
+          find.setResponsible(task.getResponsible());&#xd;
+          return getRepository().save(find);&#xd;
+          }&#xd;
+          }&#xd;
+      </content>
       <XmlFileInfo>
         <size>5233</size>
         <modified></modified>
