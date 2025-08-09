@@ -1,7 +1,7 @@
 package com.example.employee.task.tracker.config.security;
 
 import com.example.employee.task.tracker.model.AuthProvider;
-import com.example.employee.task.tracker.repoeitory.authprovider.AuthProviderDataInitializer;
+import com.example.employee.task.tracker.repository.authprovider.AuthProviderDataInitializer;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
 import com.example.employee.task.tracker.service.organ.OrganService;
 import org.springframework.context.annotation.Bean;
