@@ -30,71 +30,67 @@ public class SignupRQ {
     private String authProvider;
 
     private String address;
+
+    @NotBlank(message = "signup.organCode.required")
+    private String organCode;
+
      @NotBlank(message = "signup.departmentCode.required")
     private String DepartmentCode;
 
-    public String getUserName() {
+    public @NotBlank(message = "signup.userName.required") String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(@NotBlank(message = "signup.userName.required") String userName) {
         this.userName = userName;
     }
 
-    public String getPassword() {
+    public @NotBlank(message = "signup.password.required") String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NotBlank(message = "signup.password.required") String password) {
         this.password = password;
     }
 
-    public String getEmail() {
+    public @Email(message = "signup.email.valid") String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@Email(message = "signup.email.valid") String email) {
         this.email = email;
     }
 
-    public String getEmployeeNumber() {
+    public @NotBlank(message = "signup.employeeNumber.required") String getEmployeeNumber() {
         return employeeNumber;
     }
 
-    public void setEmployeeNumber(String employeeNumber) {
+    public void setEmployeeNumber(@NotBlank(message = "signup.employeeNumber.required") String employeeNumber) {
         this.employeeNumber = employeeNumber;
     }
 
-    public String getName() {
+    public @NotBlank(message = "signup.name.required") String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotBlank(message = "signup.name.required") String name) {
         this.name = name;
     }
 
-    public String getFamily() {
+    public @NotBlank(message = "signup.family.required") String getFamily() {
         return family;
     }
 
-    public void setFamily(String family) {
+    public void setFamily(@NotBlank(message = "signup.family.required") String family) {
         this.family = family;
     }
 
-    public String getPhone_number() {
+    public @Size(message = "signup.phone_number.required", max = 10) String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(String phone_number) {
+    public void setPhone_number(@Size(message = "signup.phone_number.required", max = 10) String phone_number) {
         this.phone_number = phone_number;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public @NotBlank(message = "signup.authProvider.required") String getAuthProvider() {
@@ -105,11 +101,27 @@ public class SignupRQ {
         this.authProvider = authProvider;
     }
 
-    public String getDepartmentCode() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public @NotBlank(message = "signup.organCode.required") String getOrganCode() {
+        return organCode;
+    }
+
+    public void setOrganCode(@NotBlank(message = "signup.organCode.required") String organCode) {
+        this.organCode = organCode;
+    }
+
+    public @NotBlank(message = "signup.departmentCode.required") String getDepartmentCode() {
         return DepartmentCode;
     }
 
-    public void setDepartmentCode(String departmentCode) {
+    public void setDepartmentCode(@NotBlank(message = "signup.departmentCode.required") String departmentCode) {
         DepartmentCode = departmentCode;
     }
 }
