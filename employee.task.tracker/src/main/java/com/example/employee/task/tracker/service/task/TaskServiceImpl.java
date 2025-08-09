@@ -5,7 +5,7 @@ import com.example.employee.task.tracker.model.Employee;
 import com.example.employee.task.tracker.model.Task;
 import com.example.employee.task.tracker.model.TaskHistory;
 import com.example.employee.task.tracker.model.dto.TaskDto;
-import com.example.employee.task.tracker.repoeitory.task.TaskRepository;
+import com.example.employee.task.tracker.repository.task.TaskRepository;
 import com.example.employee.task.tracker.service.employee.EmployeeService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

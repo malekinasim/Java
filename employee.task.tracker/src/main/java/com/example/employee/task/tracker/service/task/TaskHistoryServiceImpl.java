@@ -2,7 +2,7 @@ package com.example.employee.task.tracker.service.task;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.TaskHistory;
-import com.example.employee.task.tracker.repoeitory.task.TaskHistoryRepository;
+import com.example.employee.task.tracker.repository.task.TaskHistoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

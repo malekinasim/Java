@@ -1,7 +1,7 @@
-package com.example.employee.task.tracker.repoeitory.task;
+package com.example.employee.task.tracker.repository.task;
 
 import com.example.employee.task.tracker.model.TaskHistory;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
+import com.example.employee.task.tracker.repository.BaseRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
