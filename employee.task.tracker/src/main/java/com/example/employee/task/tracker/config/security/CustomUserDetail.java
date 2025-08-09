@@ -25,21 +25,13 @@ public class CustomUserDetail  implements UserDetails{
     @Hidden
     private Map<String, Object> attributes;
 
-    public CustomUserDetail() {
-    }
     public CustomUserDetail(Account account) {
-        this(account,null,null);
+        this(account,null);
     }
-
-    public CustomUserDetail(Account account, Organ organ) {
-        this(account, organ,null);
-    }
-
-
-    public CustomUserDetail(Account account, Organ organ, HashMap<String, Object> attributes) {
+    public CustomUserDetail(Account account, HashMap<String, Object> attributes) {
         this.account = account;
         this.employee =account.getEmployee();
-        this.organ = organ;
+        this.organ = account.getOrgan();
         this.attributes = attributes;
     }
 
