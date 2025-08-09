@@ -1,4 +1,4 @@
-package com.example.employee.task.tracker.config;
+package com.example.employee.task.tracker.config.hibernate;
 
 
 
@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.example.employee.task.tracker.repoeitory")
+@EnableJpaRepositories(basePackages = "com.example.employee.task.tracker.repository")
 public class HibernateConfig {
 }
