@@ -4,7 +4,7 @@ import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.model.BaseEntity;
-import com.example.employee.task.tracker.repoeitory.authprovider.AuthProviderRepository;
+import com.example.employee.task.tracker.repository.authprovider.AuthProviderRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
