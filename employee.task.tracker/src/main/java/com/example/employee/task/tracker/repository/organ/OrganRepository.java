@@ -1,7 +1,7 @@
-package com.example.employee.task.tracker.repoeitory.organ;
+package com.example.employee.task.tracker.repository.organ;
 
 import com.example.employee.task.tracker.model.Organ;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
+import com.example.employee.task.tracker.repository.BaseRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -2,7 +2,7 @@ package com.example.employee.task.tracker.service.organ;
 
 import com.example.employee.task.tracker.config.exception.CustomException;
 import com.example.employee.task.tracker.model.Organ;
-import com.example.employee.task.tracker.repoeitory.organ.OrganRepository;
+import com.example.employee.task.tracker.repository.organ.OrganRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
