@@ -1,7 +1,7 @@
-package com.example.employee.task.tracker.repoeitory.authprovider;
+package com.example.employee.task.tracker.repository.authprovider;
 
 import com.example.employee.task.tracker.model.AuthProvider;
-import com.example.employee.task.tracker.repoeitory.BaseRepository;
+import com.example.employee.task.tracker.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
