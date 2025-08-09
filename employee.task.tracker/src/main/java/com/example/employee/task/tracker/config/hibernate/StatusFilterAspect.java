@@ -34,7 +34,7 @@ public class StatusFilterAspect {
         if (session.getEnabledFilter(FilterConstants.STATUS_FILTER) == null) {
 
             session.enableFilter(FilterConstants.STATUS_FILTER)
-                    .setParameter(FilterConstants.STATUS_FILTER_PARAM,statusValue);
+                    .setParameter(FilterConstants.STATUS_FILTER_PARAM,statusValue.name());
             enabledHere = true;
         }
 
