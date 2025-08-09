@@ -1,6 +1,6 @@
 package com.example.employee.task.tracker.model;
 
-import com.example.employee.task.tracker.config.FilterConstants;
+import com.example.employee.task.tracker.config.hibernate.FilterConstants;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
