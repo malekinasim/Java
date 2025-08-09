@@ -1,4 +1,4 @@
-package com.example.employee.task.tracker.repoeitory.authprovider;
+package com.example.employee.task.tracker.repository.authprovider;
 
 import com.example.employee.task.tracker.model.AuthProvider;
 import com.example.employee.task.tracker.service.authprovider.AuthProviderService;
