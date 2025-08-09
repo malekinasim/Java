@@ -152,12 +152,14 @@ public class JWTTokenProvider {
     public String getCurrentOrgan(HttpServletRequest request) {
         String token = this.resolveAccessToken(request);
         String OrganCode = null;
-        Object organClaim = getClaims(token).get(CUR_ORGAN_CLAIM);
-        if (organClaim != null && StringUtils.hasText(organClaim.toString())) {
-            OrganCode = organClaim.toString();
-        } else {
-            String headerOrgan = request.getHeader(CUR_ORGAN_CLAIM);
-            if (StringUtils.hasText(headerOrgan)) OrganCode = headerOrgan;
+        if(StringUtils.hasText(token)) {
+            Object organClaim = getClaims(token).get(CUR_ORGAN_CLAIM);
+            if (organClaim != null && StringUtils.hasText(organClaim.toString())) {
+                OrganCode = organClaim.toString();
+            } else {
+                String headerOrgan = request.getHeader(CUR_ORGAN_CLAIM);
+                if (StringUtils.hasText(headerOrgan)) OrganCode = headerOrgan;
+            }
         }
         return OrganCode;
     }

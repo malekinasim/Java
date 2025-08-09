@@ -58,7 +58,7 @@ public class AccountController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PostMapping("/login")
-    public void signIn(@RequestBody LoginRQ loginRQ, HttpServletRequest request, HttpServletResponse response) throws IOException, IOException {
+    public void signIn(@RequestBody LoginRQ loginRQ, HttpServletRequest request, HttpServletResponse response) throws  IOException {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRQ.getUserName(), loginRQ.getPassword()));
         CustomUserDetail userDetail = (CustomUserDetail) authentication.getPrincipal();
@@ -111,7 +111,7 @@ public class AccountController {
 
     @GetMapping(value = "/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
-
+//TODO
         return new ResponseEntity<>( HttpStatus.EXPECTATION_FAILED);
 
     }

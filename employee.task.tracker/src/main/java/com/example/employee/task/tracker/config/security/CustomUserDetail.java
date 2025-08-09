@@ -20,7 +20,7 @@ public class CustomUserDetail  implements UserDetails{
     private Employee employee;
 
     @Hidden
-    private Organ organ = null;
+    private Organ organ;
 
     @Hidden
     private Map<String, Object> attributes;
