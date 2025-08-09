@@ -5,7 +5,7 @@ import com.example.employee.task.tracker.config.hibernate.StatusFilter;
 import com.example.employee.task.tracker.model.BaseEntity;
 import com.example.employee.task.tracker.model.Department;
 import com.example.employee.task.tracker.model.dto.DepartmentDto;
-import com.example.employee.task.tracker.repoeitory.department.DepartmentRepository;
+import com.example.employee.task.tracker.repository.department.DepartmentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -81,8 +81,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department findByDepartmentCode(String code) {
-        return departmentRepository.findDepartmentByDepartmentCode(code).orElseThrow(
+    public Department findByDepartmentCodeAndOrganCode(String code,String organCode) {
+        return departmentRepository.findDepartmentByDepartmentCodeAndOrgan_Code(code,organCode).orElseThrow(
                 ()->new  CustomException("error.department.not_found")
         );
     }
