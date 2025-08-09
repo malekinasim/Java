@@ -1,9 +1,10 @@
 package com.example.employee.task.tracker.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tenants")
 public class Organ extends BaseEntity<Long>{
     @Column(name = "code",nullable = false)
     private String code;
