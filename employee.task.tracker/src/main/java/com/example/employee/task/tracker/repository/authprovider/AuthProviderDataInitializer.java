@@ -24,8 +24,13 @@ public class AuthProviderDataInitializer {
                 google.setClientId("551581295635-f0tccrjv7d285nso5tndhtv3pn565hqi.apps.googleusercontent.com");
                 google.setClientSecret("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");
                 google.setRedirectUri("http://localhost:8080/login/oauth2/code/google");
+                google.setIssuerUri("https://accounts.google.com");
+                google.setJwkSetUri("https://www.googleapis.com/oauth2/v3/certs");
+                google.setTokenUri("https://oauth2.googleapis.com/token");
+                google.setRefreshUri("https://oauth2.googleapis.com/token");
+                google.setAuthorizationUri("https://oauth2.googleapis.com/token");
+                google.setUserNameAttribute("sub");
                 google.setScopes("profile,email,openid");
-
                 authProviderService.saveAll(List.of(local,google));
                 System.out.println("✅ AuthProviders inserted.");
             }

@@ -85,25 +85,20 @@ public class AccountServiceImpl implements AccountService {
         this.save(account);
     }
 
-    @Override
-    public Account createOauthProviderAccount(String userName, AuthProvider authProvider) {
-        Account account= new Account();
-        account.setUsername(userName);
-        account.setStatus(BaseEntity.Status.ACTIVE);
-        account.setProvider(authProvider);
-        return account;
-    }
 
     @Override
     public Optional<Account> findByUserNameAndProvider(String userName, String providerName) {
-        return accountRepository.findByUsernameAndProvider_Name(userName, providerName);
+        return accountRepository.findByUsernameAndProvider_RegistrationId(userName, providerName);
     }
 
     @Override
     public Account mapToEntity(SignupRQ signupRQ) {
         Account account = new Account();
         account.setUsername(signupRQ.getUserName());
-        account.setPassword(passwordEncoder.encode(signupRQ.getPassword()));
+        if(signupRQ.getPassword()==null && signupRQ.getOauthReqRqId()==null)
+            throw new CustomException("error.password.required");
+        if(signupRQ.getPassword()!=null)
+         account.setPassword(passwordEncoder.encode(signupRQ.getPassword()));
         account.setStatus(BaseEntity.Status.ACTIVE);
         Organ organ=organService.getOrganByCode(signupRQ.getOrganCode());
         account.setOrgan(organ);

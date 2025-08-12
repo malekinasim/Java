@@ -26,8 +26,10 @@ public class SignupRQ {
     @Size(message = "signup.phone_number.required",max = 10)
     private String phone_number;
 
-    @NotBlank(message = "signup.authProvider.required")
+
     private String authProvider;
+
+    private String oauthReqRqId;
 
     private String address;
 
@@ -93,11 +95,11 @@ public class SignupRQ {
         this.phone_number = phone_number;
     }
 
-    public @NotBlank(message = "signup.authProvider.required") String getAuthProvider() {
+    public  String getAuthProvider() {
         return authProvider;
     }
 
-    public void setAuthProvider(@NotBlank(message = "signup.authProvider.required") String authProvider) {
+    public void setAuthProvider(String authProvider) {
         this.authProvider = authProvider;
     }
 
@@ -123,5 +125,13 @@ public class SignupRQ {
 
     public void setDepartmentCode(@NotBlank(message = "signup.departmentCode.required") String departmentCode) {
         DepartmentCode = departmentCode;
+    }
+
+    public String getOauthReqRqId() {
+        return oauthReqRqId;
+    }
+
+    public void setOauthReqRqId(String oauthReqRqId) {
+        this.oauthReqRqId = oauthReqRqId;
     }
 }

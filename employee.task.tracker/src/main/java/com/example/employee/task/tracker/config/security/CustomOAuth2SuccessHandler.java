@@ -34,7 +34,7 @@ import java.util.UUID;
 
 @Component
 public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler {
-    @Value("app.frontend.url")
+    @Value("${app.frontend.url}")
     private String frontUrl;
     private final JWTTokenProvider jwtTokenProvider;
     private final AuthProviderService authProviderService;
@@ -78,9 +78,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             return;
         }
 
-
-
-        OAuth2User oauthUser = (OAuth2User) oauthToken.getPrincipal();
+        OAuth2User oauthUser = oauthToken.getPrincipal();
         String email = Optional.ofNullable((String)oauthUser.getAttribute("email"))
                 .orElseGet(oauthUser::getName); // fallback if no email provided
 
@@ -118,14 +116,13 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 
 
         // Load or create account
-        Account account = accountService.findByUserNameAndProvider(email, registrationId)
-                .orElseGet(() -> accountService.createOauthProviderAccount(email, authProvider));
+        Optional<Account> account = accountService.findByUserNameAndProvider(email, registrationId);
 
         // --- CASE A: account has no employee (new user) -> create authRequestId and redirect to fill_account ---
-        if (account.getEmployee() == null) {
+        if (!account.isPresent()) {
             String authRequestId = UUID.randomUUID().toString();
             // store minimal data in redis
-            OauthTemp temp = new OauthTemp(account.getUsername(), registrationId, externalUserId);
+            OauthTemp temp = new OauthTemp(account.get().getUsername(), registrationId, externalUserId);
             Duration ttl = Duration.ofSeconds(getRegistrationTtlSeconds());
             oidcTokenRedisService.saveAuthRequest(authRequestId, temp, ttl);
 
@@ -133,23 +130,20 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             if (RestUtil.isApiClient(request)) {
                 // return JSON with authRequestId
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                String json = "{\"authRequestId\":\"" + authRequestId + "\" , \"username\":\""+account.getUsername()+"}";
+                String json = "{\"authRequestId\":\"" + authRequestId + "\" , \"username\":\""+email+"}";
                 response.getWriter().write(json);
-                return;
             } else {
                 // normal web frontend
                 String redirect = frontUrl + "/fill_account?authRequestId=" + URLEncoder.encode(authRequestId, StandardCharsets.UTF_8);
                 response.sendRedirect(redirect);
-                return;
             }
         }
          else {
-            Organ organ = organService.getEmployeeOrgan(account.getEmployee().getEmployeeNumber());
-            jwtTokenProvider.sendTokens(response, organ.getCode(),!RestUtil.isMobileClient(request),account.getUsername(),account.getEmployee().getEmployeeNumber());
+            Organ organ = organService.getEmployeeOrgan(account.get().getEmployee().getEmployeeNumber());
+            jwtTokenProvider.sendTokens(response, organ.getCode(),!RestUtil.isMobileClient(request),account.get().getUsername(),
+                    account.get().getEmployee().getEmployeeNumber());
             if (!RestUtil.isApiClient(request)) {
                 response.sendRedirect(frontUrl + "/home");
-            } else {
-                return;
             }
 
         }

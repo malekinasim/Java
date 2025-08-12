@@ -47,7 +47,11 @@ public class SecurityBeanConfig {
             "/swagger-ui/**",
             "/swagger-ui.html",
             "/api/v1/public/**",
-            "/api/v1/auth/**"
+            "/api/v1/auth/**",
+            "/login/**",
+            "/default-ui.css/**",
+            "/favicon.ico/**"
+
     };
 
     public SecurityBeanConfig(@Lazy CustomOAuth2SuccessHandler customOAuth2SuccessHandler,
@@ -79,7 +83,6 @@ public class SecurityBeanConfig {
         List<ClientRegistration> registrations = oauthProviders.stream()
                 .map(OAuthClientRegistrationFactory::create)
                 .toList();
-
         return new InMemoryClientRegistrationRepository(registrations);
     }
 
@@ -102,9 +105,13 @@ public class SecurityBeanConfig {
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
+                        .authorizationEndpoint(authEndpoint -> authEndpoint
+                                .authorizationRequestResolver(
+                                        new CustomAuthorizationRequestResolver(repo, "/oauth2/authorization")
+                                ))
+                        .successHandler(customOAuth2SuccessHandler)
                         .clientRegistrationRepository(repo)
                         .authorizedClientService(authorizedClientService(repo))
-                        .successHandler(customOAuth2SuccessHandler)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/api/v1/auth/logout")

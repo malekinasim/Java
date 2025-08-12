@@ -50,10 +50,13 @@ public class AccountController {
     }
     @PostMapping("/oauth/complete-registration")
     public ResponseEntity<?> completeRegistration(@RequestBody SignupRQ signupRQ) {
-        OauthTemp temp = oidcTokenRedisService.getAuthRequest( signupRQ.getAuthProvider(),signupRQ.getUserName());
+        OauthTemp temp = oidcTokenRedisService.getAuthRequest(signupRQ.getOauthReqRqId());
+
         if (temp == null) return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new CustomException("error.complete-registration.deadline.end"));
         // Update user Employee in DB
+        signupRQ.setAuthProvider(temp.getProvider());
+        signupRQ.setUserName(temp.getUsername());
         accountService.createActiveAccount(signupRQ);
         return new ResponseEntity<>(HttpStatus.OK);
     }

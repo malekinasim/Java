@@ -140,7 +140,7 @@ public class OidcTokenRedisService {
         if (!StringUtils.hasText(authRequestId) || temp == null) {
             throw new IllegalArgumentException("authRequestId and temp are required");
         }
-        String key = AUTH_REQ_PREFIX + authRequestId+temp.getUsername();
+        String key = AUTH_REQ_PREFIX + authRequestId;
         Map<String, String> map = new HashMap<>();
         map.put("username", temp.getUsername() == null ? "" : temp.getUsername());
         map.put("provider", temp.getProvider() == null ? "" : temp.getProvider());
@@ -150,9 +150,9 @@ public class OidcTokenRedisService {
         redisTemplate.expire(key, ttl.toMillis(), TimeUnit.MILLISECONDS);
     }
 
-    public OauthTemp getAuthRequest(String authRequestId,String username) {
-        if (!StringUtils.hasText(authRequestId) || !StringUtils.hasText(username)) return null;
-        String key = AUTH_REQ_PREFIX + authRequestId+username;
+    public OauthTemp getAuthRequest(String authRequestId) {
+        if (!StringUtils.hasText(authRequestId)) return null;
+        String key = AUTH_REQ_PREFIX + authRequestId;
         if (!Boolean.TRUE.equals(redisTemplate.hasKey(key))) return null;
         Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
         String n_username = String.valueOf(entries.getOrDefault("username", ""));

@@ -55,17 +55,11 @@ public class SwaggerConfig {
                                 .authorizationUrl(provider.getAuthorizationUri())
                                 .tokenUrl(provider.getTokenUri())
                                 .scopes(parseScopes(provider.getScopes()));
-
-                        if (StringUtils.hasText(provider.getRefreshUri())) {
-                            flow.refreshUrl(provider.getRefreshUri());
-                        }
-
                         // Add security scheme for this provider
                         components.addSecuritySchemes(provider.getRegistrationId(),
                                 new SecurityScheme()
                                         .type(SecurityScheme.Type.OAUTH2)
                                         .flows(new OAuthFlows().authorizationCode(flow)));
-
                         // Add it as a security requirement too
                         openAPI.addSecurityItem(new SecurityRequirement().addList(provider.getRegistrationId()));
                     });

@@ -46,6 +46,9 @@ public class AuthProvider extends BaseEntity<Long>{
     @Column(name = "refresh_uri")
     private String refreshUri;
 
+    @Column(name = "jwk_set_uri")
+    private String jwkSetUri;
+
     @Column(name = "usernam_attr")
     private String userNameAttribute;
     @Enumerated
@@ -166,6 +169,14 @@ public class AuthProvider extends BaseEntity<Long>{
 
     public void setRefreshUri(String refreshUri) {
         this.refreshUri = refreshUri;
+    }
+
+    public String getJwkSetUri() {
+        return jwkSetUri;
+    }
+
+    public void setJwkSetUri(String jwkSetUri) {
+        this.jwkSetUri = jwkSetUri;
     }
 
     public enum ProviderType {
