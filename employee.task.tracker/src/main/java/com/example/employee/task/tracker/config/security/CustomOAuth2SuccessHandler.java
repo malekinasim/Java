@@ -122,7 +122,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
         if (!account.isPresent()) {
             String authRequestId = UUID.randomUUID().toString();
             // store minimal data in redis
-            OauthTemp temp = new OauthTemp(account.get().getUsername(), registrationId, externalUserId);
+            OauthTemp temp = new OauthTemp(email, registrationId, externalUserId);
             Duration ttl = Duration.ofSeconds(getRegistrationTtlSeconds());
             oidcTokenRedisService.saveAuthRequest(authRequestId, temp, ttl);
 
